@@ -67,24 +67,26 @@ def get_schadenObjekte(data_filename):
         sO_list.append(i[0])
     return sO_list
 
-def get_schadenObjekte(data_filename):
+"""
+    def get_schadenObjekte(data_filename):
     graph = connect(data_filename)
     sO_list = []
-    query_sO= prepareQuery("""
-        prefix : <http://example.org/sibbw7936662#> 
-        prefix aoi: <https://w3id.org/aoi#> 
-        prefix asb: <https://w3id.org/asbingowl/core#> 
-        prefix asbkey: <https://w3id.org/asbingowl/keys#> 
-        prefix asbkey13: <https://w3id.org/asbingowl/keys/2013#> 
-        prefix xsd: <http://www.w3.org/2001/XMLSchema#> 
+    query_sO= prepareQuery("
+        prefix : <http://example.org/sibbw7936662#>
+        prefix aoi: <https://w3id.org/aoi#>
+       prefix asb: <https://w3id.org/asbingowl/core#>
+        prefix asbkey: <https://w3id.org/asbingowl/keys#>
+        prefix asbkey13: <https://w3id.org/asbingowl/keys/2013#>
+        prefix xsd: <http://www.w3.org/2001/XMLSchema#>
         SELECT DISTINCT ?schadenObjekte
         WHERE{
             ?schadenObjekte a asb:SchadenObjekt.
         }
-        """)
+        ")
     for i in graph.query(query_sO):
         sO_list.append(i[0])
     return sO_list
+ """
 
 
 def query_schaden(data_filename,schadenObjekt):

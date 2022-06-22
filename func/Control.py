@@ -1,4 +1,4 @@
-import Geom
+from func import Geom
 import Ifc
 import ifcopenshell
 import ifcopenshell.geom 

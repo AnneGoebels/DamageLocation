@@ -15,33 +15,33 @@ settings.set(settings.USE_PYTHON_OPENCASCADE, True)
 
 ### Enter data file name (.ttl) ###
 
-data_filename = 'st_2079.ttl'
+sibbw_data_file = 'st_2079.ttl'
 
 ### Enter model file name (.ifc) ###
 
-filename = "st_2079.ifc"
+ifc_file = "st_2079.ifc"
 
 ### Enter model file name converted to LBD-Format (.ttl) ###
 
-lbd_filename = 'st_2079_lbd.ttl'
+lbd_of_ifc_file = 'st_2079_lbd.ttl'
 
 ### The next files will be created
 
-bt_filename = "control.ifc"
-aoi_filename = "damage.ifc"
-point_file = "point_representation.ifc"
-bcf_filename = str(os.path.abspath(os.getcwd()))+"/bcf_representation.bcf"
+bt_file = "control.ifc"
+aoi_file = "damage.ifc"
+point_file = r"output/point_representation.ifc"
+bcf_file = (str(os.path.abspath(os.getcwd())) + "//output//bcf_representation.bcf")
 
 
 ### BCF representation
 
-g = ifcopenshell.open(aoi_filename)
+g = ifcopenshell.open(aoi_file)
 aoi_elements = selector.parse(g, ".IfcBuildingElementProxy")
-BCF.export_bcfxml(aoi_elements, bcf_filename, filename)
+BCF.export_bcfxml(aoi_elements, bcf_file, ifc_file)
 
 ### IFC representation
 
-AOI.create_aoi_file(data_filename, filename, point_file)
+AOI.create_aoi_file(sibbw_data_file, ifc_file, point_file)
 
 h = ifcopenshell.open(point_file)
 

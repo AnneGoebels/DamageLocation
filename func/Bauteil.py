@@ -1,6 +1,4 @@
-import q_main
-import Geom
-import Bauteil
+from func import q_main, Geom
 import ifcopenshell
 import ifcopenshell.geom 
 import ifcopenshell.util

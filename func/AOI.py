@@ -1,7 +1,5 @@
-import q_main
-import Geom
-import Ifc
-import AOI
+
+from func import Geom, Ifc, q_main
 from OCC.Core.BRep import BRep_Tool
 import ifcopenshell
 import ifcopenshell.geom 

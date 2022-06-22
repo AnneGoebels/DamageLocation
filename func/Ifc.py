@@ -4,7 +4,7 @@ import ifcopenshell.util
 import ifcopenshell.util.element
 from ifcopenshell.util.selector import Selector
 import uuid
-import Geom 
+from func import Geom
 
 def get_project_information(model):
     owner_history = ""

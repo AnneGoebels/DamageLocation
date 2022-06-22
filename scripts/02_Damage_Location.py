@@ -8,30 +8,30 @@ settings.set(settings.USE_PYTHON_OPENCASCADE, True)
 
 ### Enter data file name (.ttl) ###
 
-data_filename = 'st_2079.ttl'
+sibbw_data_file = 'st_2079.ttl'
 
 ### Enter model file name (.ifc) ###
 
-filename = "st_2079.ifc"
+ifc_file = "st_2079.ifc"
 
 ### Enter model file name converted to LBD-Format (.ttl) ###
 
-lbd_filename = 'st_2079_lbd.ttl'
+lbd_of_ifc_file = 'st_2079_lbd.ttl'
 
 ### The next files will be created
 
-bt_filename = "control.ifc"
-aoi_filename = "damage.ifc"
+bt_file = "control.ifc"
+aoi_file = "damage.ifc"
 
 ### Damage location starts here:
 
-AOI.create_aoi_file(data_filename, filename, aoi_filename)
+AOI.create_aoi_file(sibbw_data_file, ifc_file, aoi_file)
 
-model = ifcopenshell.open(filename)
-f = ifcopenshell.open(bt_filename)
-g = ifcopenshell.open(aoi_filename)
+model = ifcopenshell.open(ifc_file)
+f = ifcopenshell.open(bt_file)
+g = ifcopenshell.open(aoi_file)
 
-schadenObjekte_list = q_main.get_schadenObjekte(data_filename)
+schadenObjekte_list = q_main.get_schadenObjekte(sibbw_data_file)
 
 i = 0
 
@@ -40,24 +40,24 @@ for schadenObjekt in schadenObjekte_list:
 
         print(
             "__________________________________________________________________________________________________________")
-        schadenquery = q_main.query_schaden_btd(data_filename, schadenObjekt)
+        schadenquery = q_main.query_schaden_btd(sibbw_data_file, schadenObjekt)
         for bauteildefinition in schadenquery:
             print("Schaden: ", end='')
             print(schadenObjekt)
             print("Bauteildefinition: ", end='')
             print(bauteildefinition)
-            bauteilTyp = q_main.query_bauteildefinition_bauteilTyp(data_filename, bauteildefinition)
+            bauteilTyp = q_main.query_bauteildefinition_bauteilTyp(sibbw_data_file, bauteildefinition)
             print("Bauteil Typ: ", end='')
             print(bauteilTyp)
 
-            AOI.bauteildefinition_as_aoi(bauteildefinition, data_filename, schadenObjekt, 0, bauteilTyp)
+            AOI.bauteildefinition_as_aoi(bauteildefinition, sibbw_data_file, schadenObjekt, 0, bauteilTyp)
             if "AOI" in schadenquery:
-                aoi = q_main.query_aoi(data_filename, str(schadenquery["AOI"]))
+                aoi = q_main.query_aoi(sibbw_data_file, str(schadenquery["AOI"]))
                 print("AOI: ", end='')
                 print(aoi)
 
-            AOI.aoi_main(schadenObjekt, bauteildefinition, data_filename, filename, bt_filename, aoi_filename,
-                         lbd_filename)
+            AOI.aoi_main(schadenObjekt, bauteildefinition, sibbw_data_file, ifc_file, bt_file, aoi_file,
+                         lbd_of_ifc_file)
 
     except:
         print("Error")
