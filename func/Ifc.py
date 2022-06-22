@@ -78,7 +78,7 @@ def place_object(file,box,point_list_extrusion_area,h,name,filename,along_model_
     bbox_placement = create_ifclocalplacement(file, relative_to=storey_placement)
     polyline = create_ifcpolyline(file, [(0.0, 0.0, 0.0), (1.0, 0.0, 0.0)])
     axis_representation = file.createIfcShapeRepresentation(context, "Axis", "Curve2D", [polyline])
-    starting_z = Geom.get_starting_z(box,along_model_height,zmin)
+    starting_z = Geom.get_starting_z(box, along_model_height, zmin)
     extrusion_placement = create_ifcaxis2placement(file, (starting_z, 0.0, 0.0), (1.0, 0.0, 0.0),(0.0, 0.0, 1.0))
     solid = create_ifcextrudedareasolid(file, point_list_extrusion_area, extrusion_placement, (0.0, 0.0, 1.0), h)
     body_representation = file.createIfcShapeRepresentation(context, "Body", "SweptSolid", [solid])

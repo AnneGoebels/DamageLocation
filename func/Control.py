@@ -1,4 +1,3 @@
-import q_main
 import Geom
 import Ifc
 import ifcopenshell
@@ -22,7 +21,7 @@ from ifcopenshell.util import element
 
 def create_bt_file(filename, newfile_name):
     model = ifcopenshell.open(filename)   
-    Ifc.create_ifc(model,newfile_name)
+    Ifc.create_ifc(model, newfile_name)
     f = ifcopenshell.open(newfile_name)
     model_box_ifc(filename,f,newfile_name)
     rechts_links(filename,f,newfile_name)
@@ -43,9 +42,9 @@ def model_box_ifc(filename,newfile,newfile_name):
             if[round(point.X(),2),round(point.Y(),2)] not in x_y_F:
                 x_y_F.append([round(point.X(),2),round(point.Y(),2)])
             vertex_F.Next()
-        plea_TBW = Geom.sorted_point_list_extrusion_area(sol2,x_y_F)
+        plea_TBW = Geom.sorted_point_list_extrusion_area(sol2, x_y_F)
 
-    Ifc.place_object(newfile,box,plea_TBW,height_box,"Gesamt",newfile_name)
+    Ifc.place_object(newfile, box, plea_TBW, height_box, "Gesamt", newfile_name)
 
     
 def feld(filename,newfile_name):
@@ -123,12 +122,12 @@ def feld(filename,newfile_name):
                 if[round(point.X(),2),round(point.Y(),2)] not in x_y_F:
                     x_y_F.append([round(point.X(),2),round(point.Y(),2)])
                 vertex_F.Next()
-            plea_Feld = Geom.sorted_point_list_extrusion_area(sol2,x_y_F)
+            plea_Feld = Geom.sorted_point_list_extrusion_area(sol2, x_y_F)
             zmin_model = Geom.model_box(filename)[3]
             zmax_model = Geom.model_box(filename)[6]
             height_box = zmax_model - zmin_model + 1.0
             k = ifcopenshell.open(newfile_name)
-            Ifc.place_object(k,box,plea_Feld,height_box,str(t)+". Feld",newfile_name,along_model_height=True, zmin=zmin_model - 1.0)
+            Ifc.place_object(k, box, plea_Feld, height_box, str(t) + ". Feld", newfile_name, along_model_height=True, zmin=zmin_model - 1.0)
             t = t + 1
         h = h + 1
 
@@ -192,17 +191,18 @@ def anfang_endeDesBauwerks(anfang_ende,filename,newfile_name):
         if[round(point.X(),2),round(point.Y(),2)] not in x_y_AnfBau:
             x_y_AnfBau.append([round(point.X(),2),round(point.Y(),2)])
         vertex_AnfBau.Next()
-    plea_AnfBau = Geom.sorted_point_list_extrusion_area(solid_AnfBau,x_y_AnfBau)
+    plea_AnfBau = Geom.sorted_point_list_extrusion_area(solid_AnfBau, x_y_AnfBau)
     zmin_model = Geom.model_box(filename)[3]
     zmax_model = Geom.model_box(filename)[6]
     height_box = zmax_model - zmin_model + 1.0
-    Ifc.place_object(f,box,plea_AnfBau,height_box,anfang_ende+"DesBauwerks",newfile_name,along_model_height=True,zmin = zmin_model - 1.0)
+    Ifc.place_object(f, box, plea_AnfBau, height_box, anfang_ende + "DesBauwerks", newfile_name, along_model_height=True, zmin =zmin_model - 1.0)
 
 def rechts_links(filename,newfile,newfile_name):
     box = Geom.model_box(filename)[0]
     h = Geom.model_box(filename)[7]
     #get Teilbauwerksachse and make a plane to cut box in half
-    middle_front =gp_Pnt(Geom.model_box(filename)[1], Geom.model_box(filename)[2]+(Geom.model_box(filename)[5]-Geom.model_box(filename)[2])/2,Geom.model_box(filename)[3])
+    middle_front =gp_Pnt(Geom.model_box(filename)[1], Geom.model_box(filename)[2] + (
+                Geom.model_box(filename)[5] - Geom.model_box(filename)[2]) / 2, Geom.model_box(filename)[3])
     point_1 = gp_Pnt(middle_front.X(), middle_front.Y()-0.01, middle_front.Z())
     point_2 = gp_Pnt(middle_front.X(), middle_front.Y()+0.01, middle_front.Z())
     rightface = Geom.get_right_face(box)
@@ -235,7 +235,7 @@ def rechts_links(filename,newfile,newfile_name):
                 if[round(point.X(),2),round(point.Y(),2)] not in x_y_RL:
                     x_y_RL.append([round(point.X(),2),round(point.Y(),2)])
                 vertex_RL.Next()
-            plea_RL = Geom.sorted_point_list_extrusion_area(solid_RL,x_y_RL)
-            Ifc.place_object(newfile,box,plea_RL,h,j,newfile_name)
+            plea_RL = Geom.sorted_point_list_extrusion_area(solid_RL, x_y_RL)
+            Ifc.place_object(newfile, box, plea_RL, h, j, newfile_name)
         i = i + 1
 

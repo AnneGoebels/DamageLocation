@@ -1,7 +1,6 @@
-from rdflib import Graph, Literal, Namespace, URIRef, BNode
-from rdflib.namespace import OWL, RDF, RDFS, XSD
+from rdflib import Graph, Literal, Namespace, URIRef
+from rdflib.namespace import OWL, RDF
 from rdflib.plugins.sparql import prepareQuery
-from rdflib.plugins.sparql.parser import AskQuery
 import q_main
 import json
 import random
@@ -422,14 +421,14 @@ def add_BauteilTyp(data_filename,bauteilTyp,bauteildefinition):
     g.serialize(destination=data_filename)
 
 def get_Ortsangabe(data_filename,bauteildefinition):
-    with open("map_damage_location.json", "r") as file:
+    with open("../temp_files/map_damage_location.json", "r") as file:
         map_damage_location = json.loads(file.read())    
     dictionary_oa = {}
     dictionary_tesBauteil = {}
     dictionary_Feld = {}
     dictionary_links_rechts = {}
     dictionary_anfang_ende = {}
-    qbtd = q_main.query_bauteildefinition(data_filename,bauteildefinition)
+    qbtd = q_main.query_bauteildefinition(data_filename, bauteildefinition)
     count = 0
     if "Abstand_Anzahl" in str(qbtd.keys()):
         for i in qbtd.keys():   
