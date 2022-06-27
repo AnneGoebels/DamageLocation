@@ -27,6 +27,7 @@ aoi_file = r"../temp_files/damage.ifc"
 ### Building component location begins here:
 
 Control.create_bt_file(ifc_file, bt_file)
+print("done")
 model = ifcopenshell.open(ifc_file)
 f = ifcopenshell.open(bt_file)
 

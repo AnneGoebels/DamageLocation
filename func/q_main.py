@@ -1,7 +1,7 @@
 from rdflib import Graph, Literal, Namespace, URIRef
 from rdflib.namespace import OWL, RDF
 from rdflib.plugins.sparql import prepareQuery
-import q_main
+#import q_main
 import json
 import random
 
@@ -430,7 +430,7 @@ def get_Ortsangabe(data_filename,bauteildefinition):
     dictionary_Feld = {}
     dictionary_links_rechts = {}
     dictionary_anfang_ende = {}
-    qbtd = q_main.query_bauteildefinition(data_filename, bauteildefinition)
+    qbtd = query_bauteildefinition(data_filename, bauteildefinition)
     count = 0
     if "Abstand_Anzahl" in str(qbtd.keys()):
         for i in qbtd.keys():   
