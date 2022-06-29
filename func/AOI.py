@@ -40,26 +40,26 @@ def bauteildefinition_as_aoi(bauteildefinition,data_filename,schadenObjekt,i,bau
     while True: 
         if str(bauteilTyp) ==  "RAILING":
             if "Fuss" in str(query_btd.values()):
-                AOI.new_aoi_instance(data_filename, schadenObjekt, i, "ANSK", "OrtsangabeBauteilSchaden_Allgemein_Unterseite")
+                new_aoi_instance(data_filename, schadenObjekt, i, "ANSK", "OrtsangabeBauteilSchaden_Allgemein_Unterseite")
                 break
             if "Handlauf" in str(query_btd.values()):
-                AOI.new_aoi_instance(data_filename, schadenObjekt, i, "ANSK", "OrtsangabeBauteilSchaden_Allgemein_Oberseite")
+                new_aoi_instance(data_filename, schadenObjekt, i, "ANSK", "OrtsangabeBauteilSchaden_Allgemein_Oberseite")
                 break
         if str(bauteilTyp) == "Widerlager_Wand_Vorne":
-                AOI.new_aoi_instance(data_filename, schadenObjekt, i, "AONS", "130091300000000_Hinten")
+                new_aoi_instance(data_filename, schadenObjekt, i, "AONS", "130091300000000_Hinten")
                 break
         if str(bauteilTyp) == "Widerlager_Wand_Hinten":
-                AOI.new_aoi_instance(data_filename, schadenObjekt, i, "AONS", "130091100000000_Vorne")
+                new_aoi_instance(data_filename, schadenObjekt, i, "AONS", "130091100000000_Vorne")
                 break
         if str(bauteilTyp) == "Fluegel_Wand_Hinten":
                 if "Rechts" in str(query_btd.values()):
-                    AOI.new_aoi_instance(data_filename, schadenObjekt, i, "AONS", "130101200000000_Rechts")
+                    new_aoi_instance(data_filename, schadenObjekt, i, "AONS", "130101200000000_Rechts")
                     break
                 elif "Links" in str(query_btd.values()):
-                    AOI.new_aoi_instance(data_filename, schadenObjekt, i, "AONS", "130101100000000_Links")
+                    new_aoi_instance(data_filename, schadenObjekt, i, "AONS", "130101100000000_Links")
                     break 
                 else:
-                    AOI.new_aoi_instance(data_filename, schadenObjekt, i, "ANSK", "OrtsangabeBauteilSchaden_Allgemein_beidseitig")
+                    new_aoi_instance(data_filename, schadenObjekt, i, "ANSK", "OrtsangabeBauteilSchaden_Allgemein_beidseitig")
                     break   
         else:
             break
@@ -227,7 +227,7 @@ def aoi_main(schadenObjekt,bauteildefinition,data_filename,filename,bt_filename,
     inst_list = q_main.query_bauteildefinition_hasModelRepresentation(data_filename, bauteildefinition)
     BauteilTyp = q_main.query_bauteildefinition_bauteilTyp(data_filename, bauteildefinition)
 
-    with open("../temp_files/map_aoi.json", "r") as file:
+    with open(r".\temp_files\map_aoi.json", "r") as file:
         map_aoi = json.loads(file.read())
 
     for inst in inst_list:

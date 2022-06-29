@@ -170,7 +170,7 @@
     asb:isPartOf :7936662_0_Teilbauwerk .
 
 :DP18FTOR_Bauteil a asb:Entwaesserung ;
-    asb:AbstraktesBauteil_Einbauort """3 Stück Tropftüllen DN 50 am höherliegenden Fahrbahnrand\r
+    asb:AbstraktesBauteil_Einbauort """3 Stück Tropftüllen DN 50 am höherliegenden Fahrbahnrand\r\r
 1 stück Tropftülle DN 50 am tieferl. Fahrbahnrand (Pfeiler)***""" ;
     asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "DP18FTOR" ;
             asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ] ;
@@ -210,7 +210,7 @@
     asb:isPartOf :7936662_0_Teilbauwerk .
 
 :DP18FTOW_Bauteil a asb:Bauteil ;
-    asb:AbstraktesBauteil_Einbauort """Jahreszahltafel gem. RZ Jahr 1\r
+    asb:AbstraktesBauteil_Einbauort """Jahreszahltafel gem. RZ Jahr 1\r\r
 an der Flügelwand West des Widerlagers Achse 30***""" ;
     asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "DP18FTOW" ;
             asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ] ;
@@ -301,7 +301,7 @@ an der Flügelwand West des Widerlagers Achse 30***""" ;
     asb:ASBObjekt_Bearbeiter "ADMINISTRATOR" ;
     asb:ASBObjekt_Name "1" ;
     asb:ASBObjekt_Systemdatum "2002-07-09"^^xsd:date ;
-    asb:ASBObjekt_Textfeld """Widerlager 1\r
+    asb:ASBObjekt_Textfeld """Widerlager 1\r\r
 ***""" ;
     asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "DP19UBTT" ;
             asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ] ;
@@ -324,7 +324,7 @@ an der Flügelwand West des Widerlagers Achse 30***""" ;
     asb:ASBObjekt_Name "2",
         "3" ;
     asb:ASBObjekt_Systemdatum "2002-07-09"^^xsd:date ;
-    asb:ASBObjekt_Textfeld """Widerlager 2\r
+    asb:ASBObjekt_Textfeld """Widerlager 2\r\r
 ***""" ;
     asb:Feld_Feldlaenge [ asb:hasdecimal 28.37 ] ;
     asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "DP19UBTV" ;
@@ -335,7 +335,7 @@ an der Flügelwand West des Widerlagers Achse 30***""" ;
 :DP19UPGY_Vorspannung a asb:Vorspannung ;
     asb:ASBObjekt_Bearbeiter "ADMINISTRATOR" ;
     asb:ASBObjekt_Systemdatum "2002-07-09"^^xsd:date ;
-    asb:ASBObjekt_Textfeld """Falscher Eintrag Spannstahlhersteller\r
+    asb:ASBObjekt_Textfeld """Falscher Eintrag Spannstahlhersteller\r\r
 ***""" ;
     asb:AbstrakteBauteilart_Einbaudatum [ asb:EinfachesDatum_Jahr 2001 ] ;
     asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "DP19UPGY" ;
@@ -414,7 +414,7 @@ an der Flügelwand West des Widerlagers Achse 30***""" ;
     asb:ASBING13_Bauteil asbkey13:130011111220000_Fuellbeton ;
     asb:ASBObjekt_Bearbeiter "ADMINISTRATOR" ;
     asb:ASBObjekt_Systemdatum "2002-07-23"^^xsd:date ;
-    asb:ASBObjekt_Textfeld """Ortbetonergänzung über den Fertigteilen\r
+    asb:ASBObjekt_Textfeld """Ortbetonergänzung über den Fertigteilen\r\r
 mit Stützen- bzw. Wl.-Querträgern.***""" ;
     asb:Baustoff_HerstellerLieferfirma "Alpen - Transportbeton" ;
     asb:Beton_Betonzusatz "VZ***" ;
@@ -433,7 +433,7 @@ mit Stützen- bzw. Wl.-Querträgern.***""" ;
     asb:ASBING13_Bauteil asbkey13:130011910000000_Widerlager ;
     asb:ASBObjekt_Bearbeiter "ADMINISTRATOR" ;
     asb:ASBObjekt_Systemdatum "2002-07-23"^^xsd:date ;
-    asb:ASBObjekt_Textfeld """Widerlager 1 \r
+    asb:ASBObjekt_Textfeld """Widerlager 1 \r\r
 ***""" ;
     asb:Baustoff_HerstellerLieferfirma "Alpen  - Transportbeton" ;
     asb:Beton_Betonzusatz "FM***" ;
@@ -452,7 +452,7 @@ mit Stützen- bzw. Wl.-Querträgern.***""" ;
     asb:ASBING13_Bauteil asbkey13:130011913200000_Lagersockel ;
     asb:ASBObjekt_Bearbeiter "ADMINISTRATOR" ;
     asb:ASBObjekt_Systemdatum "2002-07-23"^^xsd:date ;
-    asb:ASBObjekt_Textfeld """Widerlager 1 \r
+    asb:ASBObjekt_Textfeld """Widerlager 1 \r\r
 ***""" ;
     asb:Baustoff_HerstellerLieferfirma "Alpen - Transportbeton" ;
     asb:Beton_Betonzusatz "VZ , FM***" ;
@@ -488,7 +488,7 @@ mit Stützen- bzw. Wl.-Querträgern.***""" ;
     asb:ASBING13_Bauteil asbkey13:130011910000000_Widerlager ;
     asb:ASBObjekt_Bearbeiter "ADMINISTRATOR" ;
     asb:ASBObjekt_Systemdatum "2002-07-23"^^xsd:date ;
-    asb:ASBObjekt_Textfeld """Widerlager 2\r
+    asb:ASBObjekt_Textfeld """Widerlager 2\r\r
 ***""" ;
     asb:Baustoff_HerstellerLieferfirma "Alpen - Transportbeton" ;
     asb:Beton_Betonzuschlag "0/32***" ;
@@ -506,7 +506,7 @@ mit Stützen- bzw. Wl.-Querträgern.***""" ;
     asb:ASBING13_Bauteil asbkey13:130011913200000_Lagersockel ;
     asb:ASBObjekt_Bearbeiter "ADMINISTRATOR" ;
     asb:ASBObjekt_Systemdatum "2002-07-23"^^xsd:date ;
-    asb:ASBObjekt_Textfeld """Widerlager 2\r
+    asb:ASBObjekt_Textfeld """Widerlager 2\r\r
 ***""" ;
     asb:Baustoff_HerstellerLieferfirma "Alpen - Transportbeton" ;
     asb:Beton_Betonzusatz "VZ , FM***" ;
@@ -722,11 +722,7 @@ mit Stützen- bzw. Wl.-Querträgern.***""" ;
     asb:Bauwerkszustand_MaximaleSchadensbewertungDauerhaftigkeit 2 ;
     asb:Bauwerkszustand_MaximaleSchadensbewertungVerkehrssicherheit 2 ;
     asb:Bauwerkszustand_Substanzkennzahl "2.0"^^xsd:float ;
-    asb:Bauwerkszustand_ZustandBauteilgruppe [ asb:ZustandBauteilgruppe_Bauteilgruppe asbkey:Bauteilgruppe_Unterbau ;
-            asb:ZustandBauteilgruppe_Zustandsnote "1.7"^^xsd:float ],
-        [ asb:ZustandBauteilgruppe_Bauteilgruppe asbkey:Bauteilgruppe_Gruendung ;
-            asb:ZustandBauteilgruppe_Zustandsnote "1.0"^^xsd:float ],
-        [ asb:ZustandBauteilgruppe_Bauteilgruppe asbkey:Bauteilgruppe_Schutzeinrichtung ;
+    asb:Bauwerkszustand_ZustandBauteilgruppe [ asb:ZustandBauteilgruppe_Bauteilgruppe asbkey:Bauteilgruppe_Schutzeinrichtung ;
             asb:ZustandBauteilgruppe_Zustandsnote "1.1"^^xsd:float ],
         [ asb:ZustandBauteilgruppe_Bauteilgruppe asbkey:Bauteilgruppe_Lager ;
             asb:ZustandBauteilgruppe_Zustandsnote "1.0"^^xsd:float ],
@@ -743,6 +739,10 @@ mit Stützen- bzw. Wl.-Querträgern.***""" ;
         [ asb:ZustandBauteilgruppe_Bauteilgruppe asbkey:Bauteilgruppe_Kappen ;
             asb:ZustandBauteilgruppe_Zustandsnote "1.2"^^xsd:float ],
         [ asb:ZustandBauteilgruppe_Bauteilgruppe asbkey:Bauteilgruppe_Vorspannung ;
+            asb:ZustandBauteilgruppe_Zustandsnote "1.0"^^xsd:float ],
+        [ asb:ZustandBauteilgruppe_Bauteilgruppe asbkey:Bauteilgruppe_Unterbau ;
+            asb:ZustandBauteilgruppe_Zustandsnote "1.7"^^xsd:float ],
+        [ asb:ZustandBauteilgruppe_Bauteilgruppe asbkey:Bauteilgruppe_Gruendung ;
             asb:ZustandBauteilgruppe_Zustandsnote "1.0"^^xsd:float ] ;
     asb:Bauwerkszustand_Zustandsnote "2.3"^^xsd:float ;
     asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "N_7423371" ;
@@ -1480,9 +1480,9 @@ mit Stützen- bzw. Wl.-Querträgern.***""" ;
 :DP19TTAQ_EinfacheBauteilart a asb:EinfacheBauteilart ;
     asb:ASBObjekt_Bearbeiter "ADMINISTRATOR" ;
     asb:ASBObjekt_Systemdatum "2002-07-09"^^xsd:date ;
-    asb:ASBObjekt_Textfeld """4 Entwässerungseinläufe gem. RZ Was 1\r
-Abflußrohr und Formstücke aus Edelstahl\r
-Ablauf durch die WL.-Kammerwand Achse 10 mit Anschluß an Durchlaufschacht\r
+    asb:ASBObjekt_Textfeld """4 Entwässerungseinläufe gem. RZ Was 1\r\r
+Abflußrohr und Formstücke aus Edelstahl\r\r
+Ablauf durch die WL.-Kammerwand Achse 10 mit Anschluß an Durchlaufschacht\r\r
 ***""" ;
     asb:EinfacheBauteilart_Art asbkey13:240011111000000_Laengsleitung ;
     asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "DP19TTAQ" ;
@@ -1498,8 +1498,8 @@ Ablauf durch die WL.-Kammerwand Achse 10 mit Anschluß an Durchlaufschacht\r
 :DP19TTAS_EinfacheBauteilart a asb:EinfacheBauteilart ;
     asb:ASBObjekt_Bearbeiter "ADMINISTRATOR" ;
     asb:ASBObjekt_Systemdatum "2002-07-09"^^xsd:date ;
-    asb:ASBObjekt_Textfeld """Widerlager 1 \r
-Drainschicht aus geotextiler Drainmatte nach Was 7\r
+    asb:ASBObjekt_Textfeld """Widerlager 1 \r\r
+Drainschicht aus geotextiler Drainmatte nach Was 7\r\r
 in teilporösen Grundrohr ø100***""" ;
     asb:EinfacheBauteilart_Art asbkey13:240011000000000_Bauwerksentwaesserung ;
     asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "DP19TTAS" ;
@@ -1508,7 +1508,7 @@ in teilporösen Grundrohr ø100***""" ;
 :DP19TTAT_EinfacheBauteilart a asb:EinfacheBauteilart ;
     asb:ASBObjekt_Bearbeiter "ADMINISTRATOR" ;
     asb:ASBObjekt_Systemdatum "2002-07-09"^^xsd:date ;
-    asb:ASBObjekt_Textfeld """Widerlager 1 \r
+    asb:ASBObjekt_Textfeld """Widerlager 1 \r\r
 Auslauf seitl. durch Flügel mit Edelstahtrohr DN 100***""" ;
     asb:EinfacheBauteilart_Art asbkey13:240011460000000_OffeneRinne ;
     asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "DP19TTAT" ;
@@ -1517,8 +1517,8 @@ Auslauf seitl. durch Flügel mit Edelstahtrohr DN 100***""" ;
 :DP19TTAU_EinfacheBauteilart a asb:EinfacheBauteilart ;
     asb:ASBObjekt_Bearbeiter "ADMINISTRATOR" ;
     asb:ASBObjekt_Systemdatum "2002-07-09"^^xsd:date ;
-    asb:ASBObjekt_Textfeld """Widerlager 2\r
-Drainschicht aus geotextiler Drainmatte nach Was 7\r
+    asb:ASBObjekt_Textfeld """Widerlager 2\r\r
+Drainschicht aus geotextiler Drainmatte nach Was 7\r\r
 in teilporösen Grundrohr ø100***""" ;
     asb:EinfacheBauteilart_Art asbkey13:240011000000000_Bauwerksentwaesserung ;
     asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "DP19TTAU" ;
@@ -1527,7 +1527,7 @@ in teilporösen Grundrohr ø100***""" ;
 :DP19TTAV_EinfacheBauteilart a asb:EinfacheBauteilart ;
     asb:ASBObjekt_Bearbeiter "ADMINISTRATOR" ;
     asb:ASBObjekt_Systemdatum "2002-07-09"^^xsd:date ;
-    asb:ASBObjekt_Textfeld """Widerlager 2\r
+    asb:ASBObjekt_Textfeld """Widerlager 2\r\r
 Auslauf seitl. durch Flügelwand mit Edelstahlrohr ø100***""" ;
     asb:EinfacheBauteilart_Art asbkey13:240011460000000_OffeneRinne ;
     asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "DP19TTAV" ;
@@ -1559,7 +1559,7 @@ Auslauf seitl. durch Flügelwand mit Edelstahlrohr ø100***""" ;
 :DP19TTAZ_EinfacheBauteilart a asb:EinfacheBauteilart ;
     asb:ASBObjekt_Bearbeiter "ADMINISTRATOR" ;
     asb:ASBObjekt_Systemdatum "2002-07-09"^^xsd:date ;
-    asb:ASBObjekt_Textfeld """Abdeckung des Auflagerspaltes (30cm) als Vogeleinflugschutz gem. RZ Ves 1\r
+    asb:ASBObjekt_Textfeld """Abdeckung des Auflagerspaltes (30cm) als Vogeleinflugschutz gem. RZ Ves 1\r\r
 aus Drahtgitter 30/30/3mm feuerverzinkt.***""" ;
     asb:EinfacheBauteilart_Art asbkey13:240019000000000_Sonstige ;
     asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "DP19TTAZ" ;
@@ -1568,7 +1568,7 @@ aus Drahtgitter 30/30/3mm feuerverzinkt.***""" ;
 :DP19TTB0_EinfacheBauteilart a asb:EinfacheBauteilart ;
     asb:ASBObjekt_Bearbeiter "ADMINISTRATOR" ;
     asb:ASBObjekt_Systemdatum "2002-07-09"^^xsd:date ;
-    asb:ASBObjekt_Textfeld """Widerlager 1 \r
+    asb:ASBObjekt_Textfeld """Widerlager 1 \r\r
 ***""" ;
     asb:EinfacheBauteilart_Art asbkey:ArtEinfacheBauteilart_Besichtigungseinrichtung_Befestigungseinrichtung_Boeschungstreppe ;
     asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "DP19TTB0" ;
@@ -1577,7 +1577,7 @@ aus Drahtgitter 30/30/3mm feuerverzinkt.***""" ;
 :DP19TTB1_EinfacheBauteilart a asb:EinfacheBauteilart ;
     asb:ASBObjekt_Bearbeiter "ADMINISTRATOR" ;
     asb:ASBObjekt_Systemdatum "2002-07-09"^^xsd:date ;
-    asb:ASBObjekt_Textfeld """Widerlager 2\r
+    asb:ASBObjekt_Textfeld """Widerlager 2\r\r
 ***""" ;
     asb:EinfacheBauteilart_Art asbkey:ArtEinfacheBauteilart_Besichtigungseinrichtung_Befestigungseinrichtung_Boeschungstreppe ;
     asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "DP19TTB1" ;
@@ -1783,11 +1783,11 @@ aus Drahtgitter 30/30/3mm feuerverzinkt.***""" ;
     asb:ASBObjekt_Bearbeiter "Prüfer: Dipl.Ing. Peter Haimer" ;
     asb:ASBObjekt_Systemdatum "2016-06-07"^^xsd:date,
         "Jun  7 2016 11:3"^^xsd:date ;
-    asb:ASBObjekt_Textfeld """Nicht geprüfte, nicht mit EP markierte Schäden: 9,16,17,18,19\r\r
-\r
-\r
-\r
-_______________________________________\r
+    asb:ASBObjekt_Textfeld """Nicht geprüfte, nicht mit EP markierte Schäden: 9,16,17,18,19\r\r\r
+\r\r
+\r\r
+\r\r
+_______________________________________\r\r
      Ing.Büro Roplan, Dipl.Ing. Peter Haimerer""" ;
     asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "NJ0I6FHD" ;
             asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ] ;
@@ -1932,7 +1932,7 @@ _______________________________________\r
     asb:ASBObjekt_Bearbeiter "Stefan Fritsch" ;
     asb:ASBObjekt_Systemdatum "2013-10-21"^^xsd:date,
         "Okt 21 2013  8:4"^^xsd:date ;
-    asb:ASBObjekt_Textfeld """____________________________________________
+    asb:ASBObjekt_Textfeld """____________________________________________\r
                          Unterschrift Prüfer""" ;
     asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "VC0HAVTB" ;
             asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ] ;
@@ -1965,7 +1965,7 @@ _______________________________________\r
     asb:ASBObjekt_Bearbeiter "Bauer E." ;
     asb:ASBObjekt_Systemdatum "2010-07-14"^^xsd:date,
         "Jul 14 2010  8:5"^^xsd:date ;
-    asb:ASBObjekt_Textfeld """____________________________________________
+    asb:ASBObjekt_Textfeld """____________________________________________\r
                          Unterschrift Prüfer""" ;
     asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "ZD0ILASC" ;
             asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ] ;
@@ -2030,18 +2030,18 @@ _______________________________________\r
 
 :1Y0YMRPS_PruefungMitZustandsnote a asb:PruefungMitZustandsnote ;
     asb:ASBObjekt_Systemdatum "1301-01-01"^^xsd:date ;
-    asb:ASBObjekt_Textfeld """____________________________________________\r
-                         Unterschrift Prüfer\r
-\r
-\r
-\r
-\r
-\r
-Dr.-Ing. Stephan Görtz\r
-\r
-CBP Ingenieurbau GmbH\r
-Georg-Muche-Straße 1\r
-80807 München\r
+    asb:ASBObjekt_Textfeld """____________________________________________\r\r
+                         Unterschrift Prüfer\r\r
+\r\r
+\r\r
+\r\r
+\r\r
+\r\r
+Dr.-Ing. Stephan Görtz\r\r
+\r\r
+CBP Ingenieurbau GmbH\r\r
+Georg-Muche-Straße 1\r\r
+80807 München\r\r
 Tel.: 089/28633-244""" ;
     asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "1Y0YMRPS" ;
             asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ] ;
@@ -3257,26 +3257,26 @@ Tel.: 089/28633-244""" ;
     asb:ASBObjekt_Bearbeiter "Prüfer: Welsch" ;
     asb:ASBObjekt_Systemdatum "2020-05-07"^^xsd:date,
         "Mai  7 2020 11:3"^^xsd:date ;
-    asb:ASBObjekt_Textfeld """Das Bauwerk befindet sich in einem befriedigendem Zustand.\r
-Die Standsicherheit ist augenscheinlich gegeben.\r
-Die Verkehrssicherheit ist gegeben.\r
-Die Dauerhaftigkeit des Bauwerks ist u.a. durch die vorhandenen Belagschäden sowie den Schäden an der Ausstattung beeinträchtigt.\r
-Eine Schadensaubreitung oder Folgeschädigung des Bauwerks ist daher langfristig möglich.\r
-\r
-\r
-\r
-\r
-\r
-\r
-\r
-_____________________________________\r
-		Unterschrift / Stempel Prüfer\r
-\r
-\r
-Leonhardt, Andrä und Partner\r
-Beratende Ingenieure VBI AG\r
-Fürstenrieder Straße 51\r
-80686 München\r
+    asb:ASBObjekt_Textfeld """Das Bauwerk befindet sich in einem befriedigendem Zustand.\r\r
+Die Standsicherheit ist augenscheinlich gegeben.\r\r
+Die Verkehrssicherheit ist gegeben.\r\r
+Die Dauerhaftigkeit des Bauwerks ist u.a. durch die vorhandenen Belagschäden sowie den Schäden an der Ausstattung beeinträchtigt.\r\r
+Eine Schadensaubreitung oder Folgeschädigung des Bauwerks ist daher langfristig möglich.\r\r
+\r\r
+\r\r
+\r\r
+\r\r
+\r\r
+\r\r
+\r\r
+_____________________________________\r\r
+		Unterschrift / Stempel Prüfer\r\r
+\r\r
+\r\r
+Leonhardt, Andrä und Partner\r\r
+Beratende Ingenieure VBI AG\r\r
+Fürstenrieder Straße 51\r\r
+80686 München\r\r
 http://www.lap-consult.com""" ;
     asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "NY0LL67A" ;
             asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ] ;
@@ -3732,7 +3732,7 @@ http://www.lap-consult.com""" ;
 
 :R70YN1AK_PruefungMitZustandsnote a asb:PruefungMitZustandsnote ;
     asb:ASBObjekt_Systemdatum "0201-01-01"^^xsd:date ;
-    asb:ASBObjekt_Textfeld """____________________________________________\r
+    asb:ASBObjekt_Textfeld """____________________________________________\r\r
                          Unterschrift Prüfer""" ;
     asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "R70YN1AK" ;
             asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ] ;

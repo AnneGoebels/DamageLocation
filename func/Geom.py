@@ -221,6 +221,6 @@ def elements_in_box(box,model,newfile):
     t = ifcopenshell.geom.tree()
     t.add_file(model, tree_settings)
     t.add_file(newfile,tree_settings)
-    elements_in_box = t.select(proxies[0], extend=0,completely_within=False)
-    return elements_in_box           
+    elements = t.select(proxies[0], extend=0,completely_within=False)
+    return elements
 

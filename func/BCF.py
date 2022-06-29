@@ -10,7 +10,7 @@ import bcf.v2.bcfxml
 import json
 
 def define_offset(bauteilTyp):
-    with open("../temp_files/map_bcf.json", "r") as file:
+    with open(r".\temp_files\map_bcf.json", "r") as file:
         map_bcf = json.loads(file.read())
     get_offset = tuple(map_bcf[bauteilTyp])
     offset = np.array(get_offset)

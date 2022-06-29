@@ -7,6 +7,8 @@ from ifcopenshell.util.selector import Selector
 from ifcopenshell.util import element
 
 
+
+
 def locate_caps(filename,newfile_name,dictionary_rechts_links):
     selector = Selector()
     model = ifcopenshell.open(filename)
@@ -98,6 +100,7 @@ def locate_railing(filename,newfile_name,dictionary_rechts_links):
             sorted_a = dict(a)
             railing = next(iter(sorted_a.keys()))
         else:
+            railing = None
             print("Error")
     return railing         
 
@@ -105,9 +108,9 @@ def locate_abutment(filename,newfile_name,dictionary_oa):
     selector = Selector()
     model = ifcopenshell.open(filename)
     f = ifcopenshell.open(newfile_name)
-    print(dictionary_oa)
     if len(dictionary_oa) != 0:  
         a = Geom.elements_in_box(dictionary_oa["0"][8:], model, f)
+        print(a)
         b = []
         element_list = selector.parse(model, '.IfcBeam | .IfcBuildingElementProxy | .IfcWall | .IfcColumn | .IfcSlab')
         for i in element_list: 
@@ -116,9 +119,11 @@ def locate_abutment(filename,newfile_name,dictionary_oa):
         intersection = list(set(a).intersection(b))
         Abutment = intersection[0]
         print(Abutment)
+        return Abutment
     else:
         print("Error")
-    return Abutment   
+        return None
+
 
 def locate_stair(filename,newfile_name,dictionary_oa):
     selector = Selector()
@@ -132,60 +137,83 @@ def locate_stair(filename,newfile_name,dictionary_oa):
         print(Stair)
     else:
         print("Error")
-    return Stair  
+    return Stair
 
-def check_model_representation(bauteildefinition,data_filename,filename,bt_filename,lbd_filename,ifcBridgeName,oa,dictionary_bauteilsuche,dictionary_feld,dictionary_ortsangaben):    
+
+def check_model_representation(bauteildefinition,data_filename,filename,bt_filename,lbd_filename,ifcBridgeName,oa,dictionary_bauteilsuche,dictionary_feld,dictionary_ortsangaben):
     dictionary_bauteil = {}
-    dictionary_bauteil = Bauteil.find_model_representation(bauteildefinition, data_filename, filename, bt_filename, ifcBridgeName, oa, dictionary_bauteilsuche, dictionary_feld, dictionary_ortsangaben)
-    bauteile = dictionary_bauteil[bauteildefinition]
-    lbd_inst = q_main.query_instance(lbd_filename, bauteile.GlobalId)
-    q_main.add_hasModelRepresentation(data_filename, lbd_inst, bauteildefinition)
-    q_main.add_BauteilTyp(data_filename, str(dictionary_bauteil["Bauteil"]), bauteildefinition)
+    dictionary_bauteil = find_model_representation(bauteildefinition, data_filename, filename, bt_filename, ifcBridgeName, oa, dictionary_bauteilsuche, dictionary_feld, dictionary_ortsangaben)
+    print(dictionary_bauteil)
+    ifc_bauteil = dictionary_bauteil[bauteildefinition]
+    print(ifc_bauteil)
+    if ifc_bauteil is not None:
+        print(ifc_bauteil[0])
+        globalIfcID = ifc_bauteil[0]
+        print(type(globalIfcID))
+        lbd_inst = q_main.query_instance(lbd_filename, globalIfcID)
+        print(lbd_inst)
+        q_main.add_hasModelRepresentation(data_filename, lbd_inst, bauteildefinition)
 
-    return bauteile
+        q_main.add_BauteilTyp(data_filename, dictionary_bauteil["Bauteil"], bauteildefinition)
 
-def find_model_representation(bauteildefinition,data_filename,filename,bt_filename,ifcBridgeName,oa,dictionary_bauteilsuche,dictionary_feld,dictionary_ortsangaben):    
+        return ifc_bauteil
+    else:
+        print("no ifc ele found")
+        return ("no ifc ele found")
+
+
+def find_model_representation(bauteildefinition,data_filename,filename,bt_filename,ifcBridgeName,oa,dictionary_bauteilsuche,dictionary_feld,dictionary_ortsangaben):
     bauteile = {}
     query_btd = q_main.query_bauteildefinition(data_filename, bauteildefinition)
-    while True: 
-        if "EDGEBEAM" in ifcBridgeName:
-            bauteile[bauteildefinition] = Bauteil.locate_caps(filename, bt_filename, oa)
-            bauteile["Bauteil"] = "EDGEBEAM"
-            break
-        if "GIRDER_SEGMENT" in ifcBridgeName:
-            if len(dictionary_bauteilsuche)>0 and len(dictionary_feld)>0:
-                bauteile[bauteildefinition] = Bauteil.locate_beam(filename, bt_filename, dictionary_bauteilsuche, dictionary_feld)[0]
-                bauteile["Bauteil"] = "GIRDER_SEGMENT"
-            break            
-        if "SLAB" in ifcBridgeName:
-            bauteile[bauteildefinition] = Bauteil.locate_roadway(filename)[0]
-            bauteile["Bauteil"] = "SLAB"
-            break
-        if "RAILING" in ifcBridgeName:
-            bauteile[bauteildefinition] = Bauteil.locate_railing(filename, bt_filename, oa)
-            bauteile["Bauteil"] = "RAILING"
-            break
-        if "RETAININGWALL" in ifcBridgeName and "WiderlagerHinten" in str(query_btd.values()):
-            bauteile[bauteildefinition] = Bauteil.locate_abutment(filename, bt_filename, dictionary_ortsangaben)
-            bauteile["Bauteil"] = "Widerlager_Wand_Hinten"
-            break
-        if "RETAININGWALL" in ifcBridgeName and "WiderlagerVorn" in str(query_btd.values()) :
-            bauteile[bauteildefinition] = Bauteil.locate_abutment(filename, bt_filename, dictionary_ortsangaben)
-            bauteile["Bauteil"] = "Widerlager_Wand_Vorne"
-            break
-        if "RETAININGWALL" in ifcBridgeName and "Fluegel" in str(query_btd.values()) and "Hinten" in str(query_btd.values()):
-            bauteile[bauteildefinition] = Bauteil.locate_abutment(filename, bt_filename, dictionary_ortsangaben)
-            bauteile["Bauteil"] = "Fluegel_Wand_Hinten"
-            break
-        if "RETAININGWALL" in ifcBridgeName and "Fluegel" in str(query_btd.values()) and "Vorn" in str(query_btd.values()):
-            bauteile[bauteildefinition] = Bauteil.locate_abutment(filename, bt_filename, dictionary_ortsangaben)
-            bauteile["Bauteil"] = "Fluegel_Wand_Vorne"
-            break
-        if "STAIR" in ifcBridgeName and "beideWid" in str(query_btd.values()):
-            bauteile[bauteildefinition] = Bauteil.locate_stair(filename, bt_filename, dictionary_ortsangaben)
-            bauteile["Bauteil"] = "Widerlager_Wand_Vorne"
-            break
-        else:
-            print("No Bauteil found for Bauteildefinition" )
-            break
+    print(type(ifcBridgeName))
+    #print(query_btd)
+    #while True:
+    if "EDGEBEAM" in ifcBridgeName:
+        bauteile[bauteildefinition] =  locate_caps(filename, bt_filename, oa)
+        bauteile["Bauteil"] = "EDGEBEAM"
+        #break
+    elif "GIRDER_SEGMENT" in ifcBridgeName:
+        if len(dictionary_bauteilsuche)>0 and len(dictionary_feld)>0:
+            bauteile[bauteildefinition] =  locate_beam(filename, bt_filename, dictionary_bauteilsuche, dictionary_feld)[0]
+            bauteile["Bauteil"] = "GIRDER_SEGMENT"
+        #break
+    elif "SLAB" in ifcBridgeName:
+        bauteile[bauteildefinition] = locate_roadway(filename)[0]
+        bauteile["Bauteil"] = "SLAB"
+        #break
+    elif "RAILING" in ifcBridgeName:
+        bauteile[bauteildefinition] = locate_railing(filename, bt_filename, oa)
+        bauteile["Bauteil"] = "RAILING"
+        #break
+    elif "RETAININGWALL" in ifcBridgeName and "WiderlagerHinten" in str(query_btd.values()):
+        bauteile[bauteildefinition] =  locate_abutment(filename, bt_filename, dictionary_ortsangaben)
+        bauteile["Bauteil"] = "Widerlager_Wand_Hinten"
+        #break
+    elif "RETAININGWALL" in ifcBridgeName and "WiderlagerVorn" in str(query_btd.values()) :
+        ifc_abutment =  locate_abutment(filename, bt_filename, dictionary_ortsangaben)
+        #print(ifc_abutment)
+        bauteile[bauteildefinition] = ifc_abutment
+        bauteile["Bauteil"] = "Widerlager_Wand_Vorne"
+        #break
+    elif "RETAININGWALL" in ifcBridgeName and "Fluegel" in str(query_btd.values()) and "Hinten" in str(query_btd.values()):
+        bauteile[bauteildefinition] =  locate_abutment(filename, bt_filename, dictionary_ortsangaben)
+        bauteile["Bauteil"] = "Fluegel_Wand_Hinten"
+        #break
+    elif "RETAININGWALL" in ifcBridgeName and "Fluegel" in str(query_btd.values()) and "Vorn" in str(query_btd.values()):
+        bauteile[bauteildefinition] =  locate_abutment(filename, bt_filename, dictionary_ortsangaben)
+        bauteile["Bauteil"] = "Fluegel_Wand_Vorne"
+        #break
+    elif "STAIR" in ifcBridgeName and "beideWid" in str(query_btd.values()):
+        bauteile[bauteildefinition] =  locate_stair(filename, bt_filename, dictionary_ortsangaben)
+        bauteile["Bauteil"] = "Widerlager_Wand_Vorne"
+        #break
+    else:
+        bauteile[bauteildefinition] = None
+        print("No Bauteil found for Bauteildefinition" )
+        #break
+
     return bauteile
+
+
+
+

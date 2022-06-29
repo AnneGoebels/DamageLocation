@@ -337,7 +337,8 @@ def query_bauteildefinition(data_filename,bauteildefinition):
                 continue
             else:
                 dictionary["Abstand_Anzahl_"+str(j)] = i
-        j = j + 1     
+        j = j + 1
+    print(dictionary)
     return dictionary
 
 def query_bauteildefinition_hasModelRepresentation(data_filename,bauteildefinition):
@@ -423,8 +424,8 @@ def add_BauteilTyp(data_filename,bauteilTyp,bauteildefinition):
     g.serialize(destination=data_filename)
 
 def get_Ortsangabe(data_filename,bauteildefinition):
-    with open("../temp_files/map_damage_location.json", "r") as file:
-        map_damage_location = json.loads(file.read())    
+    with open(r".\temp_files\map_damage_location.json", "r") as file:
+        map_damage_location = json.loads(file.read())
     dictionary_oa = {}
     dictionary_tesBauteil = {}
     dictionary_Feld = {}
@@ -731,6 +732,7 @@ def get_ifcBridgeName(data_filename,bauteildefinition):
             pass
         elif j not in bauteilTyp_list:
             bauteilTyp_list.append(j)
+
     return bauteilTyp_list
 
 def get_GlobalId(data_filename,inst):
