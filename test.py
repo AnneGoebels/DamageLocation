@@ -15,6 +15,7 @@ bt_file = r"C:\GitHub\DamageLocation\temp_files\control.ifc"
 Control.create_bt_file(ifc_file, bt_file)
 
 bauteildefinition_list = q_main.get_bauteildefinition(sibbw_data_file)
+print(bauteildefinition_list)
 
 with open(r".\temp_files\map_bauteilTyp.json", "r") as file:
     map_bT = json.loads(file.read())
@@ -52,7 +53,6 @@ for bauteildefinition in bauteildefinition_list:
     if ifcBridgeName is not None:
         if len(dictionary_links_rechts) == 0:
             if ifcBridgeName == "RETAININGWALL":
-                ifc_bauteil = Bauteil.locate_abutment(ifc_file,bt_file,dictionary_anfang_ende)
 
-                # this print is never if i run the file
-                print(ifc_bauteil)
+               ifc_bauteil = Bauteil.locate_abutment(ifc_file,bt_file,dictionary_anfang_ende)
+               print(ifc_bauteil)

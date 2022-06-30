@@ -7,8 +7,6 @@ from ifcopenshell.util.selector import Selector
 from ifcopenshell.util import element
 
 
-
-
 def locate_caps(filename,newfile_name,dictionary_rechts_links):
     selector = Selector()
     model = ifcopenshell.open(filename)
@@ -110,7 +108,6 @@ def locate_abutment(filename,newfile_name,dictionary_oa):
     f = ifcopenshell.open(newfile_name)
     if len(dictionary_oa) != 0:  
         a = Geom.elements_in_box(dictionary_oa["0"][8:], model, f)
-        print(a)
         b = []
         element_list = selector.parse(model, '.IfcBeam | .IfcBuildingElementProxy | .IfcWall | .IfcColumn | .IfcSlab')
         for i in element_list: 
@@ -119,10 +116,12 @@ def locate_abutment(filename,newfile_name,dictionary_oa):
         intersection = list(set(a).intersection(b))
         Abutment = intersection[0]
         print(Abutment)
-        return Abutment
+
     else:
         print("Error")
-        return None
+        Abutment = None
+
+    return Abutment
 
 
 def locate_stair(filename,newfile_name,dictionary_oa):
