@@ -22,9 +22,9 @@ point_file = r"C:\GitHub\DamageLocation\output\point_representation.ifc"
 bcf_file = (str(os.path.abspath(os.getcwd())) + "\\output\\bcf_representation.bcf")
 
 
-first = Script_01.createControlIfc(sibbw_data_file,ifc_file,lbd_of_ifc_file,bt_file)
-print(first)
+#first = Script_01.createControlIfc(sibbw_data_file,ifc_file,lbd_of_ifc_file,bt_file)
+#print(first)
 second = Script_02.createAOIIfc(sibbw_data_file,ifc_file,lbd_of_ifc_file,bt_file,aoi_file)
 print(second)
-third = Script_03.createDamageRepresentationFiles(sibbw_data_file,ifc_file,aoi_file,point_file,bcf_file)
-print(third)
+#third = Script_03.createDamageRepresentationFiles(sibbw_data_file,ifc_file,aoi_file,point_file,bcf_file)
+#print(third)

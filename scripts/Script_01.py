@@ -4,32 +4,14 @@ from ifcopenshell.util.selector import Selector
 import json
 
 def createControlIfc (sibbw_data_file,ifc_file,lbd_of_ifc_file,bt_file) :
-    #selector = Selector()
     settings = ifcopenshell.geom.settings()
     settings.set(settings.USE_PYTHON_OPENCASCADE, True)
-
-    ### Enter data file name (.ttl) ###
-
-    #sibbw_data_file = r'../input/st_2079.ttl'
-
-    ### Enter model file name (.ifc) ###
-
-    #ifc_file = r"../input/st_2079.ifc"
-
-    ### Enter model file name converted to LBD-Format (.ttl) ###
-
-    #lbd_of_ifc_file = r'../input/st_2079_lbd.ttl'
-
-    ### The next files will be created
-
-    #bt_file = r"../temp_files/control.ifc"
-    #aoi_file = r"../temp_files/damage.ifc"
 
     ### Building component location begins here:
 
     Control.create_bt_file(ifc_file, bt_file)
-    model = ifcopenshell.open(ifc_file)
-    f = ifcopenshell.open(bt_file)
+   # model = ifcopenshell.open(ifc_file)
+   # f = ifcopenshell.open(bt_file)
 
     bauteildefinition_list = q_main.get_bauteildefinition(sibbw_data_file)
 
@@ -49,8 +31,9 @@ def createControlIfc (sibbw_data_file,ifc_file,lbd_of_ifc_file,bt_file) :
         dictionary_links_rechts = q_main.get_Ortsangabe(sibbw_data_file, bauteildefinition)[3]
         dictionary_anfang_ende = q_main.get_Ortsangabe(sibbw_data_file, bauteildefinition)[4]
 
-        ifcBridgeName_list = q_main.get_ifcBridgeName(sibbw_data_file, bauteildefinition)
+        ifcBridgeName_list, asbBauteilList = q_main.get_ifcBridgeName(sibbw_data_file, bauteildefinition)
 
+        print(asbBauteilList)
 
         if len(ifcBridgeName_list) > 0:
             bT = []
@@ -88,29 +71,26 @@ def createControlIfc (sibbw_data_file,ifc_file,lbd_of_ifc_file,bt_file) :
                 for counter, i in enumerate(dictionary_links_rechts.values()):
                     print(counter,i)
 
-                    bauteil = Bauteil.check_model_representation(bauteildefinition, sibbw_data_file, ifc_file, bt_file,
+                    addIfctoRDF = Bauteil.check_model_representation(asbBauteilList,bauteildefinition, sibbw_data_file, ifc_file, bt_file,
                                                                   lbd_of_ifc_file, ifcBridgeName, i, dictionary_tesBauteil,
                                                                   dictionary_feld, dictionary_anfang_ende)
-                    print(bauteil)
-                    #GlobalId = q_main.query_bauteildefinition_hasModelRepresentation(sibbw_data_file, bauteildefinition)
-                    #if len(GlobalId) > 0:
-                    #    print("GlobalId: ", end='')
-                    #    print(str(GlobalId[counter]))
-                    #else:
-                    #    print("Bdef has no ModelRep")
+
+                    print(addIfctoRDF)
+                    if addIfctoRDF is None:
+                        unlocatedBdef.append(bauteildefinition)
+
 
             else:
-                bauteil = Bauteil.check_model_representation(bauteildefinition, sibbw_data_file, ifc_file, bt_file,
+                addIfctoRDF = Bauteil.check_model_representation(asbBauteilList, bauteildefinition, sibbw_data_file, ifc_file, bt_file,
                                                               lbd_of_ifc_file, ifcBridgeName, dictionary_links_rechts,
                                                               dictionary_tesBauteil, dictionary_feld,
                                                               dictionary_anfang_ende)
-                print(bauteil)
-                #GlobalId = q_main.query_bauteildefinition_hasModelRepresentation(sibbw_data_file, bauteildefinition)
-                #if len(GlobalId)>0:
-                #    print("GlobalId: ", end='')
-                #    print(str(GlobalId[0]))
-                #else:
-                 #   print("Bdef has no ModelRep")
+
+                print(addIfctoRDF)
+                if addIfctoRDF is None:
+                    unlocatedBdef.append(bauteildefinition)
+
+
 
         else:
             unlocatedBdef.append(bauteildefinition)

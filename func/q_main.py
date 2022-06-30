@@ -338,7 +338,7 @@ def query_bauteildefinition(data_filename,bauteildefinition):
             else:
                 dictionary["Abstand_Anzahl_"+str(j)] = i
         j = j + 1
-    print(dictionary)
+   # print(dictionary)
     return dictionary
 
 def query_bauteildefinition_hasModelRepresentation(data_filename,bauteildefinition):
@@ -384,6 +384,7 @@ def query_bauteildefinition_bauteilTyp(data_filename,bauteildefinition):
         BauteilTyp = i[0]    
     return BauteilTyp
 
+### ? input and output exactly the same?!
 def query_aoi(data_filename,aoi):
     graph = connect(data_filename)
     aoi_list = []
@@ -706,6 +707,7 @@ def get_Unterbau_Art(data_filename,beschreibtBauteil):
 
 def get_ifcBridgeName(data_filename,bauteildefinition):
     beschreibtBauteil = get_beschreibtBauteil(data_filename,bauteildefinition)
+    print(beschreibtBauteil)
     bauteil_list = []
     bauteilTyp_list = []
     for j in beschreibtBauteil:
@@ -733,7 +735,7 @@ def get_ifcBridgeName(data_filename,bauteildefinition):
         elif j not in bauteilTyp_list:
             bauteilTyp_list.append(j)
 
-    return bauteilTyp_list
+    return bauteilTyp_list, beschreibtBauteil
 
 def get_GlobalId(data_filename,inst):
     graph = connect(data_filename)

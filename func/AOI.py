@@ -45,11 +45,12 @@ def bauteildefinition_as_aoi(bauteildefinition,data_filename,schadenObjekt,i,bau
             if "Handlauf" in str(query_btd.values()):
                 new_aoi_instance(data_filename, schadenObjekt, i, "ANSK", "OrtsangabeBauteilSchaden_Allgemein_Oberseite")
                 break
+        # vorne und hinten gibt es doch schon in den ortsangaben ??
         if str(bauteilTyp) == "Widerlager_Wand_Vorne":
-                new_aoi_instance(data_filename, schadenObjekt, i, "AONS", "130091300000000_Hinten")
+                new_aoi_instance(data_filename, schadenObjekt, i, "AONS", "130091300000000_Vorne") #??hinten bei vorne??
                 break
         if str(bauteilTyp) == "Widerlager_Wand_Hinten":
-                new_aoi_instance(data_filename, schadenObjekt, i, "AONS", "130091100000000_Vorne")
+                new_aoi_instance(data_filename, schadenObjekt, i, "AONS", "130091100000000_Hinten")
                 break
         if str(bauteilTyp) == "Fluegel_Wand_Hinten":
                 if "Rechts" in str(query_btd.values()):
@@ -176,8 +177,8 @@ def aoi_instance(lb,filename,bt_filename,aoi_filename,schadenObjekt,GlobalId,Bau
         if len(list_of_boxes) == 1:
             a = list(list_of_boxes.values())[0]
             a_type = list(list_of_boxes.keys())[0]
-            corner_1 = AOI.points(a, a_type)[0]
-            corner_2 = AOI.points(a, a_type)[1]
+            corner_1 = points(a, a_type)[0]
+            corner_2 = points(a, a_type)[1]
             zmax =corner_1.Z()
             zmin = corner_2.Z()
             box = BRepPrimAPI_MakeBox(corner_1, corner_2)
@@ -187,8 +188,8 @@ def aoi_instance(lb,filename,bt_filename,aoi_filename,schadenObjekt,GlobalId,Bau
                     a_type = list(list_of_boxes.keys())[0]
                     b = list(list_of_boxes.values())[1]
                     b_type = list(list_of_boxes.keys())[1]
-                    corner_1 = AOI.merge_box(AOI.points(a, a_type), AOI.points(b, b_type))[0]
-                    corner_2 = AOI.merge_box(AOI.points(a, a_type), AOI.points(b, b_type))[1]
+                    corner_1 = merge_box(points(a, a_type), points(b, b_type))[0]
+                    corner_2 = merge_box(points(a, a_type), points(b, b_type))[1]
                     zmax = corner_1.Z()
                     zmin = corner_2.Z()
                     box = (corner_1, corner_2)
@@ -201,8 +202,8 @@ def aoi_instance(lb,filename,bt_filename,aoi_filename,schadenObjekt,GlobalId,Bau
                         a_type = list(list_of_boxes.keys())[0]
                         b = list(list_of_boxes.values())[1]
                         b_type = list(list_of_boxes.keys())[1]
-                        corner_1 = AOI.merge_box(AOI.points(a, a_type), AOI.points(b, b_type))[0]
-                        corner_2 = AOI.merge_box(AOI.points(a, a_type), AOI.points(b, b_type))[1]
+                        corner_1 = merge_box(points(a, a_type), points(b, b_type))[0]
+                        corner_2 = merge_box(points(a, a_type), points(b, b_type))[1]
                         zmax = corner_1.Z()
                         zmin = corner_2.Z()
                         box = BRepPrimAPI_MakeBox(corner_1, corner_2)   
@@ -212,7 +213,7 @@ def aoi_instance(lb,filename,bt_filename,aoi_filename,schadenObjekt,GlobalId,Bau
                         box = BRepPrimAPI_MakeBox(corner_1, corner_2)
                         break                        
         height_box = abs(zmax-zmin)
-        AOI.place_aoi(box, height_box, aoi_filename, schadenObjekt[32:] + "_" + str(number), BauteilTyp)
+        place_aoi(box, height_box, aoi_filename, schadenObjekt[32:] + "_" + str(number), BauteilTyp)
         number = number + 1     
 
 def aoi_main(schadenObjekt,bauteildefinition,data_filename,filename,bt_filename,aoi_filename,lbd_filename):
@@ -238,6 +239,7 @@ def aoi_main(schadenObjekt,bauteildefinition,data_filename,filename,bt_filename,
         if "AOI" in schadenquery:
 
             aoi_query = q_main.query_aoi(data_filename, str(schadenquery["AOI"]))
+
             lx = []
             ly = []
             lz = []
@@ -269,7 +271,7 @@ def aoi_main(schadenObjekt,bauteildefinition,data_filename,filename,bt_filename,
                 la.append("Z_Mitte")
 
             lb = [list(x) for x in numpy.array(numpy.meshgrid(*la)).T.reshape(-1,len(la))]
-            AOI.aoi_instance(lb, filename, bt_filename, aoi_filename, schadenObjekt, GlobalId, BauteilTyp)
+            aoi_instance(lb, filename, bt_filename, aoi_filename, schadenObjekt, GlobalId, BauteilTyp)
 
 
         # Fall 2: SchadenObjekt enthält keine Information zur AOI
@@ -284,4 +286,4 @@ def aoi_main(schadenObjekt,bauteildefinition,data_filename,filename,bt_filename,
             corner2 = gp_Pnt(xmax, ymax, zmax)
             box = BRepPrimAPI_MakeBox(corner1, corner2)
             height_box = abs(zmax-zmin)
-            AOI.place_aoi(box, height_box, aoi_filename, schadenObjekt[32:], BauteilTyp)
+            place_aoi(box, height_box, aoi_filename, schadenObjekt[32:], BauteilTyp)

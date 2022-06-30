@@ -10,7 +10,8 @@
 @prefix schema1: <http://schema.org/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-:1208604_AOI a asbkey13:130091100000000_Vorne ;
+:1208604_AOI a asbkey13:130091100000000_Hinten,
+        asbkey13:130091100000000_Vorne ;
     aoi:locatesDamage :2686816_SchadenObjekt .
 
 :2217766_AOI a asbkey:OrtsangabeBauteilSchaden_Allgemein_Unterseite ;
@@ -151,7 +152,8 @@
         :5669690_DamageState,
         :7748048_DamageState .
 
-:7165807_AOI a asbkey13:130091300000000_Hinten ;
+:7165807_AOI a asbkey13:130091300000000_Hinten,
+        asbkey13:130091300000000_Vorne ;
     aoi:locatesDamage :4790281_SchadenObjekt .
 
 :9372805_SchadenObjekt a asb:SchadenObjekt,
@@ -722,11 +724,7 @@ mit Stützen- bzw. Wl.-Querträgern.***""" ;
     asb:Bauwerkszustand_MaximaleSchadensbewertungDauerhaftigkeit 2 ;
     asb:Bauwerkszustand_MaximaleSchadensbewertungVerkehrssicherheit 2 ;
     asb:Bauwerkszustand_Substanzkennzahl "2.0"^^xsd:float ;
-    asb:Bauwerkszustand_ZustandBauteilgruppe [ asb:ZustandBauteilgruppe_Bauteilgruppe asbkey:Bauteilgruppe_Schutzeinrichtung ;
-            asb:ZustandBauteilgruppe_Zustandsnote "1.1"^^xsd:float ],
-        [ asb:ZustandBauteilgruppe_Bauteilgruppe asbkey:Bauteilgruppe_Lager ;
-            asb:ZustandBauteilgruppe_Zustandsnote "1.0"^^xsd:float ],
-        [ asb:ZustandBauteilgruppe_Bauteilgruppe asbkey:Bauteilgruppe_Fahrbahnuebergang ;
+    asb:Bauwerkszustand_ZustandBauteilgruppe [ asb:ZustandBauteilgruppe_Bauteilgruppe asbkey:Bauteilgruppe_Fahrbahnuebergang ;
             asb:ZustandBauteilgruppe_Zustandsnote "1.0"^^xsd:float ],
         [ asb:ZustandBauteilgruppe_Bauteilgruppe asbkey:Bauteilgruppe_Abdichtung ;
             asb:ZustandBauteilgruppe_Zustandsnote "1.0"^^xsd:float ],
@@ -743,6 +741,10 @@ mit Stützen- bzw. Wl.-Querträgern.***""" ;
         [ asb:ZustandBauteilgruppe_Bauteilgruppe asbkey:Bauteilgruppe_Unterbau ;
             asb:ZustandBauteilgruppe_Zustandsnote "1.7"^^xsd:float ],
         [ asb:ZustandBauteilgruppe_Bauteilgruppe asbkey:Bauteilgruppe_Gruendung ;
+            asb:ZustandBauteilgruppe_Zustandsnote "1.0"^^xsd:float ],
+        [ asb:ZustandBauteilgruppe_Bauteilgruppe asbkey:Bauteilgruppe_Schutzeinrichtung ;
+            asb:ZustandBauteilgruppe_Zustandsnote "1.1"^^xsd:float ],
+        [ asb:ZustandBauteilgruppe_Bauteilgruppe asbkey:Bauteilgruppe_Lager ;
             asb:ZustandBauteilgruppe_Zustandsnote "1.0"^^xsd:float ] ;
     asb:Bauwerkszustand_Zustandsnote "2.3"^^xsd:float ;
     asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "N_7423371" ;
@@ -1214,6 +1216,7 @@ mit Stützen- bzw. Wl.-Querträgern.***""" ;
 
 :6832750_AOI a aoi:AreaOfInterest,
         asbkey13:130091300000000_Hinten,
+        asbkey13:130091300000000_Vorne,
         asbkey13:130101100000000_Links,
         asbkey13:130115000000000_Unten ;
     aoi:locatesDamage :3531729_SchadenObjekt .

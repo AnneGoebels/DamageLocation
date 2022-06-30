@@ -215,7 +215,7 @@ def model_box(filename):
     
 def elements_in_box(box,model,newfile):
     selector = Selector()
-    proxies = selector.parse(newfile, ".IfcBuildingElementProxy[Name *= \"" + box + "\"] | .IfcWall[Name *= \"" + box + "\"] | .IfcColumn[Name *= \"" + box + "\"] | .IfcSlab[Name *= \"" + box + "\"] | .IfcBeam[Name *= \"" + box + "\"]")
+    proxies = selector.parse(newfile, ".IfcBuildingElementProxy[Name *= \"" + box + "\"] | .IfcWall[Name *= \"" + box + "\"] | .IfcColumn[Name *= \"" + box + "\"] | .IfcSlab[Name *= \"" + box + "\"] | .IfcBeam[Name *= \"" + box + "\"] | .IfcStair[Name *= \"" + box + "\"]")
     tree_settings = ifcopenshell.geom.settings()
     tree_settings.set(tree_settings.DISABLE_OPENING_SUBTRACTIONS, True)
     t = ifcopenshell.geom.tree()

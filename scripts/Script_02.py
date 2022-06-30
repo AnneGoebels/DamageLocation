@@ -3,7 +3,7 @@ import ifcopenshell
 from ifcopenshell.util.selector import Selector
 
 def createAOIIfc(sibbw_data_file,ifc_file,lbd_of_ifc_file,bt_file,aoi_file):
-    selector = Selector()
+    #selector = Selector()
     settings = ifcopenshell.geom.settings()
     settings.set(settings.USE_PYTHON_OPENCASCADE, True)
 
@@ -28,9 +28,9 @@ def createAOIIfc(sibbw_data_file,ifc_file,lbd_of_ifc_file,bt_file,aoi_file):
 
     AOI.create_aoi_file(sibbw_data_file, ifc_file, aoi_file)
 
-    model = ifcopenshell.open(ifc_file)
-    f = ifcopenshell.open(bt_file)
-    g = ifcopenshell.open(aoi_file)
+   # model = ifcopenshell.open(ifc_file)
+   # f = ifcopenshell.open(bt_file)
+   # g = ifcopenshell.open(aoi_file)
 
     schadenObjekte_list = q_main.get_schadenObjekte(sibbw_data_file)
 
@@ -42,6 +42,7 @@ def createAOIIfc(sibbw_data_file,ifc_file,lbd_of_ifc_file,bt_file,aoi_file):
             print(
                 "__________________________________________________________________________________________________________")
             schadenquery = q_main.query_schaden_btd(sibbw_data_file, schadenObjekt)
+            print(schadenquery)
             for bauteildefinition in schadenquery:
                 print("Schaden: ", end='')
                 print(schadenObjekt)
@@ -51,11 +52,11 @@ def createAOIIfc(sibbw_data_file,ifc_file,lbd_of_ifc_file,bt_file,aoi_file):
                 print("Bauteil Typ: ", end='')
                 print(bauteilTyp)
 
-                AOI.bauteildefinition_as_aoi(bauteildefinition, sibbw_data_file, schadenObjekt, 0, bauteilTyp)
-                if "AOI" in schadenquery:
-                    aoi = q_main.query_aoi(sibbw_data_file, str(schadenquery["AOI"]))
-                    print("AOI: ", end='')
-                    print(aoi)
+                AOI.bauteildefinition_as_aoi(bauteildefinition, sibbw_data_file, schadenObjekt, 0, bauteilTyp) #??warum
+                #if "AOI" in schadenquery:
+                #    aoi = q_main.query_aoi(sibbw_data_file, str(schadenquery["AOI"]))
+                #    print("AOI: ", end='')
+                #    print(aoi)
 
                 AOI.aoi_main(schadenObjekt, bauteildefinition, sibbw_data_file, ifc_file, bt_file, aoi_file,
                              lbd_of_ifc_file)
