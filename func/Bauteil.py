@@ -88,8 +88,28 @@ def locate_roadway(filename):
     global model
     model = ifcopenshell.open(filename)
     Fahrbahn = selector.parse(model, '.IfcSlab[Name *= "Landstrasse"]')
-    #print(Fahrbahn)
+    # print(Fahrbahn)
     return Fahrbahn
+
+def locate_superstructure(filename):
+    selector = Selector()
+    settings = ifcopenshell.geom.settings()
+    settings.set(settings.USE_PYTHON_OPENCASCADE, True)
+    global model
+    model = ifcopenshell.open(filename)
+    superstrc = selector.parse(model, '.IfcBuildingelementproxy[Name *= "Ueberbau"]')
+    print(superstrc)
+    return superstrc
+
+def locate_bridge(filename):
+    selector = Selector()
+    settings = ifcopenshell.geom.settings()
+    settings.set(settings.USE_PYTHON_OPENCASCADE, True)
+    global model
+    model = ifcopenshell.open(filename)
+    bridge = selector.parse(model, '.IfcBuilding')
+    print(bridge)
+    return bridge
 
 
 def locate_railing(filename, newfile_name, dictionary_rechts_links):
@@ -156,6 +176,7 @@ def locate_stair(filename, newfile_name, dictionary_oa):
         #print(intersection)
         if len(intersection) > 0:
             Stair = intersection[0]
+            print(Stair)
         else:
             Stair = None
             print("no Stair in Box in found")
@@ -166,32 +187,28 @@ def locate_stair(filename, newfile_name, dictionary_oa):
     return Stair
 
 
-def check_model_representation(asbBauteilList, bauteildefinition, data_filename, filename, bt_filename, lbd_filename, ifcBridgeName, oa,
-                               dictionary_bauteilsuche, dictionary_feld, dictionary_ortsangaben):
-    dictionary_bauteil = find_model_representation(bauteildefinition, data_filename, filename, bt_filename,
+def check_model_representation(bauteildefinition, bdef_props, ifc_file, bt_filename, lbd_graph, ifcBridgeName, oa,
+                               dictionary_bauteilsuche, dictionary_feld, dictionary_anfang_ende):
+    dictionary_bauteil = find_model_representation(bauteildefinition, bdef_props, ifc_file, bt_filename,
                                                    ifcBridgeName, oa, dictionary_bauteilsuche, dictionary_feld,
-                                                   dictionary_ortsangaben)
+                                                   dictionary_anfang_ende)
     ifc_bauteil = dictionary_bauteil[bauteildefinition]
     print(ifc_bauteil)
     if ifc_bauteil is not None:
         globalIfcID = ifc_bauteil[0]
-        lbd_inst = q_main.query_instance(lbd_filename, globalIfcID)
-        if len(asbBauteilList) > 1:
-            q_main.add_hasModelRepresentation(data_filename, lbd_inst, bauteildefinition)
-            q_main.add_BauteilTyp(data_filename, dictionary_bauteil["Bauteil"], bauteildefinition)
+        lbd_inst = q_main.query_instance(lbd_graph, globalIfcID)
+        if lbd_inst:
+            return lbd_inst, dictionary_bauteil["Bauteil"]
         else:
-            q_main.add_hasModelRepresentation(data_filename, lbd_inst, asbBauteilList[0])
-
-        return "ifc element found"
+            return None
     else:
         print("no ifc ele found")
         return None
 
 
-def find_model_representation(bauteildefinition, data_filename, filename, bt_filename, ifcBridgeName, oa,
-                              dictionary_bauteilsuche, dictionary_feld, dictionary_ortsangaben):
+def find_model_representation(bauteildefinition, bdef_props, filename, bt_filename, ifcBridgeName, oa,
+                              dictionary_bauteilsuche, dictionary_feld, dictionary_anfang_ende):
     bauteile = {}
-    query_btd = q_main.query_bauteildefinition(data_filename, bauteildefinition)
     if "EDGEBEAM" in ifcBridgeName:
         bauteile[bauteildefinition] = locate_caps(filename, bt_filename, oa)
         bauteile["Bauteil"] = "EDGEBEAM"
@@ -207,21 +224,32 @@ def find_model_representation(bauteildefinition, data_filename, filename, bt_fil
     elif "RAILING" in ifcBridgeName:
         bauteile[bauteildefinition] = locate_railing(filename, bt_filename, oa)
         bauteile["Bauteil"] = "RAILING"
-    elif "RETAININGWALL" in ifcBridgeName and "WiderlagerHinten" in str(query_btd.values()):
-        bauteile[bauteildefinition] = locate_abutment(filename, bt_filename, dictionary_ortsangaben)
+    elif "RETAININGWALL" in ifcBridgeName and "WiderlagerHinten" in str(bdef_props.values()):
+        bauteile[bauteildefinition] = locate_abutment(filename, bt_filename, dictionary_anfang_ende)
         bauteile["Bauteil"] = "Widerlager_Wand_Hinten"
-    elif "RETAININGWALL" in ifcBridgeName and "WiderlagerVorn" in str(query_btd.values()):
-        bauteile[bauteildefinition] = locate_abutment(filename, bt_filename, dictionary_ortsangaben)
+    elif "RETAININGWALL" in ifcBridgeName and "WiderlagerVorn" in str(bdef_props.values()):
+        bauteile[bauteildefinition] = locate_abutment(filename, bt_filename, dictionary_anfang_ende)
         bauteile["Bauteil"] = "Widerlager_Wand_Vorne"
-    elif "RETAININGWALL" in ifcBridgeName and "Fluegel" in str(query_btd.values()) and "Hinten" in str(query_btd.values()):
-        bauteile[bauteildefinition] = locate_abutment(filename, bt_filename, dictionary_ortsangaben)
+    elif "RETAININGWALL" in ifcBridgeName and "Fluegel" in str(bdef_props.values()) and "Hinten" in str(bdef_props.values()):
+        bauteile[bauteildefinition] = locate_abutment(filename, bt_filename, dictionary_anfang_ende)
         bauteile["Bauteil"] = "Fluegel_Wand_Hinten"
-    elif "RETAININGWALL" in ifcBridgeName and "Fluegel" in str(query_btd.values()) and "Vorn" in str(query_btd.values()):
-        bauteile[bauteildefinition] = locate_abutment(filename, bt_filename, dictionary_ortsangaben)
+    elif "RETAININGWALL" in ifcBridgeName and "Fluegel" in str(bdef_props.values()) and "Vorn" in str(bdef_props.values()):
+        bauteile[bauteildefinition] = locate_abutment(filename, bt_filename, dictionary_anfang_ende)
         bauteile["Bauteil"] = "Fluegel_Wand_Vorne"
-    elif "STAIR" in ifcBridgeName and "beideWid" in str(query_btd.values()):
-        bauteile[bauteildefinition] = locate_stair(filename, bt_filename, dictionary_ortsangaben)
+    elif "STAIR" in ifcBridgeName and "beideWid" in str(bdef_props.values()):
+        bauteile[bauteildefinition] = locate_stair(filename, bt_filename, dictionary_anfang_ende)
         bauteile["Bauteil"] = "Widerlager_Wand_Vorne"
+    elif "SUPERSTRUCTURE" in ifcBridgeName:
+        bauteile[bauteildefinition] = locate_superstructure(filename)
+    elif "BRIDGE" in ifcBridgeName:
+        pass
+    # ab hier noch neue definitionen..
+    elif "FOOTING" in ifcBridgeName:
+        pass
+    elif "COLUMN" in ifcBridgeName:
+        pass
+    elif "BEARING" in ifcBridgeName:
+        pass
     else:
         bauteile[bauteildefinition] = None
         print("No Bauteil found for Bauteildefinition")

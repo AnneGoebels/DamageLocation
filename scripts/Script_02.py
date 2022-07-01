@@ -52,7 +52,8 @@ def createAOIIfc(sibbw_data_file,ifc_file,lbd_of_ifc_file,bt_file,aoi_file):
                 print("Bauteil Typ: ", end='')
                 print(bauteilTyp)
 
-                AOI.bauteildefinition_as_aoi(bauteildefinition, sibbw_data_file, schadenObjekt, 0, bauteilTyp) #??warum
+                # in post process hinzufügen
+                #AOI.bauteildefinition_as_aoi(bauteildefinition, sibbw_data_file, schadenObjekt, 0, bauteilTyp) #??warum
                 #if "AOI" in schadenquery:
                 #    aoi = q_main.query_aoi(sibbw_data_file, str(schadenquery["AOI"]))
                 #    print("AOI: ", end='')
@@ -66,5 +67,6 @@ def createAOIIfc(sibbw_data_file,ifc_file,lbd_of_ifc_file,bt_file,aoi_file):
             i = i + 1
 
     print("number of errors : " + str(i))
+
 
     return "AOI Ifc File created"

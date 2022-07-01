@@ -8,5 +8,13 @@
     "https://w3id.org/asbingowl/core#EinfacheBauteilart" : "ignore",
     "https://w3id.org/asbingowl/keys#ArtEinfacheBauteilart_Besichtigungseinrichtung_Befestigungseinrichtung_Boeschungstreppe": "STAIR",
     "https://w3id.org/asbingowl/core#TragendesBauteil": "GIRDER_SEGMENT",
-    "https://w3id.org/asbingowl/keys/2013#230011220000000_EinfacheDistanzschutzplanke": "GUARDRAIL"
+    "https://w3id.org/asbingowl/keys/2013#230011220000000_EinfacheDistanzschutzplanke": "GUARDRAIL",
+    "https://w3id.org/asbingowl/core#Ueberbau": "SUPERSTRUCTURE",
+    "https://w3id.org/asbingowl/keys/2013#390021100000000_BauteilgruppeUeberbau" : "SUPERSTRUCTURE",
+    "https://w3id.org/asbingowl/core#Entwaesserung": "SUPERSTRUCTURE",
+    "https://w3id.org/asbingowl/keys/2013#130023330000000_Boeschungspflaster": "BRIDGE",
+    "https://w3id.org/asbingowl/core#Gruendung" : "FOOTING",
+    "https://w3id.org/asbingowl/keys/2013#040012100000000_Massiv" :"COLUMN",
+    "https://w3id.org/asbingowl/core#Lager" : "BEARING"
+
 }

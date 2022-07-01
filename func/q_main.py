@@ -11,7 +11,7 @@ AONS = Namespace("https://w3id.org/asbingowl/keys/2013#")
 ANSK = Namespace("https://w3id.org/asbingowl/keys#")
 AOI = Namespace ("https://w3id.org/aoi#")
 OPM = Namespace("https://w3id.org/opm#")
-SCHEMA = Namespace("https://schema.org/")
+SCHEMA = Namespace("http://schema.org/")
 DOT = Namespace("https://w3id.org/dot#")
 INST = Namespace("https://asbingowl.org/TwinGenDemo/BW452#")
 PROPS = Namespace("http://lbd.arch.rwth-aachen.de/props#")
@@ -316,7 +316,7 @@ def query_bauteildefinition_bauteilTyp(data_filename,bauteildefinition):
     SELECT ?BT_Typ
     WHERE{
         <""" + str(bauteildefinition) + """> a asb:ASBING13_BauteilDefinition .
-        <""" + str(bauteildefinition) + """> asb:BauteilTyp ?BT_Typ.
+        <""" + str(bauteildefinition) + """> asb:BauteilTypInIfc ?BT_Typ.
     }
     """)
     for i in graph.query(q1):
@@ -405,12 +405,12 @@ def get_Ortsangabe(qbtd):
             dictionary_Feld[j] = dictionary_oa[i]
             dictionary_oa.pop(i)
     for i in list(dictionary_oa):
-        if "Control_EndeDesBauwerks" in dictionary_oa[i]  or  "Control_AnfangDesBauwerks" in dictionary_oa[i]:
+        if "Control_EndeDesBauwerks" in dictionary_oa[i]  or  "Control_AnfangDesBauwerks" in dictionary_oa[i] or "Control_beideWiderlager" in dictionary_oa[i]:
             dictionary_anfang_ende[str(j)] = dictionary_oa[i]
             dictionary_oa.pop(i)
     j = 0
     for i in list(dictionary_oa):
-        if "Rechts"in dictionary_oa[i]  or "Links" in dictionary_oa[i]:
+        if "Rechts"in dictionary_oa[i]  or "Links" in dictionary_oa[i] or "Control_rundl" in dictionary_oa[i]:
             dictionary_links_rechts[j] = dictionary_oa[i]
             dictionary_oa.pop(i)
             j = j + 1
@@ -458,7 +458,7 @@ def add_AOI(data_filename,aoi_ref,key,new_aoi):
 def query_instance(lbd_ifc_graph,GlobalId):
     q1 = prepareQuery("""
     SELECT ?inst
-    WHERE{
+    WHERE {
         ?inst props:globalIdIfcRoot ?globalIdIfcRoot.
         ?globalIdIfcRoot schema:value ?GlobalId .        
     }
@@ -472,8 +472,9 @@ def query_instance(lbd_ifc_graph,GlobalId):
 def get_beschreibtBauteil(sibbw_graph,bauteildefinition):
     list_bauteil = []
     list_bauteilarten = []
+    # hier auch bauteilgruppe von bdef querien
     q1 = prepareQuery("""
-    SELECT ?asbBauteil ?asbBauteilClass ?asbBauteilart ?asbBauteilartClass ?FrzR_Art ?Unterbau_Art ?einfacheArt
+    SELECT DISTINCT ?asbBauteil ?asbBauteilClass ?asbBauteilart ?asbBauteilartClass ?FrzR_Art ?Unterbau_Art ?einfacheArt
     WHERE{
         ?bdef asb:beschreibtBauteil ?asbBauteil.
         ?asbBauteil a ?asbBauteilClass.
@@ -506,120 +507,44 @@ def get_beschreibtBauteil(sibbw_graph,bauteildefinition):
 
             if count == len(i):
                 break
+    #print(list_bauteil)
+    #print(list_bauteilarten)
+    cleanBauteilList = list(dict.fromkeys(list_bauteil))
+    cleanBauteilartlist = list(dict.fromkeys(list_bauteilarten))
+    #print(cleanBauteilList)
+    #print(cleanBauteilartlist)
 
-    return list_bauteil, list_bauteilarten
+    return cleanBauteilList, cleanBauteilartlist
 
-
-def get_associatedWith(data_filename,beschreibtBauteil):
-    graph = connect(data_filename)
-    list_associatedWith = []
-
+def get_einbauort (asbBauteil, sibbw_graph):
+    rechts_links = {}
+    anfang_ende = {}
     q1 = prepareQuery("""
-    prefix : <http://example.org/sibbw7936662#> 
-    prefix aoi: <https://w3id.org/aoi#> 
-    prefix asb: <https://w3id.org/asbingowl/core#> 
-    prefix asbkey: <https://w3id.org/asbingowl/keys#> 
-    prefix asbkey13: <https://w3id.org/asbingowl/keys/2013#> 
-    prefix xsd: <http://www.w3.org/2001/XMLSchema#> 
+       SELECT ?einbauort
+       WHERE {
+       ?asbBauteil asb:AbstraktesBauteil_Einbauort ?einbauort.
+       }
+    """, initNs={"asb":ANS})
+    for ort in sibbw_graph.query(q1, initBindings={"asbBauteil":asbBauteil}):
+        print(ort.einbauort)
+        ortsangabe = ort.einbauort
+        if "West" in ortsangabe:
+            rechts_links["0"]= "Rechts"
+        if "Ost" in ortsangabe:
+            rechts_links["0"] = "Links"
+        if "10" in ortsangabe:
+            anfang_ende["0"]= "Control_AnfangDesBauwerks"
+        if "30" in ortsangabe:
+            anfang_ende["0"]= "Control_EndeDesBauwerks"
+        if "Linke" in ortsangabe:
+            rechts_links["0"] = "Links"
+        if "Rechte" in ortsangabe:
+            rechts_links["0"]= "Rechts"
+        #else:
+        #    print("no interpretable location description found")
 
-    SELECT ?associatedWith 
-    WHERE{
+    return rechts_links, anfang_ende
 
-        <""" + beschreibtBauteil + """> asb:associatedWith ?associatedWith.
-    }
-    """)
-    for i in graph.query(q1):
-        list_associatedWith.append(i[0])
-
-    return list_associatedWith
-
-def get_bauteil(data_filename,associatedWith):
-    graph = connect(data_filename)
-    list_bauteil = []
-
-    q1 = prepareQuery("""
-    prefix : <http://example.org/sibbw7936662#> 
-    prefix aoi: <https://w3id.org/aoi#> 
-    prefix asb: <https://w3id.org/asbingowl/core#> 
-    prefix asbkey: <https://w3id.org/asbingowl/keys#> 
-    prefix asbkey13: <https://w3id.org/asbingowl/keys/2013#> 
-    prefix xsd: <http://www.w3.org/2001/XMLSchema#> 
-
-    SELECT ?bauteil 
-    WHERE{
-        <""" + associatedWith + """> a ?bauteil .
-    }
-    """)
-    for i in graph.query(q1):
-        list_bauteil.append(i[0])
-
-    return list_bauteil
-
-def get_FrzR_Art(data_filename,associatedWith):
-    graph = connect(data_filename)
-    list_FrzR_Art = []
-
-    q1 = prepareQuery("""
-    prefix : <http://example.org/sibbw7936662#> 
-    prefix aoi: <https://w3id.org/aoi#> 
-    prefix asb: <https://w3id.org/asbingowl/core#> 
-    prefix asbkey: <https://w3id.org/asbingowl/keys#> 
-    prefix asbkey13: <https://w3id.org/asbingowl/keys/2013#> 
-    prefix xsd: <http://www.w3.org/2001/XMLSchema#> 
-
-    SELECT ?FrzR_Art 
-    WHERE{
-        <""" + associatedWith + """> asb:FahrzeugRueckhaltesystem_Art [ asb:ArtFahrzeugRueckhaltesystem_Systembezeichnung [ asb:Systembezeichnung_Bezeichnung  ?FrzR_Art] ] .
-    }
-    """)
-    for i in graph.query(q1):
-        list_FrzR_Art.append(i[0])
-
-    return list_FrzR_Art
-
-def get_einfacheBauteilart_Art(data_filename,associatedWith):
-    graph = connect(data_filename)
-    list_einfacheBt_Art = []
-
-    q1 = prepareQuery("""
-    prefix : <http://example.org/sibbw7936662#> 
-    prefix aoi: <https://w3id.org/aoi#> 
-    prefix asb: <https://w3id.org/asbingowl/core#> 
-    prefix asbkey: <https://w3id.org/asbingowl/keys#> 
-    prefix asbkey13: <https://w3id.org/asbingowl/keys/2013#> 
-    prefix xsd: <http://www.w3.org/2001/XMLSchema#> 
-
-    SELECT ?einfacheBt
-    WHERE{
-        <""" + associatedWith + """> asb:EinfacheBauteilart_Art  ?einfacheBt.
-    }
-    """)
-    for i in graph.query(q1):
-        list_einfacheBt_Art.append(i[0])
-
-    return list_einfacheBt_Art
-
-def get_Unterbau_Art(data_filename,beschreibtBauteil):
-    graph = connect(data_filename)
-    list_Unterbau_Art = []
-
-    q1 = prepareQuery("""
-    prefix : <http://example.org/sibbw7936662#> 
-    prefix aoi: <https://w3id.org/aoi#> 
-    prefix asb: <https://w3id.org/asbingowl/core#> 
-    prefix asbkey: <https://w3id.org/asbingowl/keys#> 
-    prefix asbkey13: <https://w3id.org/asbingowl/keys/2013#> 
-    prefix xsd: <http://www.w3.org/2001/XMLSchema#> 
-
-    SELECT ?Unterbau_Art 
-    WHERE{
-        <""" + beschreibtBauteil + """> asb:Unterbau_Art ?Unterbau_Art .
-    }
-    """)
-    for i in graph.query(q1):
-        list_Unterbau_Art.append(i[0])
-
-    return list_Unterbau_Art
 
 
 
