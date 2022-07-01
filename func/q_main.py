@@ -4,48 +4,47 @@ from rdflib.plugins.sparql import prepareQuery
 #import q_main
 import json
 import random
+import copy
 
+ANS = Namespace("https://w3id.org/asbingowl/core#")
+AONS = Namespace("https://w3id.org/asbingowl/keys/2013#")
+ANSK = Namespace("https://w3id.org/asbingowl/keys#")
+AOI = Namespace ("https://w3id.org/aoi#")
+OPM = Namespace("https://w3id.org/opm#")
+SCHEMA = Namespace("https://schema.org/")
+DOT = Namespace("https://w3id.org/dot#")
+INST = Namespace("https://asbingowl.org/TwinGenDemo/BW452#")
+PROPS = Namespace("http://lbd.arch.rwth-aachen.de/props#")
+
+"""
 def connect(database_name):
     graph = Graph()
     graph.parse(database_name, format = "turtle")
     return graph
+"""
 
-def query_tbw(data_filename):
-    graph = connect(data_filename)
+def query_tbw(sibbw_graph):
     tbw_list = []
     query_tbw = prepareQuery("""
-        prefix : <http://example.org/sibbw7936662#> 
-        prefix aoi: <https://w3id.org/aoi#> 
-        prefix asb: <https://w3id.org/asbingowl/core#> 
-        prefix asbkey: <https://w3id.org/asbingowl/keys#> 
-        prefix asbkey13: <https://w3id.org/asbingowl/keys/2013#> 
-        prefix xsd: <http://www.w3.org/2001/XMLSchema#> 
         SELECT DISTINCT ?Teilbauwerk 
         WHERE{
             ?Teilbauwerk a asb:Teilbauwerk .
         }
         """)
-    for i in graph.query(query_tbw):
+    for i in sibbw_graph.query(query_tbw):
         tbw_list.append(i[0].partition('#')[-1])
     return tbw_list
 
-def get_bauteildefinition(data_filename):
-    graph = connect(data_filename)
+def get_bauteildefinition(sibbw_graph):
     btd_list = []
     query_btd = prepareQuery("""
-        prefix : <http://example.org/sibbw7936662#> 
-        prefix aoi: <https://w3id.org/aoi#> 
-        prefix asb: <https://w3id.org/asbingowl/core#> 
-        prefix asbkey: <https://w3id.org/asbingowl/keys#> 
-        prefix asbkey13: <https://w3id.org/asbingowl/keys/2013#> 
-        prefix xsd: <http://www.w3.org/2001/XMLSchema#> 
         SELECT DISTINCT ?Bauteildefinition
         WHERE{
             ?Bauteildefinition a asb:ASBING13_BauteilDefinition.
         }
-        """)
-    for i in graph.query(query_btd):
-        btd_list.append(i[0])
+        """, initNs={"asb":ANS})
+    for i in sibbw_graph.query(query_btd):
+        btd_list.append(i.Bauteildefinition)
     return btd_list
 
 def get_schadenObjekte(data_filename):
@@ -68,8 +67,8 @@ def get_schadenObjekte(data_filename):
     return sO_list
 
 """
-    def get_schadenObjekte(data_filename):
-    graph = connect(data_filename)
+    def get_schadenObjekte(sibbw_graph):
+    graph = connect(sibbw_graph)
     sO_list = []
     query_sO= prepareQuery("
         prefix : <http://example.org/sibbw7936662#>
@@ -170,8 +169,8 @@ def query_schaden_aoi(data_filename,schadenObjekt):
 
     return aoi_dic
 
-def query_bauteildefinition(data_filename,bauteildefinition):
-    graph = connect(data_filename)
+def query_bauteildefinition(sibbw_graph, bauteildefinition):
+
     dictionary = {}
     list_bauteil = []
     list_bauteilgruppe = []
@@ -180,101 +179,41 @@ def query_bauteildefinition(data_filename,bauteildefinition):
     list_ortsangabe = []
     list_abst_anz = []
     q1 = prepareQuery("""
-    prefix : <http://example.org/sibbw7936662#> 
-    prefix aoi: <https://w3id.org/aoi#> 
-    prefix asb: <https://w3id.org/asbingowl/core#> 
-    prefix asbkey: <https://w3id.org/asbingowl/keys#> 
-    prefix asbkey13: <https://w3id.org/asbingowl/keys/2013#> 
-    prefix xsd: <http://www.w3.org/2001/XMLSchema#> 
-
-    SELECT ?Bauteil 
-    WHERE{
-        <""" + str(bauteildefinition) + """> a asb:ASBING13_BauteilDefinition .
-        <""" + str(bauteildefinition) + """> asb:ASBING13_Bauteil ?Bauteil.
+    SELECT  ?Teilbauwerk ?Bauteil ?Bauteilgruppe ?Konstruktionsteil 
+    WHERE {
+        ?bdef a asb:ASBING13_BauteilDefinition;
+                asb:associatedWith ?Teilbauwerk .
+        OPTIONAL{?bdef
+                    asb:ASBING13_Bauteil ?Bauteil. }
+        OPTIONAL{?bdef       
+                    asb:ASBING13_Bauteilgruppe ?Bauteilgruppe. }
+        OPTIONAL{?bdef
+                    asb:ASBING13_Konstruktionsteil ?Konstruktionsteil. }
     }
-    """)
-    for i in graph.query(q1):
-        list_bauteil.append(i[0])
+    """, initNs={"asb":ANS})
+    for i in sibbw_graph.query(q1, initBindings={"bdef":bauteildefinition}):
+        list_bauteil.append(i.Bauteil)
+        list_bauteilgruppe.append(i.Bauteilgruppe)
+        list_konstruktionsteil.append(i.Konstruktionsteil)
+        list_teilbauwerk.append(i.Teilbauwerk)
 
-    q2 = prepareQuery("""
-    prefix : <http://example.org/sibbw7936662#> 
-    prefix aoi: <https://w3id.org/aoi#> 
-    prefix asb: <https://w3id.org/asbingowl/core#> 
-    prefix asbkey: <https://w3id.org/asbingowl/keys#> 
-    prefix asbkey13: <https://w3id.org/asbingowl/keys/2013#> 
-    prefix xsd: <http://www.w3.org/2001/XMLSchema#> 
-
-    SELECT  ?Bauteilgruppe
-    WHERE{
-        <""" + str(bauteildefinition) + """> a asb:ASBING13_BauteilDefinition .
-        <""" + str(bauteildefinition) + """> asb:ASBING13_Bauteilgruppe ?Bauteilgruppe.
+    q5 = prepareQuery(""" 
+    SELECT  ?Ortsangabe 
+    WHERE {
+        ?bdef a asb:ASBING13_BauteilDefinition;
+               asb:Schaden_Ortsangabe [asb:Ortsangabe_Ortsangabe ?Ortsangabe].
     }
-    """)
-    for i in graph.query(q2):
-        list_bauteilgruppe.append(i[0])
-
-    q3 = prepareQuery("""
-    prefix : <http://example.org/sibbw7936662#> 
-    prefix aoi: <https://w3id.org/aoi#> 
-    prefix asb: <https://w3id.org/asbingowl/core#> 
-    prefix asbkey: <https://w3id.org/asbingowl/keys#> 
-    prefix asbkey13: <https://w3id.org/asbingowl/keys/2013#> 
-    prefix xsd: <http://www.w3.org/2001/XMLSchema#> 
-
-    SELECT ?Konstruktionsteil 
-    WHERE{
-        <""" + str(bauteildefinition) + """> a asb:ASBING13_BauteilDefinition .
-        <""" + str(bauteildefinition) + """>asb:ASBING13_Konstruktionsteil ?Konstruktionsteil.
-    }
-    """)
-    for i in graph.query(q3):
-        list_konstruktionsteil.append(i[0])  
-
-    q4 = prepareQuery("""
-    prefix : <http://example.org/sibbw7936662#> 
-    prefix aoi: <https://w3id.org/aoi#> 
-    prefix asb: <https://w3id.org/asbingowl/core#> 
-    prefix asbkey: <https://w3id.org/asbingowl/keys#> 
-    prefix asbkey13: <https://w3id.org/asbingowl/keys/2013#> 
-    prefix xsd: <http://www.w3.org/2001/XMLSchema#> 
-
-    SELECT  ?Teilbauwerk
-    WHERE{
-        <""" + str(bauteildefinition) + """> a asb:ASBING13_BauteilDefinition .
-        <""" + str(bauteildefinition) + """> asb:associatedWith ?Teilbauwerk .
-    }
-    """)
-    q5 = prepareQuery("""
-    prefix : <http://example.org/sibbw7936662#> 
-    prefix aoi: <https://w3id.org/aoi#> 
-    prefix asb: <https://w3id.org/asbingowl/core#> 
-    prefix asbkey: <https://w3id.org/asbingowl/keys#> 
-    prefix asbkey13: <https://w3id.org/asbingowl/keys/2013#> 
-    prefix xsd: <http://www.w3.org/2001/XMLSchema#> 
-
-    SELECT  ?Ortsangabe
-    WHERE{
-        <""" + str(bauteildefinition) + """> a asb:ASBING13_BauteilDefinition .
-        <""" + str(bauteildefinition) + """> asb:Schaden_Ortsangabe [asb:Ortsangabe_Ortsangabe ?Ortsangabe].
-    }
-    """)
-    for i in graph.query(q5):
+    """, initNs={"asb":ANS})
+    for i in sibbw_graph.query(q5, initBindings={"bdef":bauteildefinition}):
         list_ortsangabe.append(str(i[0]))     
     q6 = prepareQuery("""
-    prefix : <http://example.org/sibbw7936662#> 
-    prefix aoi: <https://w3id.org/aoi#> 
-    prefix asb: <https://w3id.org/asbingowl/core#> 
-    prefix asbkey: <https://w3id.org/asbingowl/keys#> 
-    prefix asbkey13: <https://w3id.org/asbingowl/keys/2013#> 
-    prefix xsd: <http://www.w3.org/2001/XMLSchema#> 
-
     SELECT  ?Abstand_Anzahl
-    WHERE{
-        <""" + str(bauteildefinition) + """> a asb:ASBING13_BauteilDefinition .
-        <""" + str(bauteildefinition) + """> asb:Schaden_Ortsangabe [asb:Ortsangabe_GroesseOrtsangabe [asb:AbstandAnzahl_Anzahl ?Abstand_Anzahl]] .
+    WHERE {
+        ?bdef a asb:ASBING13_BauteilDefinition;
+             asb:Schaden_Ortsangabe [asb:Ortsangabe_GroesseOrtsangabe [asb:AbstandAnzahl_Anzahl ?Abstand_Anzahl]] .
     }
-    """)
-    for i in graph.query(q6):
+    """, initNs={"asb":ANS})
+    for i in sibbw_graph.query(q6, initBindings={"bdef":bauteildefinition}):
         list_abst_anz.append(str(i[0]))    
     j= 0
     while True:       
@@ -338,7 +277,7 @@ def query_bauteildefinition(data_filename,bauteildefinition):
             else:
                 dictionary["Abstand_Anzahl_"+str(j)] = i
         j = j + 1
-   # print(dictionary)
+
     return dictionary
 
 def query_bauteildefinition_hasModelRepresentation(data_filename,bauteildefinition):
@@ -424,7 +363,7 @@ def add_BauteilTyp(data_filename,bauteilTyp,bauteildefinition):
     g.add((bauteildefinition_ref,asb.BauteilTyp,Literal(bauteilTyp)))
     g.serialize(destination=data_filename)
 
-def get_Ortsangabe(data_filename,bauteildefinition):
+def get_Ortsangabe(qbtd):
     with open(r".\temp_files\map_damage_location.json", "r") as file:
         map_damage_location = json.loads(file.read())
     dictionary_oa = {}
@@ -432,7 +371,6 @@ def get_Ortsangabe(data_filename,bauteildefinition):
     dictionary_Feld = {}
     dictionary_links_rechts = {}
     dictionary_anfang_ende = {}
-    qbtd = query_bauteildefinition(data_filename, bauteildefinition)
     count = 0
     if "Abstand_Anzahl" in str(qbtd.keys()):
         for i in qbtd.keys():   
@@ -477,6 +415,7 @@ def get_Ortsangabe(data_filename,bauteildefinition):
             dictionary_oa.pop(i)
             j = j + 1
 
+
     return dictionary_oa, dictionary_tesBauteil, dictionary_Feld, dictionary_links_rechts, dictionary_anfang_ende
 
 def create_AOI(data_filename,schadenObjekt):
@@ -516,82 +455,59 @@ def add_AOI(data_filename,aoi_ref,key,new_aoi):
     g.add((URIRef(INS + aoi_ref),RDF.type,URIRef(map[key] + new_aoi)))
     g.serialize(destination=data_filename)
 
-def query_instance(lbd_filename,GlobalId):
-    graph = connect(lbd_filename)
+def query_instance(lbd_ifc_graph,GlobalId):
     q1 = prepareQuery("""
-    prefix schema: <http://schema.org/> 
-    prefix owl: <http://www.w3.org/2002/07/owl#> 
-    prefix bot: <https://w3id.org/bot#> 
-    prefix ifc: <https://standards.buildingsmart.org/IFC/DEV/IFC4/ADD2/OWL#> 
-    prefix xsd: <http://www.w3.org/2001/XMLSchema#> 
-    prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> 
-    prefix lbd: <https://linkebuildingdata.org/LBD#> 
-    prefix props: <http://lbd.arch.rwth-aachen.de/props#> 
-    prefix geo: <http://www.opengis.net/ont/geosparql#> 
-    prefix unit: <http://qudt.org/vocab/unit/> 
-    prefix IFC4-PSD: <https://www.linkedbuildingdata.net/IFC4-PSD#> 
-    prefix smls: <https://w3id.org/def/smls-owl#> 
-    prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
-    prefix inst: <https://asbingowl.org/TwinGenDemo/BW452#> 
-    prefix prov: <http://www.w3.org/ns/prov#> 
-
-    SELECT ?globalIdIfcRoot
-    WHERE{
-        ?globalIdIfcRoot schema:value \"""" + str(GlobalId) + """\"  .        
-    }
-    """)
-    for i in graph.query(q1):
-        globalIdIfcRoot = i[0] 
-    
-    q2 = prepareQuery("""
-    prefix schema: <http://schema.org/> 
-    prefix owl: <http://www.w3.org/2002/07/owl#> 
-    prefix bot: <https://w3id.org/bot#> 
-    prefix ifc: <https://standards.buildingsmart.org/IFC/DEV/IFC4/ADD2/OWL#> 
-    prefix xsd: <http://www.w3.org/2001/XMLSchema#> 
-    prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> 
-    prefix lbd: <https://linkebuildingdata.org/LBD#> 
-    prefix props: <http://lbd.arch.rwth-aachen.de/props#> 
-    prefix geo: <http://www.opengis.net/ont/geosparql#> 
-    prefix unit: <http://qudt.org/vocab/unit/> 
-    prefix IFC4-PSD: <https://www.linkedbuildingdata.net/IFC4-PSD#> 
-    prefix smls: <https://w3id.org/def/smls-owl#> 
-    prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
-    prefix inst: <https://asbingowl.org/TwinGenDemo/BW452#> 
-    prefix prov: <http://www.w3.org/ns/prov#> 
-
     SELECT ?inst
     WHERE{
-        ?inst props:globalIdIfcRoot <""" + str(globalIdIfcRoot) + """> .        
+        ?inst props:globalIdIfcRoot ?globalIdIfcRoot.
+        ?globalIdIfcRoot schema:value ?GlobalId .        
     }
-    """)
-    for i in graph.query(q2):
-        inst = i[0]    
-    
-    return inst
+    """, initNs={"props":PROPS, "schema":SCHEMA})
+    for i in lbd_ifc_graph.query(q1, initBindings={"GlobalId":Literal(GlobalId)}):
+        ifc_lbd_inst = i.inst
 
-def get_beschreibtBauteil(data_filename,bauteildefinition):
-    graph = connect(data_filename)
-    list_beschreibtBauteil = []
+    return  ifc_lbd_inst
 
+
+def get_beschreibtBauteil(sibbw_graph,bauteildefinition):
+    list_bauteil = []
+    list_bauteilarten = []
     q1 = prepareQuery("""
-    prefix : <http://example.org/sibbw7936662#> 
-    prefix aoi: <https://w3id.org/aoi#> 
-    prefix asb: <https://w3id.org/asbingowl/core#> 
-    prefix asbkey: <https://w3id.org/asbingowl/keys#> 
-    prefix asbkey13: <https://w3id.org/asbingowl/keys/2013#> 
-    prefix xsd: <http://www.w3.org/2001/XMLSchema#> 
-
-    SELECT ?beschreibtBauteil 
+    SELECT ?asbBauteil ?asbBauteilClass ?asbBauteilart ?asbBauteilartClass ?FrzR_Art ?Unterbau_Art ?einfacheArt
     WHERE{
-        <""" + str(bauteildefinition) + """> a asb:ASBING13_BauteilDefinition .
-        <""" + str(bauteildefinition) + """> asb:beschreibtBauteil ?beschreibtBauteil.
+        ?bdef asb:beschreibtBauteil ?asbBauteil.
+        ?asbBauteil a ?asbBauteilClass.
+        OPTIONAL{
+        ?asbBauteil asb:Unterbau_Art ?Unterbau_Art .
+        }
+        OPTIONAL{
+        ?asbBauteil asb:associatedWith ?asbBauteilart.
+        ?asbBauteilart a ?asbBauteilartClass. 
+        OPTIONAL{
+        ?asbBauteilart asb:FahrzeugRueckhaltesystem_Art [ asb:ArtFahrzeugRueckhaltesystem_Systembezeichnung [ asb:Systembezeichnung_Bezeichnung  ?FrzR_Art] ] 
+        }
+        OPTIONAL{
+        ?asbBauteilart asb:EinfacheBauteilart_Art  ?einfacheArt.
+        }
+        }   
     }
-    """)
-    for i in graph.query(q1):
-        list_beschreibtBauteil.append(i[0])
+    """, initNs={"asb":ANS})
+    for i in sibbw_graph.query(q1, initBindings={"bdef":bauteildefinition}):
+        #print(len(i))
+        count = 0
+        for a in i:
+            #print(a)
+            count += 1
+            if a is not None:
+                if a == i.asbBauteil:
+                    list_bauteil.append(a)
+                else:
+                    list_bauteilarten.append(a)
 
-    return list_beschreibtBauteil
+            if count == len(i):
+                break
+
+    return list_bauteil, list_bauteilarten
 
 
 def get_associatedWith(data_filename,beschreibtBauteil):
@@ -705,37 +621,21 @@ def get_Unterbau_Art(data_filename,beschreibtBauteil):
 
     return list_Unterbau_Art
 
-def get_ifcBridgeName(data_filename,bauteildefinition):
-    beschreibtBauteil = get_beschreibtBauteil(data_filename,bauteildefinition)
-    print(beschreibtBauteil)
-    bauteil_list = []
-    bauteilTyp_list = []
-    for j in beschreibtBauteil:
-        associatedWith = get_associatedWith(data_filename,str(j))
-        Unterbau_Art = get_Unterbau_Art(data_filename,str(j))
-        for k in associatedWith:
-            bauteil = get_bauteil(data_filename,str(k))
-            bauteil_list.append(str(bauteil))
-            try:
-                FrzR_Art = get_FrzR_Art(data_filename,str(k))
-                bauteil_list.append(str(FrzR_Art))
-            except:
-                pass
-            try:
-                einfacheBt_Art = get_einfacheBauteilart_Art(data_filename,str(k))
-                bauteil_list.append(str(einfacheBt_Art))
-            except:
-                pass
-        for k in Unterbau_Art:
-            bauteil_list.append(str(k))
 
-    for j in bauteil_list:
+
+def get_ifcBridgeName(sibbw_graph, bauteildefinition):
+    bauteil_list, bauteilarten_list = get_beschreibtBauteil(sibbw_graph, bauteildefinition)
+    #print(bauteil_list, bauteilarten_list)
+
+    bauteilTyp_list = []
+
+    for j in bauteilarten_list:
         if "Bruecke" in str(j) or "Teilbauwerk" in str(j) or "Fahrzeug" in str(j) or "[]" in str(j):
             pass
         elif j not in bauteilTyp_list:
             bauteilTyp_list.append(j)
 
-    return bauteilTyp_list, beschreibtBauteil
+    return bauteilTyp_list, bauteil_list
 
 def get_GlobalId(data_filename,inst):
     graph = connect(data_filename)
