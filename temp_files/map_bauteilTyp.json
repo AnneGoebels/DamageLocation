@@ -1,13 +1,19 @@
-{   "[rdflib.term.URIRef('https://w3id.org/asbingowl/core#Kappe')]": "EDGEBEAM",
-    "[rdflib.term.URIRef('https://w3id.org/asbingowl/core#Bauteil')]" : "ignore",
-    "[rdflib.term.URIRef('https://w3id.org/asbingowl/keys/2013#230012114000000_GelaenderMitDrahtgitterfuellung')]": "RAILING",
-    "[rdflib.term.URIRef('https://w3id.org/asbingowl/core#StrasseWeg')]": "SLAB",
-    "[rdflib.term.URIRef('https://w3id.org/asbingowl/core#Fahrstreifen')]": "SLAB",
-    "[rdflib.term.URIRef('https://w3id.org/asbingowl/core#Fahrbahnuebergang')]": "SLAB",
-    "[rdflib.term.URIRef('https://w3id.org/asbingowl/keys/2013#040011000000000_Widerlager')]": "RETAININGWALL",
-    "[rdflib.term.URIRef('https://w3id.org/asbingowl/core#EinfacheBauteilart')]" : "ignore",
-    "[rdflib.term.URIRef('https://w3id.org/asbingowl/keys#ArtEinfacheBauteilart_Besichtigungseinrichtung_Befestigungseinrichtung_Boeschungstreppe')]": "STAIR",
-    "[rdflib.term.URIRef('https://w3id.org/asbingowl/core#TragendesBauteil')]": "GIRDER_SEGMENT",
-    "[rdflib.term.URIRef('https://w3id.org/asbingowl/keys/2013#230011220000000_EinfacheDistanzschutzplanke')]": "GUARDRAIL",
-    "https://w3id.org/asbingowl/keys/2013#040011000000000_Widerlager": "RETAININGWALL"
+{   "https://w3id.org/asbingowl/core#Kappe": "EDGEBEAM",
+    "https://w3id.org/asbingowl/core#Bauteil" : "ignore",
+    "https://w3id.org/asbingowl/keys/2013#230012114000000_GelaenderMitDrahtgitterfuellung": "RAILING",
+    "https://w3id.org/asbingowl/core#StrasseWeg": "SLAB",
+    "https://w3id.org/asbingowl/core#Fahrstreifen": "SLAB",
+    "https://w3id.org/asbingowl/core#Fahrbahnuebergang": "SLAB",
+    "https://w3id.org/asbingowl/keys/2013#040011000000000_Widerlager": "RETAININGWALL",
+    "https://w3id.org/asbingowl/core#EinfacheBauteilart" : "ignore",
+    "https://w3id.org/asbingowl/keys#ArtEinfacheBauteilart_Besichtigungseinrichtung_Befestigungseinrichtung_Boeschungstreppe": "STAIR",
+    "https://w3id.org/asbingowl/core#TragendesBauteil": "GIRDER_SEGMENT",
+    "https://w3id.org/asbingowl/keys/2013#230011220000000_EinfacheDistanzschutzplanke": "GUARDRAIL",
+    "https://w3id.org/asbingowl/core#Ueberbau": "SUPERSTRUCTURE",
+    "https://w3id.org/asbingowl/keys/2013#130023330000000_Boeschungspflaster": "BRIDGE",
+    "https://w3id.org/asbingowl/core#Gruendung" : "FOOTING",
+    "https://w3id.org/asbingowl/keys/2013#040012100000000_Massiv" :"COLUMN",
+    "https://w3id.org/asbingowl/core#Lager" : "BEARING"
+
+
 }
