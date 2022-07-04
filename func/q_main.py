@@ -47,6 +47,44 @@ def get_bauteildefinition(sibbw_graph):
         btd_list.append(i.Bauteildefinition)
     return btd_list
 
+def get_asbbauteil(sibbw_graph):
+    ont = Graph()
+    ont.parse("https://annegoebels.github.io/asb/core//ontology.ttl")
+    g = sibbw_graph + ont
+    bt_list = []
+    query_btd = prepareQuery("""
+        SELECT DISTINCT ?Bauteil 
+        WHERE{
+            ?Bauteil a  ?Bauteilclass.
+            ?Bauteilclass rdfs:subClassOf* asb:AbstraktesBauteil.
+        }
+        
+        """, initNs={"asb":ANS})
+    for i in g.query(query_btd):
+        bt_list.append(i.Bauteil)
+    return bt_list
+
+
+def get_asbbauteilArt(sibbw_graph, asbBauteil):
+    query_btd = prepareQuery("""
+        SELECT DISTINCT ?Bauteilclass ?ArtClass ?uArt
+        WHERE{
+            ?Bauteil a  ?Bauteilclass.
+            OPTIONAL {
+            ?Bauteil asb:associatedWith ?Art.
+            ?Art a ?ArtClass.
+            }
+            OPTIONAL {
+            ?Bauteil asb:Unterbau_Art ?uArt.
+            } 
+        }
+
+        """, initNs={"asb": ANS})
+    for i in sibbw_graph.query(query_btd, initBindings={"Bauteil":asbBauteil}):
+        return i
+
+
+
 def get_schadenObjekte(data_filename):
     graph = connect(data_filename)
     sO_list = []
@@ -474,23 +512,36 @@ def get_beschreibtBauteil(sibbw_graph,bauteildefinition):
     list_bauteilarten = []
     # hier auch bauteilgruppe von bdef querien
     q1 = prepareQuery("""
-    SELECT DISTINCT ?asbBauteil ?asbBauteilClass ?asbBauteilart ?asbBauteilartClass ?FrzR_Art ?Unterbau_Art ?einfacheArt
+    SELECT DISTINCT ?konTeil ?btgrp ?asbBauteil ?asbBauteilClass ?asbBauteilart ?asbBauteilartClass ?FrzR_Art ?Unterbau_Art ?einfacheArt
     WHERE{
+        ?bdef a asb:ASBING13_BauteilDefinition.
+        
+        OPTIONAL{
+         ?bdef asb:ASBING13_Konstruktionsteil ?konTeil.}
+         
+        OPTIONAL{
+        ?bdef asb:ASBING13_Bauteilgruppe ?btgrp. }
+        
+        OPTIONAL{
         ?bdef asb:beschreibtBauteil ?asbBauteil.
         ?asbBauteil a ?asbBauteilClass.
+        
         OPTIONAL{
         ?asbBauteil asb:Unterbau_Art ?Unterbau_Art .
         }
+        
         OPTIONAL{
         ?asbBauteil asb:associatedWith ?asbBauteilart.
         ?asbBauteilart a ?asbBauteilartClass. 
+        
         OPTIONAL{
         ?asbBauteilart asb:FahrzeugRueckhaltesystem_Art [ asb:ArtFahrzeugRueckhaltesystem_Systembezeichnung [ asb:Systembezeichnung_Bezeichnung  ?FrzR_Art] ] 
         }
         OPTIONAL{
         ?asbBauteilart asb:EinfacheBauteilart_Art  ?einfacheArt.
         }
-        }   
+        }  
+        } 
     }
     """, initNs={"asb":ANS})
     for i in sibbw_graph.query(q1, initBindings={"bdef":bauteildefinition}):
@@ -540,6 +591,8 @@ def get_einbauort (asbBauteil, sibbw_graph):
             rechts_links["0"] = "Links"
         if "Rechte" in ortsangabe:
             rechts_links["0"]= "Rechts"
+        if "Lagerreihe" in ortsangabe:
+            rechts_links = ortsangabe
         #else:
         #    print("no interpretable location description found")
 

@@ -630,9 +630,11 @@ mit Stützen- bzw. Wl.-Querträgern.***""" ;
 
 :N_4660293_Bauteil a asb:Bauteil ;
     asb:AbstraktesBauteil_Einbauort "Widerlager Achse 30, Lagerreihe 1***" ;
+    asb:BauteilTypInIfc "BEARING" ;
     asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "N_4660293" ;
             asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ] ;
     asb:associatedWith :DP18ITRX_Lager ;
+    asb:hasModelRepresentation inst:buildingelement_4f1c5e37-811c-429e-8ae8-e6037f33724d ;
     asb:isPartOf :7936662_0_Teilbauwerk .
 
 :N_5341006_Verbindungsmittel a asb:Verbindungsmittel ;
@@ -680,9 +682,11 @@ mit Stützen- bzw. Wl.-Querträgern.***""" ;
 
 :N_6871627_Bauteil a asb:Bauteil ;
     asb:AbstraktesBauteil_Einbauort "Widerlager Achse 10, Lagerreihe 2***" ;
+    asb:BauteilTypInIfc "BEARING" ;
     asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "N_6871627" ;
             asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ] ;
     asb:associatedWith :DP18ITRU_Lager ;
+    asb:hasModelRepresentation inst:buildingelement_776d4a04-8e12-498e-a6ba-487d29a95c50 ;
     asb:isPartOf :7936662_0_Teilbauwerk .
 
 :N_7200598_Verbindungsmittel a asb:Verbindungsmittel ;
@@ -705,9 +709,11 @@ mit Stützen- bzw. Wl.-Querträgern.***""" ;
 
 :N_7696645_Bauteil a asb:Bauteil ;
     asb:AbstraktesBauteil_Einbauort "Widerlager Achse 30, Lagerreihe 2***" ;
+    asb:BauteilTypInIfc "BEARING" ;
     asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "N_7696645" ;
             asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ] ;
     asb:associatedWith :DP18ITRW_Lager ;
+    asb:hasModelRepresentation inst:buildingelement_776d4a04-8e12-498e-a6ba-487d29a953e8 ;
     asb:isPartOf :7936662_0_Teilbauwerk .
 
 :N_7767890_Bauwerkszustand a asb:Bauwerkszustand ;
@@ -764,9 +770,11 @@ mit Stützen- bzw. Wl.-Querträgern.***""" ;
 
 :N_9488405_Bauteil a asb:Bauteil ;
     asb:AbstraktesBauteil_Einbauort "Widerlager Achse 10, Lagerreihe 1***" ;
+    asb:BauteilTypInIfc "BEARING" ;
     asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "N_9488405" ;
             asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ] ;
     asb:associatedWith :DP18ITRV_Lager ;
+    asb:hasModelRepresentation inst:buildingelement_4f1c5e37-811c-429e-8ae8-e6037f330c76 ;
     asb:isPartOf :7936662_0_Teilbauwerk .
 
 :N_9804602_Bauwerkszustand a asb:Bauwerkszustand ;
@@ -844,6 +852,7 @@ mit Stützen- bzw. Wl.-Querträgern.***""" ;
 
 :1493974_BauteilDefinition a asb:ASBING13_BauteilDefinition ;
     asb:ASBING13_Bauteilgruppe asbkey13:390021100000000_BauteilgruppeUeberbau ;
+    asb:BauteilTypInIfc "SUPERSTRUCTURE" ;
     asb:associatedWith :7936662_0_Teilbauwerk ;
     asb:beschreibtBauteil :N_1418836_Ueberbau .
 
@@ -1019,7 +1028,9 @@ mit Stützen- bzw. Wl.-Querträgern.***""" ;
     asb:ASBING13_Bauteil asbkey13:130011000000000_Bruecke ;
     asb:ASBING13_Bauteilgruppe asbkey13:390022310000000_BauteilgruppeGelaende ;
     asb:ASBING13_Konstruktionsteil asbkey13:130023330000000_Boeschungspflaster ;
-    asb:associatedWith :7936662_0_Teilbauwerk .
+    asb:BauteilTypInIfc "BRIDGE" ;
+    asb:associatedWith :7936662_0_Teilbauwerk ;
+    asb:hasModelRepresentation inst:building_49c24f44-9e59-46e7-a811-220d4ae773bf .
 
 :4370563_BauteilDefinition a asb:ASBING13_BauteilDefinition ;
     asb:ASBING13_Bauteil asbkey13:130011121000000_Ueberbau ;
@@ -1085,7 +1096,9 @@ mit Stützen- bzw. Wl.-Querträgern.***""" ;
     asb:ASBING13_Bauteil asbkey13:130011121000000_Ueberbau ;
     asb:ASBING13_Bauteilgruppe asbkey13:390022220000000_BauteilgruppeAusstattungen_zustandsnotenBauteilgruppeSonstige_ ;
     asb:ASBING13_Konstruktionsteil asbkey13:130022211442000_Schmutzfang ;
-    asb:associatedWith :7936662_0_Teilbauwerk .
+    asb:BauteilTypInIfc "BRIDGE" ;
+    asb:associatedWith :7936662_0_Teilbauwerk ;
+    asb:hasModelRepresentation inst:building_49c24f44-9e59-46e7-a811-220d4ae773bf .
 
 :5566359_BauteilDefinition a asb:ASBING13_BauteilDefinition ;
     asb:ASBING13_Bauteilgruppe asbkey13:390022180000000_BauteilgruppeKappe ;
@@ -1290,6 +1303,7 @@ mit Stützen- bzw. Wl.-Querträgern.***""" ;
     asb:ASBING13_Bauteil asbkey13:130011000000000_Bruecke ;
     asb:ASBING13_Bauteilgruppe asbkey13:390022210000000_BauteilgruppeSchutzeinrichtungen ;
     asb:ASBING13_Konstruktionsteil asbkey13:130022112234000_Fussplatte ;
+    asb:BauteilTypInIfc "RAILING" ;
     asb:Schaden_Ortsangabe [ asb:Ortsangabe_Ortsangabe asbkey:OrtsangabeBauteilSchaden_Allgemein_links,
                 asbkey:OrtsangabeBauteilSchaden_Allgemein_rechts ] ;
     asb:associatedWith :7936662_0_Teilbauwerk ;
@@ -1355,10 +1369,14 @@ mit Stützen- bzw. Wl.-Querträgern.***""" ;
     asb:ASBObjekt_Bearbeiter "ADMINISTRATOR" ;
     asb:ASBObjekt_Systemdatum "2002-07-09"^^xsd:date ;
     asb:AbstraktesBauteil_Einbauort "Widerlager Achse 10 und 30 sowie Pfeiler Achse 20***" ;
+    asb:BauteilTypInIfc "FOOTING" ;
     asb:Gruendung_Art asbkey13:160011000000000_Flachgruendung ;
     asb:Gruendung_Typenbezeichnung "Fundamentplatten" ;
     asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "DP18FYXD" ;
             asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ] ;
+    asb:hasModelRepresentation inst:footing_7345dfeb-582f-40d2-b3b1-5daf701d04d4,
+        inst:footing_e1d42e4a-8da2-40d2-9545-0c7cb9856a86,
+        inst:footing_e1d42e4a-8da2-40d2-9545-0c7cb9856eda ;
     asb:isPartOf :7936662_0_Teilbauwerk .
 
 :DP18G50D_FahrzeugRueckhaltesystem a asb:FahrzeugRueckhaltesystem ;
@@ -1720,9 +1738,12 @@ aus Drahtgitter 30/30/3mm feuerverzinkt.***""" ;
     dot:hasDamage :1968081_SchadenObjekt .
 
 :N_3895045_Unterbau a asb:Unterbau ;
+    asb:BauteilTypInIfc "COLUMN" ;
     asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "N_3895045" ;
             asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ] ;
     asb:Unterbau_Art asbkey13:040012100000000_Massiv ;
+    asb:hasModelRepresentation inst:column_776d4a04-8e12-498e-a6ba-487d29a95c66,
+        inst:column_b2b22d62-5b8e-42af-ba99-9fddd5a722ae ;
     asb:isPartOf :7936662_0_Teilbauwerk .
 
 :N_7146946_Bauteil a asb:Bauteil ;
@@ -1732,7 +1753,8 @@ aus Drahtgitter 30/30/3mm feuerverzinkt.***""" ;
     asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "N_7146946" ;
             asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ] ;
     asb:associatedWith :7936662_0_Teilbauwerk,
-        :DP18G50B_FahrzeugRueckhaltesystem .
+        :DP18G50B_FahrzeugRueckhaltesystem ;
+    asb:hasModelRepresentation inst:buildingelement_cecd3ddb-e630-4edf-bad9-db620023c66a .
 
 :N_7590749_Bauteil a asb:Bauteil ;
     aoi:hasAreaOfInterest :9808362_AOI ;
@@ -1741,7 +1763,8 @@ aus Drahtgitter 30/30/3mm feuerverzinkt.***""" ;
     asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "N_7590749" ;
             asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ] ;
     asb:associatedWith :7936662_0_Teilbauwerk,
-        :DP18G50A_FahrzeugRueckhaltesystem .
+        :DP18G50A_FahrzeugRueckhaltesystem ;
+    asb:hasModelRepresentation inst:buildingelement_cecd3ddb-e630-4edf-bad9-db620023c67b .
 
 :N_7974051_Fahrstreifen a asb:Fahrstreifen ;
     asb:ASBING13_AnzahlBauteile "1" ;
@@ -1816,7 +1839,9 @@ aus Drahtgitter 30/30/3mm feuerverzinkt.***""" ;
     asb:ASBING13_Bauteil asbkey13:130011121000000_Ueberbau ;
     asb:ASBING13_Bauteilgruppe asbkey13:390022220000000_BauteilgruppeAusstattungen_zustandsnotenBauteilgruppeSonstige_ ;
     asb:ASBING13_Konstruktionsteil asbkey13:130022211140000_Ablauf ;
-    asb:associatedWith :7936662_0_Teilbauwerk .
+    asb:BauteilTypInIfc "BRIDGE" ;
+    asb:associatedWith :7936662_0_Teilbauwerk ;
+    asb:hasModelRepresentation inst:building_49c24f44-9e59-46e7-a811-220d4ae773bf .
 
 :5509764_BauteilDefinition a asb:ASBING13_BauteilDefinition ;
     asb:ASBING13_Bauteil asbkey13:130011121000000_Ueberbau ;
@@ -4200,6 +4225,7 @@ Tel.: 089/28633-244""" ;
     asb:Ueberbau_KonstruktionshoeheMin [ asb:hasdecimal 1.25 ] ;
     asb:Ueberbau_Kruemmung asbkey13:030121000000000_NichtGekruemmt_r%3E%3D1500M__NichtAufgeweitet ;
     asb:Ueberbau_VorkehrungNachtraeglicheVerstaerkung false ;
+    asb:hasModelRepresentation inst:buildingelement_3a4cc8ed-6a18-4e8e-b359-3f81d5b7774e ;
     asb:isPartOf :7936662_0_Teilbauwerk ;
     dot:hasDamage :4792839_SchadenObjekt .
 

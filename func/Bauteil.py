@@ -7,6 +7,7 @@ from ifcopenshell.util.selector import Selector
 from ifcopenshell.util import element
 
 
+
 def locate_caps(filename, newfile_name, dictionary_rechts_links):
     selector = Selector()
     global model
@@ -111,6 +112,44 @@ def locate_bridge(filename):
     print(bridge)
     return bridge
 
+def locate_footing( filename):
+    selector = Selector()
+    settings = ifcopenshell.geom.settings()
+    settings.set(settings.USE_PYTHON_OPENCASCADE, True)
+    global model
+    model = ifcopenshell.open(filename)
+    footings = selector.parse(model, '.IfcFooting')
+    #eigentlich liste, und in ttl mehrere fundamente erstellen
+    return footings
+
+def locate_column( filename):
+    selector = Selector()
+    settings = ifcopenshell.geom.settings()
+    settings.set(settings.USE_PYTHON_OPENCASCADE, True)
+    global model
+    model = ifcopenshell.open(filename)
+    columns = selector.parse(model, '.IfcColumn')
+    #eigentlich liste, und in ttl mehrere pfeiler erstellen
+    return columns
+
+#workaroung, funktioniert nur für diese ifc-Datei mit custom ifc proxy names
+def locate_bearing( filename, rechts_links):
+    selector = Selector()
+    settings = ifcopenshell.geom.settings()
+    settings.set(settings.USE_PYTHON_OPENCASCADE, True)
+    global model
+    model = ifcopenshell.open(filename)
+    if "10" in rechts_links:
+        ifcDesc = "Lager A10-"
+    if "30" in rechts_links:
+        ifcDesc = "Lager A30-"
+    if "Lagerreihe 1" in rechts_links:
+        ifcDescF = ifcDesc+"1"
+    if "Lagerreihe 2" in rechts_links:
+        ifcDescF = ifcDesc+"2"
+    bearing = selector.parse(model, '.IfcBuildingelementproxy[Name *= "'+ifcDescF+'"]')
+    return bearing
+
 
 def locate_railing(filename, newfile_name, dictionary_rechts_links):
     selector = Selector()
@@ -140,6 +179,33 @@ def locate_railing(filename, newfile_name, dictionary_rechts_links):
             print("Error")
     return railing
 
+def locate_guardrail(filename, newfile_name, dictionary_rechts_links):
+    selector = Selector()
+    global model
+    model = ifcopenshell.open(filename)
+    f = ifcopenshell.open(newfile_name)
+    rechts_links = dictionary_rechts_links
+    a = Geom.elements_in_box(rechts_links, model, f)
+    b = selector.parse(model, '.IfcBuildingelementproxy[Name *= "Leitplanke"]')
+    intersection = list(set(a).intersection(b))
+    if len(intersection) == 1:
+        guard = intersection[0]
+    else:
+        dic = {}
+        for i in intersection:
+            dic[i] = Geom.bounding_box_center(i).Y()
+        if rechts_links == "Rechts":
+            a = sorted(dic.items(), key=lambda x: x[1])
+            sorted_a = dict(a)
+            guard= next(iter(sorted_a.keys()))
+        elif rechts_links == "Links":
+            a = sorted(dic.items(), key=lambda x: x[1], reverse=True)
+            sorted_a = dict(a)
+            guard = next(iter(sorted_a.keys()))
+        else:
+            guard = None
+            print("Error")
+    return guard
 
 def locate_abutment(filename, newfile_name, dictionary_oa):
     selector = Selector()
@@ -161,7 +227,7 @@ def locate_abutment(filename, newfile_name, dictionary_oa):
         Abutment= None
     return Abutment
 
-
+# stair not in box "Anfang oder Ende des Bauwerks" --> ??
 def locate_stair(filename, newfile_name, dictionary_oa):
     selector = Selector()
     global model
@@ -169,11 +235,8 @@ def locate_stair(filename, newfile_name, dictionary_oa):
     f = ifcopenshell.open(newfile_name)
     if len(dictionary_oa) != 0:
         a = Geom.elements_in_box(dictionary_oa["0"][8:], model, f)
-        #print(a)
         b = selector.parse(model, '.IfcStair')
-        #print(b)
         intersection = list(set(a).intersection(b))
-        #print(intersection)
         if len(intersection) > 0:
             Stair = intersection[0]
             print(Stair)
@@ -193,14 +256,25 @@ def check_model_representation(bauteildefinition, bdef_props, ifc_file, bt_filen
                                                    ifcBridgeName, oa, dictionary_bauteilsuche, dictionary_feld,
                                                    dictionary_anfang_ende)
     ifc_bauteil = dictionary_bauteil[bauteildefinition]
-    print(ifc_bauteil)
+
+    lbd_inst_list = []
     if ifc_bauteil is not None:
-        globalIfcID = ifc_bauteil[0]
-        lbd_inst = q_main.query_instance(lbd_graph, globalIfcID)
-        if lbd_inst:
-            return lbd_inst, dictionary_bauteil["Bauteil"]
+        if type(ifc_bauteil) == list:
+            for ifcB in ifc_bauteil:
+                globalIfcID = ifcB[0]
+                print(globalIfcID)
+                lbd_inst = q_main.query_instance(lbd_graph, globalIfcID)
+                print(lbd_inst)
+                if lbd_inst:
+                    lbd_inst_list.append(lbd_inst)
         else:
-            return None
+            globalIfcID = ifc_bauteil[0]
+            lbd_inst = q_main.query_instance(lbd_graph, globalIfcID)
+            if lbd_inst:
+                lbd_inst_list.append(lbd_inst)
+
+        return lbd_inst_list, dictionary_bauteil["Bauteil"]
+
     else:
         print("no ifc ele found")
         return None
@@ -224,6 +298,9 @@ def find_model_representation(bauteildefinition, bdef_props, filename, bt_filena
     elif "RAILING" in ifcBridgeName:
         bauteile[bauteildefinition] = locate_railing(filename, bt_filename, oa)
         bauteile["Bauteil"] = "RAILING"
+    elif "GUARDRAIL" in ifcBridgeName:
+        bauteile[bauteildefinition] = locate_guardrail(filename, bt_filename, oa)
+        bauteile["Bauteil"] = "RAILING"
     elif "RETAININGWALL" in ifcBridgeName and "WiderlagerHinten" in str(bdef_props.values()):
         bauteile[bauteildefinition] = locate_abutment(filename, bt_filename, dictionary_anfang_ende)
         bauteile["Bauteil"] = "Widerlager_Wand_Hinten"
@@ -241,15 +318,19 @@ def find_model_representation(bauteildefinition, bdef_props, filename, bt_filena
         bauteile["Bauteil"] = "Widerlager_Wand_Vorne"
     elif "SUPERSTRUCTURE" in ifcBridgeName:
         bauteile[bauteildefinition] = locate_superstructure(filename)
+        bauteile["Bauteil"] = "SUPERSTRUCTURE"
     elif "BRIDGE" in ifcBridgeName:
-        pass
-    # ab hier noch neue definitionen..
+        bauteile[bauteildefinition] = locate_bridge(filename)
+        bauteile["Bauteil"] = "BRIDGE"
     elif "FOOTING" in ifcBridgeName:
-        pass
+        bauteile[bauteildefinition] = locate_footing(filename)
+        bauteile["Bauteil"] = "FOOTING"
     elif "COLUMN" in ifcBridgeName:
-        pass
+        bauteile[bauteildefinition] = locate_column(filename)
+        bauteile["Bauteil"] = "COLUMN"
     elif "BEARING" in ifcBridgeName:
-        pass
+        bauteile[bauteildefinition] = locate_bearing(filename, oa)
+        bauteile["Bauteil"] = "BEARING"
     else:
         bauteile[bauteildefinition] = None
         print("No Bauteil found for Bauteildefinition")
