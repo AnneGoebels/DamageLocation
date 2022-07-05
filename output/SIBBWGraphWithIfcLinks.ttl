@@ -860,6 +860,7 @@ mit Stützen- bzw. Wl.-Querträgern.***""" ;
     asb:ASBING13_Bauteil asbkey13:130011121000000_Ueberbau ;
     asb:ASBING13_Bauteilgruppe asbkey13:390022250000000_BauteilgruppeBelaege ;
     asb:ASBING13_Konstruktionsteil asbkey13:130022510000000_Fahrbahn ;
+    asb:BauteilTypInIfc "SLAB" ;
     asb:Schaden_Ortsangabe [ asb:Ortsangabe_Ortsangabe asbkey:OrtsangabeBauteilSchaden_Allgemein_gesamterUeberbau ] ;
     asb:associatedWith :7936662_0_Teilbauwerk ;
     asb:beschreibtBauteil :N_6289834_Bauteil .
@@ -1028,9 +1029,9 @@ mit Stützen- bzw. Wl.-Querträgern.***""" ;
     asb:ASBING13_Bauteil asbkey13:130011000000000_Bruecke ;
     asb:ASBING13_Bauteilgruppe asbkey13:390022310000000_BauteilgruppeGelaende ;
     asb:ASBING13_Konstruktionsteil asbkey13:130023330000000_Boeschungspflaster ;
-    asb:BauteilTypInIfc "BRIDGE" ;
+    asb:BauteilTypInIfc "SUPERSTRUCTURE" ;
     asb:associatedWith :7936662_0_Teilbauwerk ;
-    asb:hasModelRepresentation inst:building_49c24f44-9e59-46e7-a811-220d4ae773bf .
+    asb:hasModelRepresentation inst:buildingelement_3a4cc8ed-6a18-4e8e-b359-3f81d5b7774e .
 
 :4370563_BauteilDefinition a asb:ASBING13_BauteilDefinition ;
     asb:ASBING13_Bauteil asbkey13:130011121000000_Ueberbau ;
@@ -1096,9 +1097,9 @@ mit Stützen- bzw. Wl.-Querträgern.***""" ;
     asb:ASBING13_Bauteil asbkey13:130011121000000_Ueberbau ;
     asb:ASBING13_Bauteilgruppe asbkey13:390022220000000_BauteilgruppeAusstattungen_zustandsnotenBauteilgruppeSonstige_ ;
     asb:ASBING13_Konstruktionsteil asbkey13:130022211442000_Schmutzfang ;
-    asb:BauteilTypInIfc "BRIDGE" ;
+    asb:BauteilTypInIfc "SUPERSTRUCTURE" ;
     asb:associatedWith :7936662_0_Teilbauwerk ;
-    asb:hasModelRepresentation inst:building_49c24f44-9e59-46e7-a811-220d4ae773bf .
+    asb:hasModelRepresentation inst:buildingelement_3a4cc8ed-6a18-4e8e-b359-3f81d5b7774e .
 
 :5566359_BauteilDefinition a asb:ASBING13_BauteilDefinition ;
     asb:ASBING13_Bauteilgruppe asbkey13:390022180000000_BauteilgruppeKappe ;
@@ -1839,9 +1840,9 @@ aus Drahtgitter 30/30/3mm feuerverzinkt.***""" ;
     asb:ASBING13_Bauteil asbkey13:130011121000000_Ueberbau ;
     asb:ASBING13_Bauteilgruppe asbkey13:390022220000000_BauteilgruppeAusstattungen_zustandsnotenBauteilgruppeSonstige_ ;
     asb:ASBING13_Konstruktionsteil asbkey13:130022211140000_Ablauf ;
-    asb:BauteilTypInIfc "BRIDGE" ;
+    asb:BauteilTypInIfc "SUPERSTRUCTURE" ;
     asb:associatedWith :7936662_0_Teilbauwerk ;
-    asb:hasModelRepresentation inst:building_49c24f44-9e59-46e7-a811-220d4ae773bf .
+    asb:hasModelRepresentation inst:buildingelement_3a4cc8ed-6a18-4e8e-b359-3f81d5b7774e .
 
 :5509764_BauteilDefinition a asb:ASBING13_BauteilDefinition ;
     asb:ASBING13_Bauteil asbkey13:130011121000000_Ueberbau ;
@@ -2179,6 +2180,7 @@ aus Drahtgitter 30/30/3mm feuerverzinkt.***""" ;
             asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ] ;
     asb:associatedWith :7936662_0_Teilbauwerk,
         :DP19UYWR_BelagAbdichtung ;
+    asb:hasModelRepresentation inst:slab_4f1c5e37-811c-429e-8ae8-e6037f337660 ;
     dot:hasDamage :3151604_SchadenObjekt .
 
 :N_9566727_SpannstahlDraht a asb:SpannstahlDraht ;

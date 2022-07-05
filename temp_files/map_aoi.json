@@ -22,5 +22,8 @@
       "https://w3id.org/asbingowl/keys#OrtsangabeBauteilSchaden_Allgemein_rechts" : ["Y_Rechts"],
       "https://w3id.org/asbingowl/keys#OrtsangabeBauteilSchaden_Allgemein_Oberseite" : ["Z_Oben"],
       "https://w3id.org/asbingowl/keys/2013#130082100000000_xxxTesFeld": "ignore",
-      "https://w3id.org/asbingowl/keys#OrtsangabeBauteilSchaden_Himmelsrichtung_Norden": "ignore"
+      "https://w3id.org/asbingowl/keys#OrtsangabeBauteilSchaden_Himmelsrichtung_Norden": "ignore",
+      "https://w3id.org/asbingowl/keys#OrtsangabeBauteilSchaden_Bereiche_1Stuetzenbereich" : ["X_Mitte"],
+      "https://w3id.org/asbingowl/keys#OrtsangabeBauteilSchaden_Widerlager_hinterWiderlagerVorn" : ["Control_AnfangDesBauwerks"],
+      "https://w3id.org/asbingowl/keys#OrtsangabeBauteilSchaden_Bereiche_1Endbereich": ["Control_EndeDesBauwerks"]
    }

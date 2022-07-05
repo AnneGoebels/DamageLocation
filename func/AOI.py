@@ -17,11 +17,12 @@ import json
 import numpy
 
 
-def create_aoi_file(data_filename, filename, newfile_name):
+def create_aoi_file( filename, newfile_name):
     model = ifcopenshell.open(filename)   
     Ifc.create_ifc(model, newfile_name)
     f = ifcopenshell.open(newfile_name)
 
+"""
 def new_aoi_instance(data_filename,schadenObjekt,i,key,aoi_string):
     
     schadenquery = q_main.query_schaden(data_filename, schadenObjekt)
@@ -65,6 +66,7 @@ def bauteildefinition_as_aoi(bauteildefinition,data_filename,schadenObjekt,i,bau
         else:
             break
 
+"""
 
 def merge_box(box1,box2):
     try:
@@ -157,12 +159,14 @@ def place_aoi(box,height_box,aoi_filename,name,BauteilTyp):
     Ifc.place_object(g, box, plea, height_box, name, aoi_filename, Description=BauteilTyp)
 
 
-def aoi_instance(lb,filename,bt_filename,aoi_filename,schadenObjekt,GlobalId,BauteilTyp):
+
+def aoi_instance(lb, ifc_file, bt_filename, aoi_filename, schadenObjekt, GlobalId, BauteilTyp):
     settings = ifcopenshell.geom.settings()
     settings.set(settings.USE_PYTHON_OPENCASCADE, True) 
     selector = Selector()
-    model = ifcopenshell.open(filename)
+    model = ifcopenshell.open(ifc_file)
     f = ifcopenshell.open(bt_filename)
+
     number = 1
     for aoi_list in lb:
         list_of_boxes = {}
@@ -216,74 +220,98 @@ def aoi_instance(lb,filename,bt_filename,aoi_filename,schadenObjekt,GlobalId,Bau
         place_aoi(box, height_box, aoi_filename, schadenObjekt[32:] + "_" + str(number), BauteilTyp)
         number = number + 1     
 
-def aoi_main(schadenObjekt,bauteildefinition,data_filename,filename,bt_filename,aoi_filename,lbd_filename):
+def aoi_main(schadenObjekt, bdef_aoi_dict, sibbw_graph, ifc_file, bt_filename, aoi_filename, lbd_ifc_graph):
 
     settings = ifcopenshell.geom.settings()
     settings.set(settings.USE_PYTHON_OPENCASCADE, True) 
     selector = Selector()
-    model = ifcopenshell.open(filename)
+    model = ifcopenshell.open(ifc_file)
     f = ifcopenshell.open(bt_filename)
 
-    schadenquery = q_main.query_schaden(data_filename, schadenObjekt)
-    inst_list = q_main.query_bauteildefinition_hasModelRepresentation(data_filename, bauteildefinition)
-    BauteilTyp = q_main.query_bauteildefinition_bauteilTyp(data_filename, bauteildefinition)
+    bdef = bdef_aoi_dict["Bauteildefinition"]
+    aoi_inst = bdef_aoi_dict["AOI"]
+    typ = bdef_aoi_dict["Bauteiltyp"]
+
+    #schadenquery = q_main.query_schaden(sibbw_graph, schadenObjekt)
+    inst_list = q_main.query_bauteildefinition_hasModelRepresentation(sibbw_graph, bdef)
+    #BauteilTyp = q_main.query_bauteildefinition_bauteilTyp(sibbw_graph, bauteildefinition)
 
     with open(r".\temp_files\map_aoi.json", "r") as file:
         map_aoi = json.loads(file.read())
 
-    for inst in inst_list:
-        ####Fall 1: SchadenObjekt enthält Information zur AOI
+    if len(inst_list) != 0:
+        for inst in inst_list:
+            ####Fall 1: SchadenObjekt enthält Information zur AOI
 
-        GlobalId = q_main.get_GlobalId(lbd_filename, inst)
+            GlobalId = q_main.get_GlobalId(lbd_ifc_graph, inst)
+            print(GlobalId)
 
-        if "AOI" in schadenquery:
+            noAOIlist = []
 
-            aoi_query = q_main.query_aoi(data_filename, str(schadenquery["AOI"]))
+            if aoi_inst is not None:
 
-            lx = []
-            ly = []
-            lz = []
-            lc = []
-            la = []
-            for h in aoi_query:
-                aoi = map_aoi[str(h)]
-                for i in aoi:
-                    if "X_" in i and i not in lx:
-                        lx.append(i)
-                    if "Y_" in i and i not in ly:
-                        ly.append(i)
-                    if "Z_" in i and i not in lz:
-                        lz.append(i)
-                    if "Control_" in i and i not in lc:
-                        lc.append(i[8:])
+                aoi_Classes = q_main.query_aoi_Classes(sibbw_graph, aoi_inst)
+                print(aoi_Classes)
 
-            if lx:
-                la.append(lx)
-            if ly:
-                la.append(ly)
-            if lz:
-                la.append(lz)
-            if lc:
-                la.append(lc)
+                lx = []
+                ly = []
+                lz = []
+                lc = []
+                la = []
+                for aoiClass in aoi_Classes:
+                    location = map_aoi[str(aoiClass)]
+                    for i in location:
+                        if "X_" in i and i not in lx:
+                            lx.append(i)
+                        if "Y_" in i and i not in ly:
+                            ly.append(i)
+                        if "Z_" in i and i not in lz:
+                            lz.append(i)
+                        if "Control_" in i and i not in lc:
+                            lc.append(i[8:])
 
-            ####Falls SchadenObjekt nur modellübergreifende AOIs enthält -> Annahme: Vertikale Mitte des Bauteils:    
-            if not lx and not ly and not lz:
-                la.append("Z_Mitte")
+                if lx or ly or lz or lc:
+                    if lx:
+                        la.append(lx)
+                    if ly:
+                        la.append(ly)
+                    if lz:
+                        la.append(lz)
+                    if lc:
+                        la.append(lc)
 
-            lb = [list(x) for x in numpy.array(numpy.meshgrid(*la)).T.reshape(-1,len(la))]
-            aoi_instance(lb, filename, bt_filename, aoi_filename, schadenObjekt, GlobalId, BauteilTyp)
+                    ####Falls SchadenObjekt nur modellübergreifende AOIs enthält -> Annahme: Vertikale Mitte des Bauteils:
+                    if not lx and not ly and not lz:
+                        la.append("Z_Mitte")
+
+                    lb = [list(x) for x in numpy.array(numpy.meshgrid(*la)).T.reshape(-1,len(la))]
+                    aoi_instance(lb, ifc_file, bt_filename, aoi_filename, schadenObjekt, GlobalId, typ)
+
+                else:
+                    noAOIlist.append(GlobalId)
 
 
-        # Fall 2: SchadenObjekt enthält keine Information zur AOI
-        else:
 
-            b = selector.parse(model, ".IfcBuildingElementProxy[GlobalId *= \""+GlobalId+"\"] | .IfcWall[GlobalId *= \""+GlobalId+"\"] | .IfcColumn[GlobalId *= \""+GlobalId+"\"] | .IfcSlab[GlobalId *= \""+GlobalId+"\"] | .IfcBeam[GlobalId *= \""+GlobalId+"\"] | .IfcStairFlight[GlobalId *= \""+GlobalId+"\"] | .IfcRailing[GlobalId *= \""+GlobalId+"\"]")[0]
-            bbox = Bnd_Box()
-            shape = ifcopenshell.geom.create_shape(settings, b).geometry
-            brepbndlib_Add(shape, bbox)
-            xmin, ymin, zmin, xmax, ymax, zmax = bbox.Get()
-            corner1 = gp_Pnt(xmin, ymin, zmin)
-            corner2 = gp_Pnt(xmax, ymax, zmax)
-            box = BRepPrimAPI_MakeBox(corner1, corner2)
-            height_box = abs(zmax-zmin)
-            place_aoi(box, height_box, aoi_filename, schadenObjekt[32:], BauteilTyp)
+            # Fall 2: SchadenObjekt enthält keine Information zur AOI
+            else:
+                noAOIlist.append(GlobalId)
+
+            for g in noAOIlist:
+
+                b = selector.parse(model, ".IfcBuildingElementProxy[GlobalId *= \""+GlobalId+"\"] | .IfcWall[GlobalId *= \""+GlobalId+"\"] | .IfcColumn[GlobalId *= \""+GlobalId+"\"] | .IfcSlab[GlobalId *= \""+GlobalId+"\"] | .IfcBeam[GlobalId *= \""+GlobalId+"\"] | .IfcStairFlight[GlobalId *= \""+GlobalId+"\"] | .IfcRailing[GlobalId *= \""+GlobalId+"\"]")[0]
+                #print(b)
+                bbox = Bnd_Box()
+                shape = ifcopenshell.geom.create_shape(settings, b).geometry
+                brepbndlib_Add(shape, bbox)
+                xmin, ymin, zmin, xmax, ymax, zmax = bbox.Get()
+                corner1 = gp_Pnt(xmin, ymin, zmin)
+                corner2 = gp_Pnt(xmax, ymax, zmax)
+                box = BRepPrimAPI_MakeBox(corner1, corner2)
+                height_box = abs(zmax-zmin)
+                place_aoi(box, height_box, aoi_filename, schadenObjekt[32:], typ)
+
+
+
+    else:
+        print("Schadenobjekt/ Bdef not connected to IFC")
+        return "None"

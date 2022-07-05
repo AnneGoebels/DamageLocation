@@ -248,14 +248,7 @@ def createControlIfc (sibbw_graph, ifc_file, ifc_lbd_graph, bt_file) :
                 else:
                     unlocatedBdef.append(asbBauteil)
 
-
-
-
-
-    #print(unlocatedBdef)
-    #(unclearBdefWithTwoBauteile)
-
-  #print("created IfcControlFile")
+    print("created IfcControlFile")
 
     return sibbw_graph
 

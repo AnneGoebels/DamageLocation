@@ -1,6 +1,6 @@
 {
     "https://w3id.org/asbingowl/keys/2013#390021100000000_BauteilgruppeUeberbau" : "SUPERSTRUCTURE",
-    "https://w3id.org/asbingowl/keys/2013#130023330000000_Boeschungspflaster": "BRIDGE",
-     "https://w3id.org/asbingowl/keys/2013#390022220000000_BauteilgruppeAusstattungen_zustandsnotenBauteilgruppeSonstige_" : "BRIDGE",
+    "https://w3id.org/asbingowl/keys/2013#130023330000000_Boeschungspflaster": "SUPERSTRUCTURE",
+     "https://w3id.org/asbingowl/keys/2013#390022220000000_BauteilgruppeAusstattungen_zustandsnotenBauteilgruppeSonstige_" : "SUPERSTRUCTURE",
       "https://w3id.org/asbingowl/keys/2013#130022510000000_Fahrbahn": "SLAB"
 }

@@ -7,53 +7,32 @@ from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeBox
 from OCC.Core.TopAbs import TopAbs_VERTEX
 from OCC.Core.TopExp import TopExp_Explorer
 from OCC.Extend.TopologyUtils import TopologyExplorer
-from func import BCF, Ifc, AOI, Geom
-import os
+from func import BCF, Ifc, AOI, Geom, q_main
 
-def createDamageRepresentationFiles(sibbw_data_file,ifc_file,aoi_file,point_file,bcf_file):
+def createDamageRepresentationFiles(sibbw_graph, ifc_file, aoi_file, point_file, bcf_file):
 
     selector = Selector()
     settings = ifcopenshell.geom.settings()
     settings.set(settings.USE_PYTHON_OPENCASCADE, True)
 
-    ### Enter data file name (.ttl) ###
-
-    #sibbw_data_file = 'st_2079.ttl'
-
-    ### Enter model file name (.ifc) ###
-
-    #ifc_file = "st_2079.ifc"
-
-    ### Enter model file name converted to LBD-Format (.ttl) ###
-
-    #lbd_of_ifc_file = 'st_2079_lbd.ttl'
-
-    ### The next files will be created
-
-    #bt_file = "control.ifc"
-    #aoi_file = "damage.ifc"
-    #point_file = r"output/point_representation.ifc"
-    #bcf_file = (str(os.path.abspath(os.getcwd())) + "//output//bcf_representation.bcf")
-
-
     ### BCF representation
 
-    g = ifcopenshell.open(aoi_file)
-    aoi_elements = selector.parse(g, ".IfcBuildingElementProxy")
-    BCF.export_bcfxml(aoi_elements, bcf_file, ifc_file)
+    damage_ifc = ifcopenshell.open(aoi_file)
+    aoi_elements = selector.parse(damage_ifc, ".IfcBuildingElementProxy")
+    BCF.export_bcfxml(aoi_elements, bcf_file, ifc_file,sibbw_graph)
 
     ### IFC representation
 
-    AOI.create_aoi_file(sibbw_data_file, ifc_file, point_file)
+    AOI.create_aoi_file(ifc_file, point_file)
+    point_ifc = ifcopenshell.open(point_file)
 
-    h = ifcopenshell.open(point_file)
 
-
-    aoi_elements = selector.parse(g, ".IfcBuildingElementProxy")
+    aoi_elements = selector.parse(damage_ifc, ".IfcBuildingElementProxy")
 
     for i in aoi_elements:
         schadenObjekt = i.Name
-        entsprichtIfcType = i.Description
+        #entsprichtIfcType = i.Description
+        desc = q_main.get_Schaden_Desc(sibbw_graph,schadenObjekt)
         mitte = Geom.bounding_box_center(i)
         corner1 = gp_Pnt(mitte.X()-0.15,mitte.Y()-0.15,mitte.Z()-0.15)
         corner2 = gp_Pnt(mitte.X()+0.15,mitte.Y()+0.15,mitte.Z()+0.15)
@@ -70,6 +49,6 @@ def createDamageRepresentationFiles(sibbw_data_file,ifc_file,aoi_file,point_file
                     x_y_F.append([round(point.X(),2),round(point.Y(),2)])
                 vertex_F.Next()
             plea = Geom.sorted_point_list_extrusion_area(sol2, x_y_F)
-        Ifc.place_object(h, box, plea, height_box, schadenObjekt, point_file)
+        Ifc.place_object(point_ifc, box, plea, height_box, schadenObjekt, point_file, desc)
 
     return "Damage Ifc and BCF created"

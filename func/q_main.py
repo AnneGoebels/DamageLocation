@@ -15,6 +15,7 @@ SCHEMA = Namespace("http://schema.org/")
 DOT = Namespace("https://w3id.org/dot#")
 INST = Namespace("https://asbingowl.org/TwinGenDemo/BW452#")
 PROPS = Namespace("http://lbd.arch.rwth-aachen.de/props#")
+SIBINST =Namespace("http://example.org/sibbw7936662#")
 
 """
 def connect(database_name):
@@ -85,23 +86,16 @@ def get_asbbauteilArt(sibbw_graph, asbBauteil):
 
 
 
-def get_schadenObjekte(data_filename):
-    graph = connect(data_filename)
+def get_schadenObjekte(sibbw_graph):
     sO_list = []
     query_sO= prepareQuery("""
-        prefix : <http://example.org/sibbw7936662#> 
-        prefix aoi: <https://w3id.org/aoi#> 
-        prefix asb: <https://w3id.org/asbingowl/core#> 
-        prefix asbkey: <https://w3id.org/asbingowl/keys#> 
-        prefix asbkey13: <https://w3id.org/asbingowl/keys/2013#> 
-        prefix xsd: <http://www.w3.org/2001/XMLSchema#> 
-        SELECT DISTINCT ?schadenObjekte
-        WHERE{
-            ?schadenObjekte a asb:SchadenObjekt.
+        SELECT DISTINCT ?schadenObj
+        WHERE {
+            ?schadenObj a asb:SchadenObjekt.
         }
-        """)
-    for i in graph.query(query_sO):
-        sO_list.append(i[0])
+        """, initNs={"asb":ANS})
+    for i in sibbw_graph.query(query_sO):
+        sO_list.append(i.schadenObj)
     return sO_list
 
 """
@@ -126,65 +120,41 @@ def get_schadenObjekte(data_filename):
  """
 
 
-def query_schaden(data_filename,schadenObjekt):
-    graph = connect(data_filename)
+def query_schaden(sibbw_graph,schadenObjekt):
     schaden_dic = {}
     bauteildefinition_query = prepareQuery("""
-    prefix : <http://example.org/sibbw7936662#> 
-    prefix aoi: <https://w3id.org/aoi#> 
-    prefix asb: <https://w3id.org/asbingowl/core#> 
-    prefix asbkey: <https://w3id.org/asbingowl/keys#> 
-    prefix asbkey13: <https://w3id.org/asbingowl/keys/2013#> 
-    prefix xsd: <http://www.w3.org/2001/XMLSchema#> 
-    SELECT DISTINCT ?bauteildefinition
+    SELECT DISTINCT ?bauteildefinition ?aoiInst ?bauteiltyp 
     WHERE{
-        <""" + str(schadenObjekt) + """> a asb:SchadenObjekt .
-        <""" + str(schadenObjekt) + """> asb:hatBauteilDefinition ?bauteildefinition
-
+         ?schadObj a asb:SchadenObjekt;
+                   asb:hatBauteilDefinition ?bauteildefinition.
+         OPTIONAL{
+         ?aoiInst aoi:locatesDamage ?schadObj.
+         }
+         OPTIONAL{
+         ?bauteildefinition  asb:BauteilTypInIfc ?bauteiltyp
+         }
     }
-    """)
-    for i in graph.query(bauteildefinition_query):
-        schaden_dic["Bauteildefinition"] = i[0]
-
-    aoi_query = prepareQuery("""
-    prefix : <http://example.org/sibbw7936662#> 
-    prefix aoi: <https://w3id.org/aoi#> 
-    prefix asb: <https://w3id.org/asbingowl/core#> 
-    prefix asbkey: <https://w3id.org/asbingowl/keys#> 
-    prefix asbkey13: <https://w3id.org/asbingowl/keys/2013#> 
-    prefix xsd: <http://www.w3.org/2001/XMLSchema#> 
-    SELECT DISTINCT ?aoi
-    WHERE{
-
-        ?aoi aoi:locatesDamage <""" + str(schadenObjekt) + """>
-    }
-    """)
-    for i in graph.query(aoi_query):
-        schaden_dic["AOI"] = i[0]
+    """, initNs={"asb":ANS, "aoi":AOI})
+    for i in sibbw_graph.query(bauteildefinition_query, initBindings={"schadObj":schadenObjekt}):
+        schaden_dic["Bauteildefinition"] = i.bauteildefinition
+        schaden_dic["AOI"] = i.aoiInst
+        schaden_dic["Bauteiltyp"] = i.bauteiltyp
 
     return schaden_dic
 
-def query_schaden_btd(data_filename,schadenObjekt):
-    graph = connect(data_filename)
-    btd = []
-    bauteildefinition_query = prepareQuery("""
-    prefix : <http://example.org/sibbw7936662#> 
-    prefix aoi: <https://w3id.org/aoi#> 
-    prefix asb: <https://w3id.org/asbingowl/core#> 
-    prefix asbkey: <https://w3id.org/asbingowl/keys#> 
-    prefix asbkey13: <https://w3id.org/asbingowl/keys/2013#> 
-    prefix xsd: <http://www.w3.org/2001/XMLSchema#> 
-    SELECT DISTINCT ?bauteildefinition
+"""
+def query_schaden_btd(sibbw_graph,schadenObjekt):
+    bauteildefinition_query = prepareQuery("
+    SELECT ?bauteildefinition
     WHERE{
-        <""" + str(schadenObjekt) + """> a asb:SchadenObjekt .
-        <""" + str(schadenObjekt) + """> asb:hatBauteilDefinition ?bauteildefinition.
+        ?schadObj a asb:SchadenObjekt ;
+                  asb:hatBauteilDefinition ?bauteildefinition.
 
     }
-    """)
-    for i in graph.query(bauteildefinition_query):
-        btd.append(i[0])
-    
-    return btd
+    ", initNs={"asb":ANS})
+    for i in sibbw_graph.query(bauteildefinition_query, initBindings={"schadObj":schadenObjekt}):
+        return i.bauteildefinition
+"""
 
 def query_schaden_aoi(data_filename,schadenObjekt):
     graph = connect(data_filename)
@@ -318,68 +288,46 @@ def query_bauteildefinition(sibbw_graph, bauteildefinition):
 
     return dictionary
 
-def query_bauteildefinition_hasModelRepresentation(data_filename,bauteildefinition):
-    graph = connect(data_filename)
-    list_guid = []
-    q1 = prepareQuery("""
-    prefix : <http://example.org/sibbw7936662#> 
-    prefix aoi: <https://w3id.org/aoi#> 
-    prefix asb: <https://w3id.org/asbingowl/core#> 
-    prefix asbkey: <https://w3id.org/asbingowl/keys#> 
-    prefix asbkey13: <https://w3id.org/asbingowl/keys/2013#> 
-    prefix xsd: <http://www.w3.org/2001/XMLSchema#> 
+def query_bauteildefinition_hasModelRepresentation(sibbw_graph,bauteildefinition):
 
-    SELECT ?MR
-    WHERE{
-        <""" + str(bauteildefinition) + """> a asb:ASBING13_BauteilDefinition .
-        <""" + str(bauteildefinition) + """> asb:hasModelRepresentation ?MR.
-    }
-    """)
-    for i in graph.query(q1):
-        list_guid.append(str(i[0]))
-    
-    return list_guid
+    list_inst = []
+    inst_query = prepareQuery("""
+        SELECT DISTINCT  ?lbd_inst
+        WHERE{
+             ?bauteildefinition  asb:hasModelRepresentation | asb:beschreibtBauteil/asb:hasModelRepresentation ?lbd_inst.
+        }
+        """, initNs={"asb": ANS})
+    for i in sibbw_graph.query(inst_query, initBindings={"bauteildefinition": bauteildefinition}):
+        list_inst.append(i.lbd_inst)
 
-def query_bauteildefinition_bauteilTyp(data_filename,bauteildefinition):
-    graph = connect(data_filename)
+    return list_inst
+
+def query_bauteildefinition_bauteilTyp(sibbw_graph,bauteildefinition):
     BauteilTyp = "Proxy"
     q1 = prepareQuery("""
-    prefix : <http://example.org/sibbw7936662#> 
-    prefix aoi: <https://w3id.org/aoi#> 
-    prefix asb: <https://w3id.org/asbingowl/core#> 
-    prefix asbkey: <https://w3id.org/asbingowl/keys#> 
-    prefix asbkey13: <https://w3id.org/asbingowl/keys/2013#> 
-    prefix xsd: <http://www.w3.org/2001/XMLSchema#> 
-
     SELECT ?BT_Typ
     WHERE{
-        <""" + str(bauteildefinition) + """> a asb:ASBING13_BauteilDefinition .
-        <""" + str(bauteildefinition) + """> asb:BauteilTypInIfc ?BT_Typ.
+         a asb:ASBING13_BauteilDefinition .
+         asb:BauteilTypInIfc ?BT_Typ.
     }
     """)
     for i in graph.query(q1):
         BauteilTyp = i[0]    
     return BauteilTyp
 
-### ? input and output exactly the same?!
-def query_aoi(data_filename,aoi):
-    graph = connect(data_filename)
-    aoi_list = []
+
+def query_aoi_Classes(sibbw_graph,aoi_inst):
+    aoi_Class_list = []
     query_aoi = prepareQuery("""
-    prefix : <http://example.org/sibbw7936662#> 
-    prefix aoi: <https://w3id.org/aoi#> 
-    prefix asb: <https://w3id.org/asbingowl/core#> 
-    prefix asbkey: <https://w3id.org/asbingowl/keys#> 
-    prefix asbkey13: <https://w3id.org/asbingowl/keys/2013#> 
-    prefix xsd: <http://www.w3.org/2001/XMLSchema#> 
-    SELECT DISTINCT ?aoi 
+    SELECT DISTINCT ?aoiClass
     WHERE{
-        <""" + aoi + """> a ?aoi .
+       ?aoiInst a ?aoiClass .
     }
     """)
-    for i in graph.query(query_aoi):
-        aoi_list.append(i[0])
-    return aoi_list
+    for i in sibbw_graph.query(query_aoi, initBindings={"aoiInst":aoi_inst}):
+        aoi_Class_list.append(i.aoiClass)
+
+    return aoi_Class_list
 
 def add_hasModelRepresentation(data_filename,bauteilId,bauteildefinition):
     g = Graph()
@@ -615,58 +563,59 @@ def get_ifcBridgeName(sibbw_graph, bauteildefinition):
 
     return bauteilTyp_list, bauteil_list
 
-def get_GlobalId(data_filename,inst):
-    graph = connect(data_filename)
+def get_GlobalId(lbd_graph,inst):
 
     q1 = prepareQuery("""
-    prefix schema: <http://schema.org/> 
-    prefix owl: <http://www.w3.org/2002/07/owl#> 
-    prefix bot: <https://w3id.org/bot#> 
-    prefix ifc: <https://standards.buildingsmart.org/IFC/DEV/IFC4/ADD2/OWL#> 
-    prefix xsd: <http://www.w3.org/2001/XMLSchema#> 
-    prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> 
-    prefix lbd: <https://linkebuildingdata.org/LBD#> 
-    prefix props: <http://lbd.arch.rwth-aachen.de/props#> 
-    prefix geo: <http://www.opengis.net/ont/geosparql#> 
-    prefix unit: <http://qudt.org/vocab/unit/> 
-    prefix IFC4-PSD: <https://www.linkedbuildingdata.net/IFC4-PSD#> 
-    prefix smls: <https://w3id.org/def/smls-owl#> 
-    prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
-    prefix inst: <https://asbingowl.org/TwinGenDemo/BW452#> 
-    prefix prov: <http://www.w3.org/ns/prov#> 
-
-    SELECT ?globalIdIfcRoot
-    WHERE{
-        <""" + str(inst) + """> props:globalIdIfcRoot ?globalIdIfcRoot.
-    }
-    """)
-    for i in graph.query(q1):
-        globalIdIfcRoot=i[0]
-    
-    
-    q2 = prepareQuery("""
-    prefix schema: <http://schema.org/> 
-    prefix owl: <http://www.w3.org/2002/07/owl#> 
-    prefix bot: <https://w3id.org/bot#> 
-    prefix ifc: <https://standards.buildingsmart.org/IFC/DEV/IFC4/ADD2/OWL#> 
-    prefix xsd: <http://www.w3.org/2001/XMLSchema#> 
-    prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> 
-    prefix lbd: <https://linkebuildingdata.org/LBD#> 
-    prefix props: <http://lbd.arch.rwth-aachen.de/props#> 
-    prefix geo: <http://www.opengis.net/ont/geosparql#> 
-    prefix unit: <http://qudt.org/vocab/unit/> 
-    prefix IFC4-PSD: <https://www.linkedbuildingdata.net/IFC4-PSD#> 
-    prefix smls: <https://w3id.org/def/smls-owl#> 
-    prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
-    prefix inst: <https://asbingowl.org/TwinGenDemo/BW452#> 
-    prefix prov: <http://www.w3.org/ns/prov#> 
-
     SELECT ?globalId
     WHERE{
-        <""" + str(globalIdIfcRoot) + """> schema:value ?globalId.
+        ?inst props:globalIdIfcRoot ?globalIdIfcRoot.
+        ?globalIdIfcRoot schema:value ?globalId.
     }
-    """)
-    for i in graph.query(q2):
-        globalId = i[0]
+    """, initNs={"props":PROPS, "schema":SCHEMA})
+    for i in lbd_graph.query(q1, initBindings={"inst":inst}):
+        globalId =i.globalId
 
-    return globalId
+        return globalId
+
+def get_Schaden_Desc (sibbwgraph, SchadenObjektName):
+    test = []
+    SchadenObjekt = URIRef(SIBINST + SchadenObjektName[:21] )
+    #print(SchadenObjekt)
+    q1 = prepareQuery("""
+    SELECT DISTINCT  ?schadenArt ?size 
+    WHERE {
+    ?schadenobj asb:hatPruefDokumentation ?schaden.
+    ?schaden dot:coveredInInspection ?pruf. 
+    ?pruf asb:PruefungUeberwachung_Status asbkey:StatusPruefung_abgeschlossen . 
+    ?schaden asb:Schaden_Schaden ?schadenArt;
+             asb:Schaden_AllgemeineMengenangabe ?size. 
+    }
+    """,initNs={"asb":ANS, "dot":DOT, "asbkey":ANSK})
+
+    q2 = prepareQuery("""
+    SELECT DISTINCT  ?schadenArt ?size 
+    WHERE {
+    ?schadenobj asb:hatPruefDokumentation ?schaden.
+    ?schaden asb:Schaden_Schaden ?schadenArt;
+             asb:Schaden_AllgemeineMengenangabe ?size. 
+    }
+    LIMIT 1
+    """, initNs={"asb": ANS, "dot": DOT, "asbkey": ANSK})
+
+
+    for res in sibbwgraph.query(q1, initBindings={"schadenobj":SchadenObjekt}):
+        art = str(res.schadenArt)
+        grs = str(res.size)
+        Desc = "Damage Type: "+ art +"\n"+"Damage Size: "+grs
+        #print(Desc)
+        test.append(res)
+        return Desc
+
+    if len(test) == 0:
+        for res2 in sibbwgraph.query(q2, initBindings={"schadenobj": SchadenObjekt}):
+            #print(res2)
+            art = str(res2.schadenArt)
+            grs = str(res2.size)
+            Desc2 = "Damage Type: " + art + "\n" + "Damage Size: " + grs
+            #print(Desc2)
+            return Desc2

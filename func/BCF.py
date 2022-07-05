@@ -1,4 +1,4 @@
-from func import Geom
+from func import Geom, q_main
 import ifcopenshell
 import ifcopenshell.geom 
 import ifcopenshell.util
@@ -16,7 +16,7 @@ def define_offset(bauteilTyp):
     offset = np.array(get_offset)
     return offset
 
-def export_bcfxml(aoi_bb,bcf_filename,filename):
+def export_bcfxml(aoi_bb,bcf_filename,filename, sibbw_graph):
 
     selector = Selector()
     model = ifcopenshell.open(filename)
@@ -31,7 +31,9 @@ def export_bcfxml(aoi_bb,bcf_filename,filename):
 
     for i in aoi_bb:
         schadenObjekt = i.Name
+        #print(schadenObjekt)
         bauteilTyp = i.Description
+        desc = q_main.get_Schaden_Desc(sibbw_graph, schadenObjekt)
         aoi_bb_position = Geom.bounding_box_center(i)
         if aoi_bb_position.Z() > zmin_ueberbau:
             z = 3
@@ -54,7 +56,7 @@ def export_bcfxml(aoi_bb,bcf_filename,filename):
         bcfxml.edit_project()
         topic = bcf.v2.data.Topic()
         topic.title = schadenObjekt
-        topic.description = bauteilTyp
+        topic.description = desc
         topic = bcfxml.add_topic(topic)
         viewpoint = bcf.v2.data.Viewpoint()
         viewpoint.perspective_camera = bcf.v2.data.PerspectiveCamera()
@@ -79,6 +81,7 @@ def export_bcfxml(aoi_bb,bcf_filename,filename):
             bcfxml.save_project(bcf_filename)
         else:
             bcfxml.save_project(bcf_filename)
+
 
 def get_viewpoint_snapshot(viewpoint, mat):
     return None  # Possible to overload this function in a GUI application if used as a library
