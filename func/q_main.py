@@ -119,7 +119,6 @@ def get_schadenObjekte(sibbw_graph):
     return sO_list
  """
 
-
 def query_schaden(sibbw_graph,schadenObjekt):
     schaden_dic = {}
     bauteildefinition_query = prepareQuery("""
@@ -576,6 +575,20 @@ def get_GlobalId(lbd_graph,inst):
         globalId =i.globalId
 
         return globalId
+
+def get_aoi_ifc_lbd_box(aoiIfcGraph, name):
+    instlist = []
+    q1 = prepareQuery("""
+    select ?aoiLbdInst
+    where {
+    ?aoiLbdInst props:nameIfcRoot ?x.
+    ?x schema:value ?schadenName.
+    FILTER(STRSTARTS(STR(?schadenName),'"""+name+"""'))
+    }""", initNs={"props":PROPS, "schema":SCHEMA})
+
+    for i in aoiIfcGraph.query(q1):
+        instlist.append(i.aoiLbdInst)
+    return instlist
 
 def get_Schaden_Desc (sibbwgraph, SchadenObjektName):
     test = []

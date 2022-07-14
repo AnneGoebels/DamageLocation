@@ -5,11 +5,24 @@
 @prefix asbkey13: <https://w3id.org/asbingowl/keys/2013#> .
 @prefix dot: <https://w3id.org/dot#> .
 @prefix inst: <https://asbingowl.org/TwinGenDemo/BW452#> .
+@prefix instArea: <https://www.asbingowl.org/TwinGenDemo/BW452/DamageAreas#> .
+@prefix instPoint: <https://www.asbingowl.org/TwinGenDemo/BW452/DamagePoints#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-:2363819_AOI a aoi:AreaOfInterest,
-        asbkey:OrtsangabeBauteilSchaden_Allgemein_amAnfangDesBauwerks ;
-    aoi:locatesDamage :3122724_SchadenObjekt .
+:1378988_SchadenObjekt a asb:SchadenObjekt ;
+    asb:Schaden_ID-Nummer-Schaden 10 ;
+    asb:Schaden_Status asbkey:StatusSchaden_erfasstUndBewertet ;
+    asb:associatedWith :7936662_0_Teilbauwerk ;
+    asb:hatBauteilDefinition :6439423_BauteilDefinition ;
+    asb:hatPruefDokumentation :280M4N2S_Schaden,
+        :NJ0MOT2S_Schaden,
+        :NY0MHN2M_Schaden,
+        :VC0OHQDC_Schaden,
+        :ZD0J0Y23_Schaden .
+
+:2149963_AOI a aoi:AreaOfInterest,
+        asbkey13:130082100000000_xxxTesFeld ;
+    aoi:locatesDamage :3700039_SchadenObjekt .
 
 :250QB5A2_Massnahmeempfehlung a asb:Massnahmeempfehlung ;
     asb:ASBObjekt_Bearbeiter "SIBUSER" ;
@@ -44,17 +57,6 @@
             asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ] ;
     asb:associatedWith :7936662_0_Teilbauwerk .
 
-:2778074_SchadenObjekt a asb:SchadenObjekt ;
-    asb:Schaden_ID-Nummer-Schaden 10 ;
-    asb:Schaden_Status asbkey:StatusSchaden_erfasstUndBewertet ;
-    asb:associatedWith :7936662_0_Teilbauwerk ;
-    asb:hatBauteilDefinition :7917275_BauteilDefinition ;
-    asb:hatPruefDokumentation :280M4N2S_Schaden,
-        :NJ0MOT2S_Schaden,
-        :NY0MHN2M_Schaden,
-        :VC0OHQDC_Schaden,
-        :ZD0J0Y23_Schaden .
-
 :280M4N27_Massnahmeempfehlung a asb:Massnahmeempfehlung ;
     asb:ASBObjekt_Bearbeiter "SIBUSER" ;
     asb:ASBObjekt_Systemdatum "2007-04-10"^^xsd:date ;
@@ -88,21 +90,33 @@
             asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ] ;
     asb:associatedWith :7936662_0_Teilbauwerk .
 
-:6273373_AOI a aoi:AreaOfInterest,
+:2849238_AOI a aoi:AreaOfInterest,
         asbkey:OrtsangabeBauteilSchaden_Widerlager_hinterWiderlagerVorn,
         asbkey13:130115000000000_Unten ;
-    aoi:locatesDamage :3093996_SchadenObjekt .
+    aoi:locatesDamage :9653659_SchadenObjekt ;
+    asb:hasModelRepresentation instArea:buildingelement_9c51fafe-0383-11ed-b85c-bc17b85584e8 .
 
-:6332162_SchadenObjekt a asb:SchadenObjekt ;
+:3388340_SchadenObjekt a asb:SchadenObjekt ;
     asb:Schaden_ID-Nummer-Schaden 7 ;
     asb:Schaden_Status asbkey:StatusSchaden_erfasstUndBewertet ;
     asb:associatedWith :7936662_0_Teilbauwerk ;
-    asb:hatBauteilDefinition :5177376_BauteilDefinition ;
+    asb:hasModelRepresentation instArea:buildingelement_8f2381cf-0383-11ed-a43d-bc17b85584e8,
+        instPoint:buildingelement_a2e3a1a9-0383-11ed-9a02-bc17b85584e8 ;
+    asb:hatBauteilDefinition :7359316_BauteilDefinition ;
     asb:hatPruefDokumentation :280M4N2P_Schaden,
         :NJ0MNT5A_Schaden,
         :RE0VIY4X_Schaden,
         :VC0KBHR8_Schaden,
         :ZD0IQYIJ_Schaden .
+
+:5476084_SchadenObjekt a asb:SchadenObjekt ;
+    asb:Schaden_ID-Nummer-Schaden 38 ;
+    asb:Schaden_Status asbkey:StatusSchaden_erfasstUndBewertet ;
+    asb:associatedWith :7936662_0_Teilbauwerk ;
+    asb:hasModelRepresentation instArea:buildingelement_8f9a8336-0383-11ed-bf9c-bc17b85584e8,
+        instPoint:buildingelement_a3883f5f-0383-11ed-b2e1-bc17b85584e8 ;
+    asb:hatBauteilDefinition :1108151_BauteilDefinition ;
+    asb:hatPruefDokumentation :RE0W8YJT_Schaden .
 
 :6W0G8DN3_DTV a asb:DTV ;
     asb:ASBObjekt_Bearbeiter "okBAUWERKE" ;
@@ -126,22 +140,17 @@
             asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ] ;
     asb:associatedWith :DP18HEAR_StrasseWeg .
 
-:7140947_AOI a aoi:AreaOfInterest,
-        asbkey13:130082100000000_xxxTesFeld ;
-    aoi:locatesDamage :2050062_SchadenObjekt .
+:8690035_AOI a aoi:AreaOfInterest,
+        asbkey:OrtsangabeBauteilSchaden_Allgemein_amAnfangDesBauwerks ;
+    aoi:locatesDamage :3298631_SchadenObjekt .
 
-:8371799_SchadenObjekt a asb:SchadenObjekt ;
-    asb:Schaden_ID-Nummer-Schaden 38 ;
-    asb:Schaden_Status asbkey:StatusSchaden_erfasstUndBewertet ;
-    asb:associatedWith :7936662_0_Teilbauwerk ;
-    asb:hatBauteilDefinition :4510115_BauteilDefinition ;
-    asb:hatPruefDokumentation :RE0W8YJT_Schaden .
-
-:8518737_SchadenObjekt a asb:SchadenObjekt ;
+:9168947_SchadenObjekt a asb:SchadenObjekt ;
     asb:Schaden_ID-Nummer-Schaden 39 ;
     asb:Schaden_Status asbkey:StatusSchaden_erfasstUndBewertet ;
     asb:associatedWith :7936662_0_Teilbauwerk ;
-    asb:hatBauteilDefinition :4510115_BauteilDefinition ;
+    asb:hasModelRepresentation instArea:buildingelement_9010e8ca-0383-11ed-bf6b-bc17b85584e8,
+        instPoint:buildingelement_a42c3f9a-0383-11ed-a51e-bc17b85584e8 ;
+    asb:hatBauteilDefinition :1108151_BauteilDefinition ;
     asb:hatPruefDokumentation :RE0WAQC0_Schaden .
 
 :DP18FTOQ_Bauteil a asb:Entwaesserung ;
@@ -149,7 +158,7 @@
     asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "DP18FTOQ" ;
             asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ] ;
     asb:associatedWith :DP19TTAQ_EinfacheBauteilart,
-        :N_2012660_Entwaesserung ;
+        :N_2220236_Entwaesserung ;
     asb:isPartOf :7936662_0_Teilbauwerk .
 
 :DP18FTOR_Bauteil a asb:Entwaesserung ;
@@ -288,12 +297,12 @@ an der Flügelwand West des Widerlagers Achse 30***""" ;
 ***""" ;
     asb:Feld_KreuzungswinkelStuetzung [ asb:hasdecimal 94.1 ] ;
     asb:Feld_LichteHoeheMinimal [ asb:hasdecimal 4.93 ] ;
-    asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "DP19UBTT" ;
+    asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "N_8613711" ],
+        [ asb:ObjektID_ID "DP19UBTT" ;
             asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ],
-        [ asb:ObjektID_ID "N_8741843" ],
         [ asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ] ;
     asb:associatedWith :7936662_0_Teilbauwerk,
-        :N_9624446_Unterbau .
+        :N_2054140_Unterbau .
 
 :DP19UBTU_Feld a asb:Feld ;
     asb:ASBObjekt_Bearbeiter "ADMINISTRATOR" ;
@@ -303,12 +312,12 @@ an der Flügelwand West des Widerlagers Achse 30***""" ;
     asb:Feld_Feldlaenge [ asb:hasdecimal 28.37 ] ;
     asb:Feld_KreuzungswinkelStuetzung [ asb:hasdecimal 94.1 ] ;
     asb:Feld_LichteHoeheMinimal [ asb:hasdecimal 4.93 ] ;
-    asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "N_8741843" ],
-        [ asb:ObjektID_ID "DP19UBTU" ;
+    asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "DP19UBTU" ;
             asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ],
-        [ asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ] ;
+        [ asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ],
+        [ asb:ObjektID_ID "N_8613711" ] ;
     asb:associatedWith :7936662_0_Teilbauwerk,
-        :N_3895045_Unterbau .
+        :N_7046988_Unterbau .
 
 :DP19UBTV_Feld a asb:Feld ;
     asb:ASBObjekt_Bearbeiter "ADMINISTRATOR" ;
@@ -320,12 +329,12 @@ an der Flügelwand West des Widerlagers Achse 30***""" ;
     asb:Feld_Feldlaenge [ asb:hasdecimal 28.37 ] ;
     asb:Feld_KreuzungswinkelStuetzung [ asb:hasdecimal 94.1 ] ;
     asb:Feld_LichteHoeheMinimal [ asb:hasdecimal 4.93 ] ;
-    asb:ObjektMitID_hatObjektID [ asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ],
-        [ asb:ObjektID_ID "N_8741843" ],
-        [ asb:ObjektID_ID "DP19UBTV" ;
-            asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ] ;
+    asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "DP19UBTV" ;
+            asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ],
+        [ asb:ObjektID_ID "N_8613711" ],
+        [ asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ] ;
     asb:associatedWith :7936662_0_Teilbauwerk,
-        :N_9353339_Unterbau .
+        :N_9744768_Unterbau .
 
 :DP19UPGY_Vorspannung a asb:Vorspannung ;
     asb:ASBObjekt_Bearbeiter "ADMINISTRATOR" ;
@@ -336,15 +345,15 @@ an der Flügelwand West des Widerlagers Achse 30***""" ;
     asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "DP19UPGY" ;
             asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ] ;
     asb:Vorspannung_Richtung asbkey:RichtungVorspannung_laengs_zentrisch_geradeDurchlaufend_ ;
-    asb:Vorspannung_Spannverfahren [ asb:SpannverfahrenVorspannung_Zulassung [ asb:Zulassung_Nummer "keine Zuordnung" ] ],
-        [ asb:SpannverfahrenVorspannung_TypenbezeichnungSpannverfahren "6-19" ],
+    asb:Vorspannung_Spannverfahren [ asb:SpannverfahrenVorspannung_TypenbezeichnungSpannverfahren "6-19" ],
+        [ asb:SpannverfahrenVorspannung_Zulassung [ asb:Zulassung_Nummer "keine Zuordnung" ] ],
+        [ asb:SpannverfahrenVorspannung_Extern false ],
         [ asb:SpannverfahrenVorspannung_maximaleSpannkraft [ asb:hasdecimal 33288.0 ] ],
         [ asb:SpannverfahrenVorspannung_Zulassung [ asb:Zulassung_Nummer "Z-13.1-21" ] ],
-        [ asb:SpannverfahrenVorspannung_Extern false ],
         asbkey13:150043122000000_LitzenspannverfahrenSuspa0_6%5Bz13121%5D ;
     asb:Vorspannung_Vorspanngrad asbkey:VorspanngradVorspannung_beschraenkteVorspannung ;
-    asb:associatedWith :N_3413252_SonstigerBaustoff,
-        :N_9566727_SpannstahlDraht .
+    asb:associatedWith :N_1695620_SpannstahlDraht,
+        :N_9645549_SonstigerBaustoff .
 
 :DP19UXLI_Fahrstreifen a asb:Fahrstreifen ;
     asb:ASBObjekt_Bearbeiter "Rietdorf E." ;
@@ -366,7 +375,7 @@ an der Flügelwand West des Widerlagers Achse 30***""" ;
     asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "DP19V2AN" ;
             asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ] ;
     asb:associatedWith :DP18HEAQ_StrasseWeg,
-        :N_9869879_Fahrstreifen .
+        :N_9771534_Fahrstreifen .
 
 :DP19V2AO_Fahrbahn a asb:Fahrbahn ;
     asb:ASBObjekt_Bearbeiter "ADMINISTRATOR" ;
@@ -378,7 +387,7 @@ an der Flügelwand West des Widerlagers Achse 30***""" ;
     asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "DP19V2AO" ;
             asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ] ;
     asb:associatedWith :DP18HEAR_StrasseWeg,
-        :N_7974051_Fahrstreifen .
+        :N_6785803_Fahrstreifen .
 
 :DP19V4P1_BauUndErhaltungsmassnahme a asb:BauUndErhaltungsmassnahme ;
     asb:ASBObjekt_Bearbeiter "Rietdorf E." ;
@@ -389,7 +398,7 @@ an der Flügelwand West des Widerlagers Achse 30***""" ;
     asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "DP19V4P1" ;
             asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ] ;
     asb:associatedWith :7936662_0_Teilbauwerk,
-        :N_9329289_Bauvertrag .
+        :N_6393575_Bauvertrag .
 
 :DP1APW7C_Baustoff a asb:Baustoff,
         asb:Beton,
@@ -552,422 +561,308 @@ mit Stützen- bzw. Wl.-Querträgern.***""" ;
             asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ] ;
     asb:associatedWith :DP18G13D_Kappe .
 
-:N_1035020_Bauwerkszustand a asb:Bauwerkszustand ;
-    asb:Bauwerkszustand_MaximaleSchadensbewertungDauerhaftigkeit 2 ;
-    asb:Bauwerkszustand_MaximaleSchadensbewertungStandsicherheit 1 ;
-    asb:Bauwerkszustand_Zustandsnote "2.3"^^xsd:float ;
-    asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "N_1035020" ;
-            asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ] ;
-    asb:associatedWith :NJ0I6FHD_PruefungMitZustandsnote .
-
-:N_1165303_Bauteil a asb:Bauteil ;
-    asb:AbstraktesBauteil_Einbauort "Beidseitige Fahrbahnränder***" ;
-    asb:AbstraktesBauteil_Geometrie [ asb:Geometrie_Laenge [ asb:hasdecimal 155.68 ] ] ;
-    asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "N_1165303" ;
-            asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ] ;
-    asb:associatedWith :7936662_0_Teilbauwerk,
-        :DP18G50D_FahrzeugRueckhaltesystem .
-
-:N_1405895_Bauwerkszustand a asb:Bauwerkszustand ;
-    asb:Bauwerkszustand_Zustandsnote "1.0"^^xsd:float ;
-    asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "N_1405895" ;
-            asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ] ;
-    asb:associatedWith :R70YN1AK_PruefungMitZustandsnote .
-
-:N_1707353_Vorspannung a asb:Vorspannung ;
-    asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "N_1707353" ;
-            asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ] ;
-    asb:Vorspannung_KoppelfugenVorhanden false .
-
-:N_1813069_Bauteil a asb:Bauteil ;
-    asb:ASBING13_Bauteil asbkey13:130011111000000_Ueberbau ;
-    asb:AbstraktesBauteil_Einbauort "unter den Kappen***" ;
-    asb:AbstraktesBauteil_Geometrie [ asb:Geometrie_Flaeche [ asb:hasdecimal 190.0 ] ] ;
-    asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "N_1813069" ;
-            asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ] ;
-    asb:associatedWith :DP19URW7_BelagAbdichtung ;
-    asb:isPartOf :7936662_0_Teilbauwerk .
-
-:N_2169558_AbstrakteBauteilart a asb:AbstrakteBauteilart ;
-    asb:AbstrakteBauteilart_Einbaudatum [ asb:EinfachesDatum_Jahr 2001 ] ;
-    asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "N_2169558" ;
-            asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ] .
-
-:N_2619663_BelagAbdichtung a asb:BelagAbdichtung ;
-    asb:BelagAbdichtung_LaengsneigungMax 2.0 ;
-    asb:BelagAbdichtung_QuerneigungMax 2.5 ;
-    asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "N_2619663" ;
-            asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ] .
-
-:N_3096079_Verbindungsmittel a asb:Verbindungsmittel ;
-    asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "N_3096079" ;
-            asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ] ;
-    asb:Verbindungsmittel_Art asbkey:ArtVerbindungsmittel_Schweissung ;
-    asb:associatedWith :DP1AQ3UX_Baustoff .
-
-:N_3780794_StrasseWeg a asb:StrasseWeg ;
-    asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "N_3780794" ;
-            asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ] ;
-    asb:StrasseWeg_OrtsdurchfahrtFreieStrecke asbkey:OrtsdurchfahrtFreieStrecke_FreieStrecke .
-
-:N_3826565_Verbindungsmittel a asb:Verbindungsmittel ;
-    asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "N_3826565" ;
-            asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ] ;
-    asb:Verbindungsmittel_Art asbkey:ArtVerbindungsmittel_Schweissung ;
-    asb:associatedWith :DP1AQ3UW_Baustoff .
-
-:N_3876209_Verbindungsmittel a asb:Verbindungsmittel ;
-    asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "N_3876209" ;
-            asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ] ;
-    asb:Verbindungsmittel_Art asbkey:ArtVerbindungsmittel_Schweissung ;
-    asb:associatedWith :DP1AQ3UR_Baustoff .
-
-:N_4396635_Verbindungsmittel a asb:Verbindungsmittel ;
-    asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "N_4396635" ;
+:N_1058233_Verbindungsmittel a asb:Verbindungsmittel ;
+    asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "N_1058233" ;
             asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ] ;
     asb:Verbindungsmittel_Art asbkey:ArtVerbindungsmittel_Verschraubung ;
     asb:associatedWith :DP1AQ3UY_Baustoff .
 
-:N_4660293_Bauteil a asb:Bauteil ;
-    asb:AbstraktesBauteil_Einbauort "Widerlager Achse 30, Lagerreihe 1***" ;
-    asb:BauteilTypInIfc "BEARING" ;
-    asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "N_4660293" ;
-            asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ] ;
-    asb:associatedWith :DP18ITRX_Lager ;
-    asb:hasModelRepresentation inst:buildingelement_4f1c5e37-811c-429e-8ae8-e6037f33724d ;
-    asb:isPartOf :7936662_0_Teilbauwerk .
-
-:N_5341006_Verbindungsmittel a asb:Verbindungsmittel ;
-    asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "N_5341006" ;
-            asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ] ;
-    asb:Verbindungsmittel_Art asbkey:ArtVerbindungsmittel_Schweissung ;
-    asb:associatedWith :DP1AQ3UU_Baustoff .
-
-:N_5861111_Bauwerkszustand a asb:Bauwerkszustand ;
-    asb:Bauwerkszustand_MaximaleSchadensbewertungDauerhaftigkeit 1 ;
-    asb:Bauwerkszustand_MaximaleSchadensbewertungVerkehrssicherheit 1 ;
-    asb:Bauwerkszustand_Zustandsnote "1.0"^^xsd:float ;
-    asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "N_5861111" ;
-            asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ] ;
-    asb:associatedWith :ZD0ILASC_PruefungMitZustandsnote .
-
-:N_6018604_Bauteil a asb:Bauteil ;
-    asb:AbstraktesBauteil_Einbauort "Fugen entlang der Bordsteine nach RZ Dicht 9***" ;
-    asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "N_6018604" ;
-            asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ] ;
-    asb:associatedWith :DP19URW8_BelagAbdichtung ;
-    asb:isPartOf :7936662_0_Teilbauwerk .
-
-:N_6086582_Bauwerkszustand a asb:Bauwerkszustand ;
-    asb:Bauwerkszustand_MaximaleSchadensbewertungDauerhaftigkeit 1 ;
-    asb:Bauwerkszustand_MaximaleSchadensbewertungVerkehrssicherheit 1 ;
-    asb:Bauwerkszustand_Zustandsnote "1.0"^^xsd:float ;
-    asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "N_6086582" ;
-            asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ] ;
-    asb:associatedWith :1Y0YMRPS_PruefungMitZustandsnote .
-
-:N_6345803_StrasseWeg a asb:StrasseWeg ;
-    asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "N_6345803" ;
-            asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ] ;
-    asb:StrasseWeg_OrtsdurchfahrtFreieStrecke asbkey:OrtsdurchfahrtFreieStrecke_FreieStrecke .
-
-:N_6871465_Bauteil a asb:Bauteil ;
-    asb:ASBING13_Bauteil asbkey13:130011111000000_Ueberbau ;
-    asb:AbstraktesBauteil_Einbauort "Fahrbahntafel zwischen den Kappen***" ;
-    asb:AbstraktesBauteil_Geometrie [ asb:Geometrie_Flaeche [ asb:hasdecimal 462.0 ] ] ;
-    asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "N_6871465" ;
-            asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ] ;
-    asb:associatedWith :DP19URW6_BelagAbdichtung ;
-    asb:isPartOf :7936662_0_Teilbauwerk .
-
-:N_6871627_Bauteil a asb:Bauteil ;
-    asb:AbstraktesBauteil_Einbauort "Widerlager Achse 10, Lagerreihe 2***" ;
-    asb:BauteilTypInIfc "BEARING" ;
-    asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "N_6871627" ;
-            asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ] ;
-    asb:associatedWith :DP18ITRU_Lager ;
-    asb:hasModelRepresentation inst:buildingelement_776d4a04-8e12-498e-a6ba-487d29a95c50 ;
-    asb:isPartOf :7936662_0_Teilbauwerk .
-
-:N_7200598_Verbindungsmittel a asb:Verbindungsmittel ;
-    asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "N_7200598" ;
-            asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ] ;
-    asb:Verbindungsmittel_Art asbkey:ArtVerbindungsmittel_Schweissung ;
-    asb:associatedWith :DP1AQ3V0_Baustoff .
-
-:N_7546895_Verbindungsmittel a asb:Verbindungsmittel ;
-    asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "N_7546895" ;
-            asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ] ;
-    asb:Verbindungsmittel_Art asbkey:ArtVerbindungsmittel_Schweissung ;
-    asb:associatedWith :DP1AQ3UV_Baustoff .
-
-:N_7670137_Verbindungsmittel a asb:Verbindungsmittel ;
-    asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "N_7670137" ;
-            asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ] ;
-    asb:Verbindungsmittel_Art asbkey:ArtVerbindungsmittel_Verschraubung ;
-    asb:associatedWith :DP1AQ3UZ_Baustoff .
-
-:N_7696645_Bauteil a asb:Bauteil ;
-    asb:AbstraktesBauteil_Einbauort "Widerlager Achse 30, Lagerreihe 2***" ;
-    asb:BauteilTypInIfc "BEARING" ;
-    asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "N_7696645" ;
-            asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ] ;
-    asb:associatedWith :DP18ITRW_Lager ;
-    asb:hasModelRepresentation inst:buildingelement_776d4a04-8e12-498e-a6ba-487d29a953e8 ;
-    asb:isPartOf :7936662_0_Teilbauwerk .
-
-:N_7767890_Bauwerkszustand a asb:Bauwerkszustand ;
-    asb:Bauwerkszustand_MaximaleSchadensbewertungDauerhaftigkeit 2 ;
-    asb:Bauwerkszustand_MaximaleSchadensbewertungVerkehrssicherheit 2 ;
-    asb:Bauwerkszustand_Zustandsnote "2.3"^^xsd:float ;
-    asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "N_7767890" ;
-            asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ] ;
-    asb:associatedWith :NY0LL67A_PruefungMitZustandsnote .
-
-:N_7956488_Bauwerkszustand a asb:Bauwerkszustand ;
-    asb:Bauwerkszustand_MaximaleSchadensbewertungDauerhaftigkeit 2 ;
-    asb:Bauwerkszustand_MaximaleSchadensbewertungVerkehrssicherheit 1 ;
-    asb:Bauwerkszustand_Zustandsnote "1.8"^^xsd:float ;
-    asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "N_7956488" ;
-            asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ] ;
-    asb:associatedWith :VC0HAVTB_PruefungMitZustandsnote .
-
-:N_8264793_Verbindungsmittel a asb:Verbindungsmittel ;
-    asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "N_8264793" ;
-            asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ] ;
-    asb:Verbindungsmittel_Art asbkey:ArtVerbindungsmittel_Schweissung ;
-    asb:associatedWith :DP1AQ3US_Baustoff .
-
-:N_8382548_Bauteilergaenzung a asb:Bauteilergaenzung ;
-    asb:AbstraktesBauteil_Einbauort "Kappenoberfläche***" ;
-    asb:AbstraktesBauteil_Geometrie [ asb:Geometrie_Flaeche [ asb:hasdecimal 320.0 ] ] ;
-    asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "N_8382548" ;
-            asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ] ;
-    asb:associatedWith :DP19UPTC_Oberflaechenschutzsystem ;
-    asb:isPartOf :7936662_0_Teilbauwerk .
-
-:N_8401923_OberBauteil a asb:OberBauteil ;
-    asb:AbstraktesBauteil_Einbauort "Fertigteillängsträger (4 Stück)***" ;
-    asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "N_8401923" ;
-            asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ] ;
-    asb:associatedWith :N_3413252_SonstigerBaustoff,
-        :N_9566727_SpannstahlDraht ;
-    asb:isPartOf :7936662_0_Teilbauwerk .
-
-:N_8741843_Feld asb:associatedWith :N_1418836_Ueberbau .
-
-:N_9129969_Verbindungsmittel a asb:Verbindungsmittel ;
-    asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "N_9129969" ;
-            asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ] ;
-    asb:Verbindungsmittel_Art asbkey:ArtVerbindungsmittel_Schweissung ;
-    asb:associatedWith :DP1AQ3UT_Baustoff .
-
-:N_9231663_TragendesBauteil a asb:TragendesBauteil ;
-    asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "N_9231663" ;
-            asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ] ;
-    asb:TragendesBauteil_Querschnitt asbkey13:030161000000000_MitQuerschnittDesUeberbausIdentisch ;
-    asb:associatedWith :N_1418836_Ueberbau .
-
-:N_9488405_Bauteil a asb:Bauteil ;
+:N_1275576_Bauteil a asb:Bauteil ;
     asb:AbstraktesBauteil_Einbauort "Widerlager Achse 10, Lagerreihe 1***" ;
     asb:BauteilTypInIfc "BEARING" ;
-    asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "N_9488405" ;
+    asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "N_1275576" ;
             asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ] ;
     asb:associatedWith :DP18ITRV_Lager ;
     asb:hasModelRepresentation inst:buildingelement_4f1c5e37-811c-429e-8ae8-e6037f330c76 ;
     asb:isPartOf :7936662_0_Teilbauwerk .
 
-:N_9804602_Bauwerkszustand a asb:Bauwerkszustand ;
+:N_1810962_Verbindungsmittel a asb:Verbindungsmittel ;
+    asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "N_1810962" ;
+            asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ] ;
+    asb:Verbindungsmittel_Art asbkey:ArtVerbindungsmittel_Schweissung ;
+    asb:associatedWith :DP1AQ3UV_Baustoff .
+
+:N_2005423_Bauwerkszustand a asb:Bauwerkszustand ;
+    asb:Bauwerkszustand_MaximaleSchadensbewertungDauerhaftigkeit 2 ;
+    asb:Bauwerkszustand_MaximaleSchadensbewertungStandsicherheit 1 ;
+    asb:Bauwerkszustand_Zustandsnote "2.3"^^xsd:float ;
+    asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "N_2005423" ;
+            asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ] ;
+    asb:associatedWith :NJ0I6FHD_PruefungMitZustandsnote .
+
+:N_2035912_Bauwerkszustand a asb:Bauwerkszustand ;
+    asb:Bauwerkszustand_MaximaleSchadensbewertungDauerhaftigkeit 2 ;
+    asb:Bauwerkszustand_MaximaleSchadensbewertungVerkehrssicherheit 1 ;
+    asb:Bauwerkszustand_Zustandsnote "1.8"^^xsd:float ;
+    asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "N_2035912" ;
+            asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ] ;
+    asb:associatedWith :VC0HAVTB_PruefungMitZustandsnote .
+
+:N_2603703_StrasseWeg a asb:StrasseWeg ;
+    asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "N_2603703" ;
+            asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ] ;
+    asb:StrasseWeg_OrtsdurchfahrtFreieStrecke asbkey:OrtsdurchfahrtFreieStrecke_FreieStrecke .
+
+:N_2654334_Bauteil a asb:Bauteil ;
+    asb:ASBING13_Bauteil asbkey13:130011111000000_Ueberbau ;
+    asb:AbstraktesBauteil_Einbauort "unter den Kappen***" ;
+    asb:AbstraktesBauteil_Geometrie [ asb:Geometrie_Flaeche [ asb:hasdecimal 190.0 ] ] ;
+    asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "N_2654334" ;
+            asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ] ;
+    asb:associatedWith :DP19URW7_BelagAbdichtung ;
+    asb:isPartOf :7936662_0_Teilbauwerk .
+
+:N_2780645_AbstrakteBauteilart a asb:AbstrakteBauteilart ;
+    asb:AbstrakteBauteilart_Einbaudatum [ asb:EinfachesDatum_Jahr 2001 ] ;
+    asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "N_2780645" ;
+            asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ] .
+
+:N_3388382_Bauteil a asb:Bauteil ;
+    asb:AbstraktesBauteil_Einbauort "Fugen entlang der Bordsteine nach RZ Dicht 9***" ;
+    asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "N_3388382" ;
+            asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ] ;
+    asb:associatedWith :DP19URW8_BelagAbdichtung ;
+    asb:isPartOf :7936662_0_Teilbauwerk .
+
+:N_3408268_Verbindungsmittel a asb:Verbindungsmittel ;
+    asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "N_3408268" ;
+            asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ] ;
+    asb:Verbindungsmittel_Art asbkey:ArtVerbindungsmittel_Schweissung ;
+    asb:associatedWith :DP1AQ3UU_Baustoff .
+
+:N_3822172_StrasseWeg a asb:StrasseWeg ;
+    asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "N_3822172" ;
+            asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ] ;
+    asb:StrasseWeg_OrtsdurchfahrtFreieStrecke asbkey:OrtsdurchfahrtFreieStrecke_FreieStrecke .
+
+:N_3896923_Verbindungsmittel a asb:Verbindungsmittel ;
+    asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "N_3896923" ;
+            asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ] ;
+    asb:Verbindungsmittel_Art asbkey:ArtVerbindungsmittel_Verschraubung ;
+    asb:associatedWith :DP1AQ3UZ_Baustoff .
+
+:N_4631513_Bauteil a asb:Bauteil ;
+    asb:AbstraktesBauteil_Einbauort "Widerlager Achse 30, Lagerreihe 1***" ;
+    asb:BauteilTypInIfc "BEARING" ;
+    asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "N_4631513" ;
+            asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ] ;
+    asb:associatedWith :DP18ITRX_Lager ;
+    asb:hasModelRepresentation inst:buildingelement_4f1c5e37-811c-429e-8ae8-e6037f33724d ;
+    asb:isPartOf :7936662_0_Teilbauwerk .
+
+:N_4744494_Bauwerkszustand a asb:Bauwerkszustand ;
+    asb:Bauwerkszustand_MaximaleSchadensbewertungDauerhaftigkeit 2 ;
+    asb:Bauwerkszustand_MaximaleSchadensbewertungVerkehrssicherheit 2 ;
+    asb:Bauwerkszustand_Zustandsnote "2.3"^^xsd:float ;
+    asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "N_4744494" ;
+            asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ] ;
+    asb:associatedWith :NY0LL67A_PruefungMitZustandsnote .
+
+:N_4812245_Verbindungsmittel a asb:Verbindungsmittel ;
+    asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "N_4812245" ;
+            asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ] ;
+    asb:Verbindungsmittel_Art asbkey:ArtVerbindungsmittel_Schweissung ;
+    asb:associatedWith :DP1AQ3UW_Baustoff .
+
+:N_5279456_Bauwerkszustand a asb:Bauwerkszustand ;
     asb:ASBObjekt_Bearbeiter "Welsch" ;
     asb:ASBObjekt_Systemdatum "2020-05-07"^^xsd:date ;
     asb:Bauwerkszustand_MaximaleSchadensbewertungDauerhaftigkeit 2 ;
     asb:Bauwerkszustand_MaximaleSchadensbewertungVerkehrssicherheit 2 ;
     asb:Bauwerkszustand_Substanzkennzahl "2.0"^^xsd:float ;
-    asb:Bauwerkszustand_ZustandBauteilgruppe [ asb:ZustandBauteilgruppe_Bauteilgruppe asbkey:Bauteilgruppe_Fahrbahnuebergang ;
-            asb:ZustandBauteilgruppe_Zustandsnote "1.0"^^xsd:float ],
-        [ asb:ZustandBauteilgruppe_Bauteilgruppe asbkey:Bauteilgruppe_sonstiges ;
-            asb:ZustandBauteilgruppe_Zustandsnote "2.2"^^xsd:float ],
-        [ asb:ZustandBauteilgruppe_Bauteilgruppe asbkey:Bauteilgruppe_Belaege ;
+    asb:Bauwerkszustand_ZustandBauteilgruppe [ asb:ZustandBauteilgruppe_Bauteilgruppe asbkey:Bauteilgruppe_Ueberbau ;
             asb:ZustandBauteilgruppe_Zustandsnote "1.8"^^xsd:float ],
-        [ asb:ZustandBauteilgruppe_Bauteilgruppe asbkey:Bauteilgruppe_Abdichtung ;
-            asb:ZustandBauteilgruppe_Zustandsnote "1.0"^^xsd:float ],
-        [ asb:ZustandBauteilgruppe_Bauteilgruppe asbkey:Bauteilgruppe_Ueberbau ;
-            asb:ZustandBauteilgruppe_Zustandsnote "1.8"^^xsd:float ],
-        [ asb:ZustandBauteilgruppe_Bauteilgruppe asbkey:Bauteilgruppe_Vorspannung ;
-            asb:ZustandBauteilgruppe_Zustandsnote "1.0"^^xsd:float ],
-        [ asb:ZustandBauteilgruppe_Bauteilgruppe asbkey:Bauteilgruppe_Kappen ;
-            asb:ZustandBauteilgruppe_Zustandsnote "1.2"^^xsd:float ],
         [ asb:ZustandBauteilgruppe_Bauteilgruppe asbkey:Bauteilgruppe_Lager ;
             asb:ZustandBauteilgruppe_Zustandsnote "1.0"^^xsd:float ],
         [ asb:ZustandBauteilgruppe_Bauteilgruppe asbkey:Bauteilgruppe_Unterbau ;
             asb:ZustandBauteilgruppe_Zustandsnote "1.7"^^xsd:float ],
+        [ asb:ZustandBauteilgruppe_Bauteilgruppe asbkey:Bauteilgruppe_Belaege ;
+            asb:ZustandBauteilgruppe_Zustandsnote "1.8"^^xsd:float ],
+        [ asb:ZustandBauteilgruppe_Bauteilgruppe asbkey:Bauteilgruppe_Kappen ;
+            asb:ZustandBauteilgruppe_Zustandsnote "1.2"^^xsd:float ],
         [ asb:ZustandBauteilgruppe_Bauteilgruppe asbkey:Bauteilgruppe_Gruendung ;
             asb:ZustandBauteilgruppe_Zustandsnote "1.0"^^xsd:float ],
+        [ asb:ZustandBauteilgruppe_Bauteilgruppe asbkey:Bauteilgruppe_Abdichtung ;
+            asb:ZustandBauteilgruppe_Zustandsnote "1.0"^^xsd:float ],
+        [ asb:ZustandBauteilgruppe_Bauteilgruppe asbkey:Bauteilgruppe_Vorspannung ;
+            asb:ZustandBauteilgruppe_Zustandsnote "1.0"^^xsd:float ],
+        [ asb:ZustandBauteilgruppe_Bauteilgruppe asbkey:Bauteilgruppe_Fahrbahnuebergang ;
+            asb:ZustandBauteilgruppe_Zustandsnote "1.0"^^xsd:float ],
+        [ asb:ZustandBauteilgruppe_Bauteilgruppe asbkey:Bauteilgruppe_sonstiges ;
+            asb:ZustandBauteilgruppe_Zustandsnote "2.2"^^xsd:float ],
         [ asb:ZustandBauteilgruppe_Bauteilgruppe asbkey:Bauteilgruppe_Schutzeinrichtung ;
             asb:ZustandBauteilgruppe_Zustandsnote "1.1"^^xsd:float ] ;
     asb:Bauwerkszustand_Zustandsnote "2.3"^^xsd:float ;
-    asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "N_9804602" ;
+    asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "N_5279456" ;
             asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ] ;
     asb:associatedWith :7936662_0_Teilbauwerk,
         :NY0LL67A_PruefungMitZustandsnote .
 
-:1164148_SchadenObjekt a asb:SchadenObjekt ;
-    asb:Schaden_ID-Nummer-Schaden 13 ;
-    asb:Schaden_Status asbkey:StatusSchaden_erfasstUndBewertet ;
+:N_5279810_Verbindungsmittel a asb:Verbindungsmittel ;
+    asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "N_5279810" ;
+            asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ] ;
+    asb:Verbindungsmittel_Art asbkey:ArtVerbindungsmittel_Schweissung ;
+    asb:associatedWith :DP1AQ3UR_Baustoff .
+
+:N_5483546_Bauteil a asb:Bauteil ;
+    asb:AbstraktesBauteil_Einbauort "Widerlager Achse 30, Lagerreihe 2***" ;
+    asb:BauteilTypInIfc "BEARING" ;
+    asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "N_5483546" ;
+            asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ] ;
+    asb:associatedWith :DP18ITRW_Lager ;
+    asb:hasModelRepresentation inst:buildingelement_776d4a04-8e12-498e-a6ba-487d29a953e8 ;
+    asb:isPartOf :7936662_0_Teilbauwerk .
+
+:N_6150438_TragendesBauteil a asb:TragendesBauteil ;
+    asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "N_6150438" ;
+            asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ] ;
+    asb:TragendesBauteil_Querschnitt asbkey13:030161000000000_MitQuerschnittDesUeberbausIdentisch ;
+    asb:associatedWith :N_5236862_Ueberbau .
+
+:N_6172109_Bauwerkszustand a asb:Bauwerkszustand ;
+    asb:Bauwerkszustand_MaximaleSchadensbewertungDauerhaftigkeit 1 ;
+    asb:Bauwerkszustand_MaximaleSchadensbewertungVerkehrssicherheit 1 ;
+    asb:Bauwerkszustand_Zustandsnote "1.0"^^xsd:float ;
+    asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "N_6172109" ;
+            asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ] ;
+    asb:associatedWith :1Y0YMRPS_PruefungMitZustandsnote .
+
+:N_6495033_Verbindungsmittel a asb:Verbindungsmittel ;
+    asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "N_6495033" ;
+            asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ] ;
+    asb:Verbindungsmittel_Art asbkey:ArtVerbindungsmittel_Schweissung ;
+    asb:associatedWith :DP1AQ3V0_Baustoff .
+
+:N_6594546_Verbindungsmittel a asb:Verbindungsmittel ;
+    asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "N_6594546" ;
+            asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ] ;
+    asb:Verbindungsmittel_Art asbkey:ArtVerbindungsmittel_Schweissung ;
+    asb:associatedWith :DP1AQ3US_Baustoff .
+
+:N_6864001_Bauteil a asb:Bauteil ;
+    asb:AbstraktesBauteil_Einbauort "Widerlager Achse 10, Lagerreihe 2***" ;
+    asb:BauteilTypInIfc "BEARING" ;
+    asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "N_6864001" ;
+            asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ] ;
+    asb:associatedWith :DP18ITRU_Lager ;
+    asb:hasModelRepresentation inst:buildingelement_776d4a04-8e12-498e-a6ba-487d29a95c50 ;
+    asb:isPartOf :7936662_0_Teilbauwerk .
+
+:N_8028244_Bauwerkszustand a asb:Bauwerkszustand ;
+    asb:Bauwerkszustand_Zustandsnote "1.0"^^xsd:float ;
+    asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "N_8028244" ;
+            asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ] ;
+    asb:associatedWith :R70YN1AK_PruefungMitZustandsnote .
+
+:N_8414681_BelagAbdichtung a asb:BelagAbdichtung ;
+    asb:BelagAbdichtung_LaengsneigungMax 2.0 ;
+    asb:BelagAbdichtung_QuerneigungMax 2.5 ;
+    asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "N_8414681" ;
+            asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ] .
+
+:N_8459238_Bauwerkszustand a asb:Bauwerkszustand ;
+    asb:Bauwerkszustand_MaximaleSchadensbewertungDauerhaftigkeit 1 ;
+    asb:Bauwerkszustand_MaximaleSchadensbewertungVerkehrssicherheit 1 ;
+    asb:Bauwerkszustand_Zustandsnote "1.0"^^xsd:float ;
+    asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "N_8459238" ;
+            asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ] ;
+    asb:associatedWith :ZD0ILASC_PruefungMitZustandsnote .
+
+:N_8613711_Feld asb:associatedWith :N_5236862_Ueberbau .
+
+:N_9039682_Bauteil a asb:Bauteil ;
+    asb:AbstraktesBauteil_Einbauort "Beidseitige Fahrbahnränder***" ;
+    asb:AbstraktesBauteil_Geometrie [ asb:Geometrie_Laenge [ asb:hasdecimal 155.68 ] ] ;
+    asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "N_9039682" ;
+            asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ] ;
+    asb:associatedWith :7936662_0_Teilbauwerk,
+        :DP18G50D_FahrzeugRueckhaltesystem .
+
+:N_9345988_Bauteil a asb:Bauteil ;
+    asb:ASBING13_Bauteil asbkey13:130011111000000_Ueberbau ;
+    asb:AbstraktesBauteil_Einbauort "Fahrbahntafel zwischen den Kappen***" ;
+    asb:AbstraktesBauteil_Geometrie [ asb:Geometrie_Flaeche [ asb:hasdecimal 462.0 ] ] ;
+    asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "N_9345988" ;
+            asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ] ;
+    asb:associatedWith :DP19URW6_BelagAbdichtung ;
+    asb:isPartOf :7936662_0_Teilbauwerk .
+
+:N_9552200_Vorspannung a asb:Vorspannung ;
+    asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "N_9552200" ;
+            asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ] ;
+    asb:Vorspannung_KoppelfugenVorhanden false .
+
+:N_9572683_Verbindungsmittel a asb:Verbindungsmittel ;
+    asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "N_9572683" ;
+            asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ] ;
+    asb:Verbindungsmittel_Art asbkey:ArtVerbindungsmittel_Schweissung ;
+    asb:associatedWith :DP1AQ3UT_Baustoff .
+
+:N_9634053_OberBauteil a asb:OberBauteil ;
+    asb:AbstraktesBauteil_Einbauort "Fertigteillängsträger (4 Stück)***" ;
+    asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "N_9634053" ;
+            asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ] ;
+    asb:associatedWith :N_1695620_SpannstahlDraht,
+        :N_9645549_SonstigerBaustoff ;
+    asb:isPartOf :7936662_0_Teilbauwerk .
+
+:N_9645035_Verbindungsmittel a asb:Verbindungsmittel ;
+    asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "N_9645035" ;
+            asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ] ;
+    asb:Verbindungsmittel_Art asbkey:ArtVerbindungsmittel_Schweissung ;
+    asb:associatedWith :DP1AQ3UX_Baustoff .
+
+:N_9918145_Bauteilergaenzung a asb:Bauteilergaenzung ;
+    asb:AbstraktesBauteil_Einbauort "Kappenoberfläche***" ;
+    asb:AbstraktesBauteil_Geometrie [ asb:Geometrie_Flaeche [ asb:hasdecimal 320.0 ] ] ;
+    asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "N_9918145" ;
+            asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ] ;
+    asb:associatedWith :DP19UPTC_Oberflaechenschutzsystem ;
+    asb:isPartOf :7936662_0_Teilbauwerk .
+
+:1208786_BauteilDefinition a asb:ASBING13_BauteilDefinition ;
+    asb:ASBING13_Bauteil asbkey13:130011000000000_Bruecke ;
+    asb:ASBING13_Bauteilgruppe asbkey13:390022160000000_BauteilgruppeFahrbahnuebergang ;
+    asb:ASBING13_Konstruktionsteil asbkey13:130021631120000_Dehnprofil_Elastomer ;
+    asb:BauteilTypInIfc "SLAB" ;
+    asb:Schaden_Ortsangabe [ asb:Ortsangabe_Ortsangabe asbkey:OrtsangabeBauteilSchaden_Widerlager_beideWiderlager ] ;
     asb:associatedWith :7936662_0_Teilbauwerk ;
-    asb:hatBauteilDefinition :5509764_BauteilDefinition ;
-    asb:hatPruefDokumentation :NJ0MQUYL_Schaden,
-        :RE0VOHJV_Schaden,
-        :VC0O4REQ_Schaden .
+    asb:beschreibtBauteil :N_1429755_Bauteil,
+        :N_6891512_Bauteil .
 
-:1171404_SchadenObjekt a asb:SchadenObjekt ;
-    asb:Schaden_ID-Nummer-Schaden 12 ;
-    asb:Schaden_Status asbkey:StatusSchaden_erfasstUndBewertet ;
-    asb:associatedWith :7936662_0_Teilbauwerk ;
-    asb:hatBauteilDefinition :2286011_BauteilDefinition ;
-    asb:hatPruefDokumentation :NJ0KK4RI_Schaden,
-        :RE0UU0J5_Schaden,
-        :VC0NZFYZ_Schaden .
-
-:1274729_SchadenObjekt a asb:SchadenObjekt ;
-    asb:Schaden_ID-Nummer-Schaden 22 ;
-    asb:Schaden_Status asbkey:StatusSchaden_erfasstUndBewertet ;
-    asb:associatedWith :7936662_0_Teilbauwerk ;
-    asb:hatBauteilDefinition :7112162_BauteilDefinition ;
-    asb:hatPruefDokumentation :NJ0N84W1_Schaden,
-        :NY0LXK3T_Schaden .
-
-:1319826_SchadenObjekt a asb:SchadenObjekt ;
-    asb:Schaden_ID-Nummer-Schaden 21 ;
-    asb:Schaden_Status asbkey:StatusSchaden_erfasstUndBewertet ;
-    asb:associatedWith :7936662_0_Teilbauwerk ;
-    asb:hatBauteilDefinition :6728306_BauteilDefinition ;
-    asb:hatPruefDokumentation :NJ0JTSH5_Schaden,
-        :NY0LZ32M_Schaden,
-        :VC0YD96V_Schaden .
-
-:1435893_AOI a aoi:AreaOfInterest,
-        asbkey:OrtsangabeBauteilSchaden_Bereiche_1Endbereich ;
-    aoi:locatesDamage :4876215_SchadenObjekt .
-
-:1493974_BauteilDefinition a asb:ASBING13_BauteilDefinition ;
+:1365156_BauteilDefinition a asb:ASBING13_BauteilDefinition ;
+    asb:ASBING13_Bauteil asbkey13:130011121100000_Platte ;
     asb:ASBING13_Bauteilgruppe asbkey13:390021100000000_BauteilgruppeUeberbau ;
     asb:BauteilTypInIfc "SUPERSTRUCTURE" ;
     asb:associatedWith :7936662_0_Teilbauwerk ;
-    asb:beschreibtBauteil :N_1418836_Ueberbau .
+    asb:beschreibtBauteil :N_5236862_Ueberbau .
 
-:1678703_BauteilDefinition a asb:ASBING13_BauteilDefinition ;
-    asb:ASBING13_Bauteil asbkey13:130011121000000_Ueberbau ;
-    asb:ASBING13_Bauteilgruppe asbkey13:390022250000000_BauteilgruppeBelaege ;
-    asb:ASBING13_Konstruktionsteil asbkey13:130022510000000_Fahrbahn ;
-    asb:BauteilTypInIfc "SLAB" ;
-    asb:Schaden_Ortsangabe [ asb:Ortsangabe_Ortsangabe asbkey:OrtsangabeBauteilSchaden_Allgemein_gesamterUeberbau ] ;
+:1644144_SchadenObjekt a asb:SchadenObjekt ;
+    asb:Schaden_ID-Nummer-Schaden 27 ;
+    asb:Schaden_Status asbkey:StatusSchaden_erfasstUndBewertet ;
     asb:associatedWith :7936662_0_Teilbauwerk ;
-    asb:beschreibtBauteil :N_6289834_Bauteil .
+    asb:hasModelRepresentation instPoint:buildingelement_a1a64baa-0383-11ed-a46a-bc17b85584e8 ;
+    asb:hatBauteilDefinition :3955067_BauteilDefinition ;
+    asb:hatPruefDokumentation :NJ0OFOF0_Schaden,
+        :RE0VGR6R_Schaden .
 
-:1750156_SchadenObjekt a asb:SchadenObjekt ;
+:2046916_BauteilDefinition a asb:ASBING13_BauteilDefinition ;
+    asb:ASBING13_Bauteil asbkey13:130011910000000_Widerlager ;
+    asb:ASBING13_Bauteilgruppe asbkey13:390021200000000_BauteilgruppeUnterbau ;
+    asb:BauteilTypInIfc "Widerlager_Wand_Vorne" ;
+    asb:Schaden_Ortsangabe [ asb:Ortsangabe_Ortsangabe asbkey:OrtsangabeBauteilSchaden_Widerlager_WiderlagerVorn ] ;
+    asb:associatedWith :7936662_0_Teilbauwerk ;
+    asb:beschreibtBauteil :N_2054140_Unterbau .
+
+:2684252_SchadenObjekt a asb:SchadenObjekt ;
     asb:Schaden_ID-Nummer-Schaden 16 ;
     asb:Schaden_Status asbkey:StatusSchaden_erfasstUndBewertet ;
     asb:associatedWith :7936662_0_Teilbauwerk ;
-    asb:hatBauteilDefinition :2314571_BauteilDefinition ;
+    asb:hasModelRepresentation instArea:buildingelement_90b76546-0383-11ed-8478-bc17b85584e8,
+        instPoint:buildingelement_a2359460-0383-11ed-a645-bc17b85584e8 ;
+    asb:hatBauteilDefinition :3702750_BauteilDefinition ;
     asb:hatPruefDokumentation :NY0LOAKC_Schaden,
         :VC0OVZIT_Schaden .
-
-:1931141_SchadenObjekt a asb:SchadenObjekt ;
-    asb:Schaden_ID-Nummer-Schaden 17 ;
-    asb:Schaden_Status asbkey:StatusSchaden_erfasstUndBewertet ;
-    asb:associatedWith :7936662_0_Teilbauwerk ;
-    asb:hatBauteilDefinition :8613385_BauteilDefinition ;
-    asb:hatPruefDokumentation :NY0LREJE_Schaden,
-        :VC0T8CXU_Schaden .
-
-:1954754_SchadenObjekt a asb:SchadenObjekt ;
-    asb:Schaden_ID-Nummer-Schaden 14 ;
-    asb:Schaden_Status asbkey:StatusSchaden_erfasstUndBewertet ;
-    asb:associatedWith :7936662_0_Teilbauwerk ;
-    asb:hatBauteilDefinition :9055365_BauteilDefinition ;
-    asb:hatPruefDokumentation :NJ0MEETK_Schaden,
-        :RE0VHE1G_Schaden,
-        :VC0O70JU_Schaden .
-
-:1968081_SchadenObjekt a asb:SchadenObjekt ;
-    asb:Schaden_ID-Nummer-Schaden 15 ;
-    asb:Schaden_Status asbkey:StatusSchaden_erfasstUndBewertet ;
-    asb:associatedWith :7936662_0_Teilbauwerk ;
-    asb:hatBauteilDefinition :5148316_BauteilDefinition ;
-    asb:hatPruefDokumentation :NJ0IBHTY_Schaden,
-        :NY0LO2H9_Schaden,
-        :VC0OU4D9_Schaden .
-
-:2050062_SchadenObjekt a asb:SchadenObjekt ;
-    asb:Schaden_ID-Nummer-Schaden 18 ;
-    asb:Schaden_Status asbkey:StatusSchaden_erfasstUndBewertet ;
-    asb:associatedWith :7936662_0_Teilbauwerk ;
-    asb:hatBauteilDefinition :6582084_BauteilDefinition ;
-    asb:hatPruefDokumentation :NY0MJ8FH_Schaden,
-        :VC0XUQNK_Schaden .
-
-:2079894_SchadenObjekt a asb:SchadenObjekt ;
-    asb:Schaden_ID-Nummer-Schaden 42 ;
-    asb:Schaden_Status asbkey:StatusSchaden_erfasstUndBewertet ;
-    asb:associatedWith :7936662_0_Teilbauwerk ;
-    asb:hatBauteilDefinition :8858111_BauteilDefinition ;
-    asb:hatPruefDokumentation :RE0WLOQS_Schaden .
-
-:2286011_BauteilDefinition a asb:ASBING13_BauteilDefinition ;
-    asb:ASBING13_Bauteil asbkey13:130011000000000_Bruecke ;
-    asb:ASBING13_Bauteilgruppe asbkey13:390022160000000_BauteilgruppeFahrbahnuebergang ;
-    asb:ASBING13_Konstruktionsteil asbkey13:130021631000000_KonstruktionMit1Dichtprofil ;
-    asb:BauteilTypInIfc "SLAB" ;
-    asb:Schaden_Ortsangabe [ asb:Ortsangabe_Ortsangabe asbkey:OrtsangabeBauteilSchaden_Allgemein_vorneUndHinten ],
-        [ asb:Ortsangabe_Ortsangabe asbkey:OrtsangabeBauteilSchaden_Widerlager_beideWiderlager ] ;
-    asb:associatedWith :7936662_0_Teilbauwerk ;
-    asb:beschreibtBauteil :N_5027230_Bauteil,
-        :N_8511388_Bauteil .
-
-:2314571_BauteilDefinition a asb:ASBING13_BauteilDefinition ;
-    asb:ASBING13_Bauteil asbkey13:130011121200000_Balken_Laengstraeger ;
-    asb:ASBING13_Bauteilgruppe asbkey13:390021100000000_BauteilgruppeUeberbau ;
-    asb:BauteilTypInIfc "GIRDER_SEGMENT" ;
-    asb:Schaden_Ortsangabe [ asb:Ortsangabe_GroesseOrtsangabe [ asb:AbstandAnzahl_Anzahl 1 ] ;
-            asb:Ortsangabe_Ortsangabe asbkey13:130082100000000_xxxTesFeld ],
-        [ asb:Ortsangabe_GroesseOrtsangabe [ asb:AbstandAnzahl_Anzahl 3 ] ;
-            asb:Ortsangabe_Ortsangabe asbkey13:130102212000000_xxxTesBauteilVonLinks_RechteSeitenflaeche ] ;
-    asb:associatedWith :7936662_0_Teilbauwerk ;
-    asb:beschreibtBauteil :N_9355221_Bauteil .
-
-:2436363_SchadenObjekt a asb:SchadenObjekt ;
-    asb:Schaden_ID-Nummer-Schaden 8 ;
-    asb:Schaden_Status asbkey:StatusSchaden_beseitigt ;
-    asb:associatedWith :7936662_0_Teilbauwerk ;
-    asb:hatBauteilDefinition :5985341_BauteilDefinition ;
-    asb:hatPruefDokumentation :1Y0ZMKFB_Schaden,
-        :280M4N2Q_Schaden .
-
-:2614675_AOI a aoi:AreaOfInterest,
-        asbkey:OrtsangabeBauteilSchaden_Allgemein_amAnfangDesBauwerks,
-        asbkey:OrtsangabeBauteilSchaden_Allgemein_amEndeDesBauwerks,
-        asbkey13:130101110000000_Seitenflaeche ;
-    aoi:locatesDamage :8493492_SchadenObjekt .
-
-:2705333_BauteilDefinition a asb:ASBING13_BauteilDefinition ;
-    asb:ASBING13_Bauteil asbkey13:130011914000000_Fluegel ;
-    asb:ASBING13_Bauteilgruppe asbkey13:390021200000000_BauteilgruppeUnterbau ;
-    asb:BauteilTypInIfc "Fluegel_Wand_Hinten" ;
-    asb:Schaden_Ortsangabe [ asb:Ortsangabe_Ortsangabe asbkey:OrtsangabeBauteilSchaden_Fluegel_FluegelwandHinten ] ;
-    asb:associatedWith :7936662_0_Teilbauwerk ;
-    asb:beschreibtBauteil :N_9353339_Unterbau .
-
-:2731093_BauteilDefinition a asb:ASBING13_BauteilDefinition ;
-    asb:ASBING13_Bauteil asbkey13:130011121000000_Ueberbau ;
-    asb:ASBING13_Bauteilgruppe asbkey13:390022210000000_BauteilgruppeSchutzeinrichtungen ;
-    asb:ASBING13_Konstruktionsteil asbkey13:130022121143100_Fuss ;
-    asb:BauteilTypInIfc "RAILING" ;
-    asb:Schaden_Ortsangabe [ asb:Ortsangabe_Ortsangabe asbkey:OrtsangabeBauteilSchaden_Allgemein_links,
-                asbkey:OrtsangabeBauteilSchaden_Allgemein_rechts ] ;
-    asb:associatedWith :7936662_0_Teilbauwerk ;
-    asb:beschreibtBauteil :N_2862397_Bauteil,
-        :N_5758590_Bauteil .
 
 :280M4N1R_PruefungMitZustandsnote a asb:PruefungMitZustandsnote ;
     asb:ASBObjekt_Systemdatum "2007-04-13"^^xsd:date ;
@@ -977,233 +872,91 @@ mit Stützen- bzw. Wl.-Querträgern.***""" ;
     asb:PruefungUeberwachung_Pruefungsabschluss "2007-04-13"^^xsd:date ;
     asb:associatedWith :7936662_0_Teilbauwerk .
 
-:3093996_SchadenObjekt a asb:SchadenObjekt ;
-    asb:Schaden_ID-Nummer-Schaden 25 ;
-    asb:Schaden_Status asbkey:StatusSchaden_erfasstUndBewertet ;
-    asb:associatedWith :7936662_0_Teilbauwerk ;
-    asb:hatBauteilDefinition :4255541_BauteilDefinition ;
-    asb:hatPruefDokumentation :NJ0NV9I8_Schaden,
-        :NY0MISFJ_Schaden .
-
-:3122724_SchadenObjekt a asb:SchadenObjekt ;
-    asb:Schaden_ID-Nummer-Schaden 6 ;
-    asb:Schaden_Status asbkey:StatusSchaden_beseitigt ;
-    asb:associatedWith :7936662_0_Teilbauwerk ;
-    asb:hatBauteilDefinition :9676502_BauteilDefinition ;
-    asb:hatPruefDokumentation :280M4N2O_Schaden,
-        :ZD0IP6KW_Schaden .
-
-:3134975_SchadenObjekt a asb:SchadenObjekt ;
-    asb:Schaden_ID-Nummer-Schaden 19 ;
-    asb:Schaden_Status asbkey:StatusSchaden_erfasstUndBewertet ;
-    asb:associatedWith :7936662_0_Teilbauwerk ;
-    asb:hatBauteilDefinition :8613385_BauteilDefinition ;
-    asb:hatPruefDokumentation :NY0LUVDD_Schaden,
-        :VC0Y03SA_Schaden .
-
-:3151604_SchadenObjekt a asb:SchadenObjekt ;
-    asb:Schaden_ID-Nummer-Schaden 36 ;
-    asb:Schaden_Status asbkey:StatusSchaden_erfasstUndBewertet ;
-    asb:associatedWith :7936662_0_Teilbauwerk ;
-    asb:hatBauteilDefinition :5509764_BauteilDefinition ;
-    asb:hatPruefDokumentation :RE0VWAL2_Schaden .
-
-:3228427_BauteilDefinition a asb:ASBING13_BauteilDefinition ;
-    asb:ASBING13_Bauteil asbkey13:130011000000000_Bruecke ;
-    asb:ASBING13_Bauteilgruppe asbkey13:390022160000000_BauteilgruppeFahrbahnuebergang ;
-    asb:ASBING13_Konstruktionsteil asbkey13:130021631120000_Dehnprofil_Elastomer ;
-    asb:Schaden_Ortsangabe [ asb:Ortsangabe_Ortsangabe asbkey:OrtsangabeBauteilSchaden_Widerlager_beideWiderlager ] ;
-    asb:associatedWith :7936662_0_Teilbauwerk ;
-    asb:beschreibtBauteil :N_5027230_Bauteil,
-        :N_8511388_Bauteil .
-
-:3576526_SchadenObjekt a asb:SchadenObjekt ;
-    asb:Schaden_ID-Nummer-Schaden 29 ;
-    asb:Schaden_Status asbkey:StatusSchaden_erfasstUndBewertet ;
-    asb:associatedWith :7936662_0_Teilbauwerk ;
-    asb:hatBauteilDefinition :8858111_BauteilDefinition ;
-    asb:hatPruefDokumentation :NJ0OV159_Schaden,
-        :RE0VIMC3_Schaden .
-
-:4255541_BauteilDefinition a asb:ASBING13_BauteilDefinition ;
-    asb:ASBING13_Bauteil asbkey13:130011000000000_Bruecke ;
-    asb:ASBING13_Bauteilgruppe asbkey13:390022310000000_BauteilgruppeGelaende ;
-    asb:ASBING13_Konstruktionsteil asbkey13:130023330000000_Boeschungspflaster ;
-    asb:BauteilTypInIfc "SUPERSTRUCTURE" ;
-    asb:associatedWith :7936662_0_Teilbauwerk ;
-    asb:hasModelRepresentation inst:buildingelement_3a4cc8ed-6a18-4e8e-b359-3f81d5b7774e .
-
-:4370563_BauteilDefinition a asb:ASBING13_BauteilDefinition ;
+:2852137_BauteilDefinition a asb:ASBING13_BauteilDefinition ;
     asb:ASBING13_Bauteil asbkey13:130011121000000_Ueberbau ;
     asb:ASBING13_Bauteilgruppe asbkey13:390022210000000_BauteilgruppeSchutzeinrichtungen ;
-    asb:ASBING13_Konstruktionsteil asbkey13:130022121143510_Unterstopfung ;
+    asb:ASBING13_Konstruktionsteil asbkey13:130022121143100_Fuss ;
+    asb:BauteilTypInIfc "RAILING" ;
     asb:Schaden_Ortsangabe [ asb:Ortsangabe_Ortsangabe asbkey:OrtsangabeBauteilSchaden_Allgemein_links,
                 asbkey:OrtsangabeBauteilSchaden_Allgemein_rechts ] ;
     asb:associatedWith :7936662_0_Teilbauwerk ;
-    asb:beschreibtBauteil :N_2862397_Bauteil,
-        :N_5758590_Bauteil .
+    asb:beschreibtBauteil :N_4331420_Bauteil,
+        :N_9234501_Bauteil .
 
-:4660109_BauteilDefinition a asb:ASBING13_BauteilDefinition ;
+:3145015_BauteilDefinition a asb:ASBING13_BauteilDefinition ;
+    asb:ASBING13_Bauteilgruppe asbkey13:390022180000000_BauteilgruppeKappe ;
+    asb:ASBING13_Konstruktionsteil asbkey13:130021832000000_SenkrechteFlaeche ;
+    asb:BauteilTypInIfc "EDGEBEAM" ;
+    asb:Schaden_Ortsangabe [ asb:Ortsangabe_Ortsangabe asbkey13:130101100000000_Links ] ;
+    asb:associatedWith :7936662_0_Teilbauwerk ;
+    asb:beschreibtBauteil :N_7961525_Bauteil .
+
+:3236107_SchadenObjekt a asb:SchadenObjekt ;
+    asb:Schaden_ID-Nummer-Schaden 32 ;
+    asb:Schaden_Status asbkey:StatusSchaden_erfasstUndBewertet ;
+    asb:associatedWith :7936662_0_Teilbauwerk ;
+    asb:hasModelRepresentation instPoint:buildingelement_a2d1c480-0383-11ed-b602-bc17b85584e8 ;
+    asb:hatBauteilDefinition :8744586_BauteilDefinition ;
+    asb:hatPruefDokumentation :NJ0PUA7Q_Schaden,
+        :RE0VQ7ZA_Schaden .
+
+:3298631_SchadenObjekt a asb:SchadenObjekt ;
+    asb:Schaden_ID-Nummer-Schaden 6 ;
+    asb:Schaden_Status asbkey:StatusSchaden_beseitigt ;
+    asb:associatedWith :7936662_0_Teilbauwerk ;
+    asb:hatBauteilDefinition :4131027_BauteilDefinition ;
+    asb:hatPruefDokumentation :280M4N2O_Schaden,
+        :ZD0IP6KW_Schaden .
+
+:3401487_AOI a aoi:AreaOfInterest,
+        asbkey:OrtsangabeBauteilSchaden_Allgemein_Mitte ;
+    aoi:locatesDamage :3236107_SchadenObjekt ;
+    asb:hasModelRepresentation instArea:buildingelement_91132917-0383-11ed-94b3-bc17b85584e8 .
+
+:3460772_SchadenObjekt a asb:SchadenObjekt ;
+    asb:Schaden_ID-Nummer-Schaden 22 ;
+    asb:Schaden_Status asbkey:StatusSchaden_erfasstUndBewertet ;
+    asb:associatedWith :7936662_0_Teilbauwerk ;
+    asb:hasModelRepresentation instArea:buildingelement_9171f818-0383-11ed-8253-bc17b85584e8,
+        instPoint:buildingelement_a376715d-0383-11ed-b9ff-bc17b85584e8 ;
+    asb:hatBauteilDefinition :2046916_BauteilDefinition ;
+    asb:hatPruefDokumentation :NJ0N84W1_Schaden,
+        :NY0LXK3T_Schaden .
+
+:3700039_SchadenObjekt a asb:SchadenObjekt ;
+    asb:Schaden_ID-Nummer-Schaden 18 ;
+    asb:Schaden_Status asbkey:StatusSchaden_erfasstUndBewertet ;
+    asb:associatedWith :7936662_0_Teilbauwerk ;
+    asb:hatBauteilDefinition :4159845_BauteilDefinition ;
+    asb:hatPruefDokumentation :NY0MJ8FH_Schaden,
+        :VC0XUQNK_Schaden .
+
+:3702750_BauteilDefinition a asb:ASBING13_BauteilDefinition ;
+    asb:ASBING13_Bauteil asbkey13:130011121200000_Balken_Laengstraeger ;
+    asb:ASBING13_Bauteilgruppe asbkey13:390021100000000_BauteilgruppeUeberbau ;
+    asb:BauteilTypInIfc "GIRDER_SEGMENT" ;
+    asb:Schaden_Ortsangabe [ asb:Ortsangabe_GroesseOrtsangabe [ asb:AbstandAnzahl_Anzahl 3 ] ;
+            asb:Ortsangabe_Ortsangabe asbkey13:130102212000000_xxxTesBauteilVonLinks_RechteSeitenflaeche ],
+        [ asb:Ortsangabe_GroesseOrtsangabe [ asb:AbstandAnzahl_Anzahl 1 ] ;
+            asb:Ortsangabe_Ortsangabe asbkey13:130082100000000_xxxTesFeld ] ;
+    asb:associatedWith :7936662_0_Teilbauwerk ;
+    asb:beschreibtBauteil :N_8436821_Bauteil .
+
+:3892539_BauteilDefinition a asb:ASBING13_BauteilDefinition ;
     asb:ASBING13_Bauteil asbkey13:130011000000000_Bruecke ;
     asb:ASBING13_Bauteilgruppe asbkey13:390022160000000_BauteilgruppeFahrbahnuebergang ;
     asb:ASBING13_Konstruktionsteil asbkey13:130021631110000_Randprofil ;
     asb:Schaden_Ortsangabe [ asb:Ortsangabe_Ortsangabe asbkey:OrtsangabeBauteilSchaden_Widerlager_beideWiderlager ] ;
     asb:associatedWith :7936662_0_Teilbauwerk ;
-    asb:beschreibtBauteil :N_5027230_Bauteil,
-        :N_8511388_Bauteil .
+    asb:beschreibtBauteil :N_1429755_Bauteil,
+        :N_6891512_Bauteil .
 
-:4693325_SchadenObjekt a asb:SchadenObjekt ;
-    asb:Schaden_ID-Nummer-Schaden 30 ;
-    asb:Schaden_Status asbkey:StatusSchaden_beseitigt ;
-    asb:associatedWith :7936662_0_Teilbauwerk ;
-    asb:hatBauteilDefinition :3228427_BauteilDefinition ;
-    asb:hatPruefDokumentation :NJ0OXZBA_Schaden .
-
-:4754453_SchadenObjekt a asb:SchadenObjekt ;
-    asb:Schaden_ID-Nummer-Schaden 32 ;
-    asb:Schaden_Status asbkey:StatusSchaden_erfasstUndBewertet ;
-    asb:associatedWith :7936662_0_Teilbauwerk ;
-    asb:hatBauteilDefinition :1678703_BauteilDefinition ;
-    asb:hatPruefDokumentation :NJ0PUA7Q_Schaden,
-        :RE0VQ7ZA_Schaden .
-
-:4792839_SchadenObjekt a asb:SchadenObjekt ;
-    asb:Schaden_ID-Nummer-Schaden 33 ;
-    asb:Schaden_Status asbkey:StatusSchaden_erfasstUndBewertet ;
-    asb:associatedWith :7936662_0_Teilbauwerk ;
-    asb:hatBauteilDefinition :9476775_BauteilDefinition ;
-    asb:hatPruefDokumentation :NY0M62B9_Schaden .
-
-:4876215_SchadenObjekt a asb:SchadenObjekt ;
-    asb:Schaden_ID-Nummer-Schaden 5 ;
-    asb:Schaden_Status asbkey:StatusSchaden_beseitigt ;
-    asb:associatedWith :7936662_0_Teilbauwerk ;
-    asb:hatBauteilDefinition :1493974_BauteilDefinition ;
-    asb:hatPruefDokumentation :1Y0Z319E_Schaden,
-        :280M4N2N_Schaden .
-
-:5148316_BauteilDefinition a asb:ASBING13_BauteilDefinition ;
-    asb:ASBING13_Bauteil asbkey13:130011121200000_Balken_Laengstraeger ;
-    asb:ASBING13_Bauteilgruppe asbkey13:390021100000000_BauteilgruppeUeberbau ;
-    asb:BauteilTypInIfc "GIRDER_SEGMENT" ;
-    asb:Schaden_Ortsangabe [ asb:Ortsangabe_GroesseOrtsangabe [ asb:AbstandAnzahl_Anzahl 1 ] ;
-            asb:Ortsangabe_Ortsangabe asbkey13:130082100000000_xxxTesFeld ],
-        [ asb:Ortsangabe_GroesseOrtsangabe [ asb:AbstandAnzahl_Anzahl 4 ] ;
-            asb:Ortsangabe_Ortsangabe asbkey13:130102212000000_xxxTesBauteilVonLinks_RechteSeitenflaeche ] ;
-    asb:associatedWith :7936662_0_Teilbauwerk ;
-    asb:beschreibtBauteil :N_3578678_Bauteil .
-
-:5177376_BauteilDefinition a asb:ASBING13_BauteilDefinition ;
-    asb:ASBING13_Bauteil asbkey13:130011121000000_Ueberbau ;
-    asb:ASBING13_Bauteilgruppe asbkey13:390022220000000_BauteilgruppeAusstattungen_zustandsnotenBauteilgruppeSonstige_ ;
-    asb:ASBING13_Konstruktionsteil asbkey13:130022211442000_Schmutzfang ;
-    asb:BauteilTypInIfc "SUPERSTRUCTURE" ;
-    asb:associatedWith :7936662_0_Teilbauwerk ;
-    asb:hasModelRepresentation inst:buildingelement_3a4cc8ed-6a18-4e8e-b359-3f81d5b7774e .
-
-:5566359_BauteilDefinition a asb:ASBING13_BauteilDefinition ;
-    asb:ASBING13_Bauteilgruppe asbkey13:390022180000000_BauteilgruppeKappe ;
-    asb:ASBING13_Konstruktionsteil asbkey13:130021800000000_Kappe ;
-    asb:BauteilTypInIfc "EDGEBEAM" ;
-    asb:Schaden_Ortsangabe [ asb:Ortsangabe_Ortsangabe asbkey:OrtsangabeBauteilSchaden_Allgemein_gesamterUeberbau ] ;
-    asb:associatedWith :7936662_0_Teilbauwerk ;
-    asb:beschreibtBauteil :N_2123730_Bauteil,
-        :N_8004257_Bauteil .
-
-:5570364_SchadenObjekt a asb:SchadenObjekt ;
-    asb:Schaden_ID-Nummer-Schaden 31 ;
-    asb:Schaden_Status asbkey:StatusSchaden_erfasstUndBewertet ;
-    asb:associatedWith :7936662_0_Teilbauwerk ;
-    asb:hatBauteilDefinition :4660109_BauteilDefinition ;
-    asb:hatPruefDokumentation :NJ0OZ4UP_Schaden,
-        :RE0VABGI_Schaden .
-
-:5717692_SchadenObjekt a asb:SchadenObjekt ;
-    asb:Schaden_ID-Nummer-Schaden 27 ;
-    asb:Schaden_Status asbkey:StatusSchaden_erfasstUndBewertet ;
-    asb:associatedWith :7936662_0_Teilbauwerk ;
-    asb:hatBauteilDefinition :8460600_BauteilDefinition ;
-    asb:hatPruefDokumentation :NJ0OFOF0_Schaden,
-        :RE0VGR6R_Schaden .
-
-:5778483_AOI a aoi:AreaOfInterest,
-        asbkey13:130091300000000_Hinten ;
-    aoi:locatesDamage :7390626_SchadenObjekt .
-
-:5882102_SchadenObjekt a asb:SchadenObjekt ;
-    asb:Schaden_ID-Nummer-Schaden 26 ;
-    asb:Schaden_Status asbkey:StatusSchaden_erfasstUndBewertet ;
-    asb:associatedWith :7936662_0_Teilbauwerk ;
-    asb:hatBauteilDefinition :6203208_BauteilDefinition ;
-    asb:hatPruefDokumentation :NJ0NWW9R_Schaden,
-        :NY0MEIYU_Schaden .
-
-:5985341_BauteilDefinition a asb:ASBING13_BauteilDefinition ;
-    asb:ASBING13_Bauteil asbkey13:130011121100000_Platte ;
-    asb:ASBING13_Bauteilgruppe asbkey13:390021100000000_BauteilgruppeUeberbau ;
-    asb:associatedWith :7936662_0_Teilbauwerk ;
-    asb:beschreibtBauteil :N_1418836_Ueberbau .
-
-:6320854_AOI a aoi:AreaOfInterest,
-        asbkey13:130101100000000_Links,
-        asbkey13:130115000000000_Unten ;
-    aoi:locatesDamage :1319826_SchadenObjekt .
-
-:6496681_AOI a aoi:AreaOfInterest,
-        asbkey:OrtsangabeBauteilSchaden_Widerlager_beideWiderlager ;
-    aoi:locatesDamage :1164148_SchadenObjekt .
-
-:6582084_BauteilDefinition a asb:ASBING13_BauteilDefinition ;
-    asb:ASBING13_Bauteil asbkey13:130011121000000_Ueberbau ;
-    asb:ASBING13_Bauteilgruppe asbkey13:390022170000000_BauteilgruppeAbdichtung ;
-    asb:ASBING13_Konstruktionsteil asbkey13:130021761000000_Tropftuelle ;
-    asb:Schaden_Ortsangabe [ asb:Ortsangabe_GroesseOrtsangabe [ asb:AbstandAnzahl_Anzahl 1 ] ;
-            asb:Ortsangabe_Ortsangabe asbkey13:130102210000000_xxxTesBauteilVonLinks ] ;
-    asb:associatedWith :7936662_0_Teilbauwerk .
-
-:6607648_AOI a aoi:AreaOfInterest,
-        asbkey:OrtsangabeBauteilSchaden_Allgemein_Mitte ;
-    aoi:locatesDamage :3134975_SchadenObjekt .
-
-:6728306_BauteilDefinition a asb:ASBING13_BauteilDefinition ;
-    asb:ASBING13_Bauteil asbkey13:130011911000000_Wand ;
-    asb:ASBING13_Bauteilgruppe asbkey13:390021200000000_BauteilgruppeUnterbau ;
-    asb:BauteilTypInIfc "Widerlager_Wand_Vorne" ;
-    asb:Schaden_Ortsangabe [ asb:Ortsangabe_Ortsangabe asbkey:OrtsangabeBauteilSchaden_Widerlager_WiderlagerVorn ] ;
-    asb:associatedWith :7936662_0_Teilbauwerk ;
-    asb:beschreibtBauteil :N_9624446_Unterbau .
-
-:6941117_AOI a aoi:AreaOfInterest,
-        asbkey:OrtsangabeBauteilSchaden_Allgemein_Mitte ;
-    aoi:locatesDamage :4754453_SchadenObjekt .
-
-:6980321_SchadenObjekt a asb:SchadenObjekt ;
-    asb:Schaden_ID-Nummer-Schaden 2 ;
-    asb:Schaden_Status asbkey:StatusSchaden_beseitigt ;
-    asb:associatedWith :7936662_0_Teilbauwerk ;
-    asb:hatBauteilDefinition :8613385_BauteilDefinition ;
-    asb:hatPruefDokumentation :DP19VYW0_Schaden .
-
-:6983123_SchadenObjekt a asb:SchadenObjekt ;
-    asb:Schaden_ID-Nummer-Schaden 24 ;
-    asb:Schaden_Status asbkey:StatusSchaden_erfasstUndBewertet ;
-    asb:associatedWith :7936662_0_Teilbauwerk ;
-    asb:hatBauteilDefinition :2705333_BauteilDefinition ;
-    asb:hatPruefDokumentation :NJ0NT9H5_Schaden,
-        :NY0LZYSF_Schaden .
-
-:7112162_BauteilDefinition a asb:ASBING13_BauteilDefinition ;
-    asb:ASBING13_Bauteil asbkey13:130011910000000_Widerlager ;
-    asb:ASBING13_Bauteilgruppe asbkey13:390021200000000_BauteilgruppeUnterbau ;
-    asb:Schaden_Ortsangabe [ asb:Ortsangabe_Ortsangabe asbkey:OrtsangabeBauteilSchaden_Widerlager_WiderlagerVorn ] ;
-    asb:associatedWith :7936662_0_Teilbauwerk ;
-    asb:beschreibtBauteil :N_9624446_Unterbau .
-
-:7117307_SchadenObjekt a asb:SchadenObjekt ;
+:3947832_SchadenObjekt a asb:SchadenObjekt ;
     asb:Schaden_ID-Nummer-Schaden 3 ;
     asb:Schaden_Status asbkey:StatusSchaden_erfasstUndBewertet ;
     asb:associatedWith :7936662_0_Teilbauwerk ;
-    asb:hatBauteilDefinition :6203208_BauteilDefinition ;
+    asb:hasModelRepresentation instPoint:buildingelement_a419c829-0383-11ed-8cf1-bc17b85584e8 ;
+    asb:hatBauteilDefinition :4162610_BauteilDefinition ;
     asb:hatPruefDokumentation :280M4N2M_Schaden,
         :DP19VYVZ_Schaden,
         :NJ0LGWMH_Schaden,
@@ -1211,7 +964,276 @@ mit Stützen- bzw. Wl.-Querträgern.***""" ;
         :VC0LMXQD_Schaden,
         :ZD0INW82_Schaden .
 
-:7345642_BauteilDefinition a asb:ASBING13_BauteilDefinition ;
+:3955067_BauteilDefinition a asb:ASBING13_BauteilDefinition ;
+    asb:ASBING13_Bauteil asbkey13:130011000000000_Bruecke ;
+    asb:ASBING13_Bauteilgruppe asbkey13:390022180000000_BauteilgruppeKappe ;
+    asb:ASBING13_Konstruktionsteil asbkey13:130021850000000_Oberflaeche ;
+    asb:BauteilTypInIfc "EDGEBEAM" ;
+    asb:Schaden_Ortsangabe [ asb:Ortsangabe_Ortsangabe asbkey:OrtsangabeBauteilSchaden_Allgemein_links,
+                asbkey:OrtsangabeBauteilSchaden_Allgemein_rechts ] ;
+    asb:associatedWith :7936662_0_Teilbauwerk ;
+    asb:beschreibtBauteil :N_3441743_Bauteil,
+        :N_7961525_Bauteil .
+
+:4069030_BauteilDefinition a asb:ASBING13_BauteilDefinition ;
+    asb:ASBING13_Bauteil asbkey13:130011000000000_Bruecke ;
+    asb:ASBING13_Bauteilgruppe asbkey13:390022210000000_BauteilgruppeSchutzeinrichtungen ;
+    asb:ASBING13_Konstruktionsteil asbkey13:130022112234000_Fussplatte ;
+    asb:BauteilTypInIfc "RAILING" ;
+    asb:Schaden_Ortsangabe [ asb:Ortsangabe_Ortsangabe asbkey:OrtsangabeBauteilSchaden_Allgemein_links,
+                asbkey:OrtsangabeBauteilSchaden_Allgemein_rechts ] ;
+    asb:associatedWith :7936662_0_Teilbauwerk ;
+    asb:beschreibtBauteil :N_3782564_Bauteil,
+        :N_5280301_Bauteil .
+
+:4106104_BauteilDefinition a asb:ASBING13_BauteilDefinition ;
+    asb:ASBING13_Bauteilgruppe asbkey13:390021100000000_BauteilgruppeUeberbau ;
+    asb:associatedWith :7936662_0_Teilbauwerk ;
+    asb:beschreibtBauteil :N_5236862_Ueberbau .
+
+:4131027_BauteilDefinition a asb:ASBING13_BauteilDefinition ;
+    asb:ASBING13_Bauteil asbkey13:130011121000000_Ueberbau ;
+    asb:ASBING13_Bauteilgruppe asbkey13:390022210000000_BauteilgruppeSchutzeinrichtungen ;
+    asb:ASBING13_Konstruktionsteil asbkey13:130022116000000_Parkbuegel_Poller_Sperrpfosten ;
+    asb:Schaden_Ortsangabe [ asb:Ortsangabe_Ortsangabe asbkey13:130101200000000_Rechts ] ;
+    asb:associatedWith :7936662_0_Teilbauwerk .
+
+:4156921_SchadenObjekt a asb:SchadenObjekt ;
+    asb:Schaden_ID-Nummer-Schaden 24 ;
+    asb:Schaden_Status asbkey:StatusSchaden_erfasstUndBewertet ;
+    asb:associatedWith :7936662_0_Teilbauwerk ;
+    asb:hasModelRepresentation instPoint:buildingelement_a1963629-0383-11ed-ae47-bc17b85584e8,
+        instPoint:buildingelement_a2252a8c-0383-11ed-87e4-bc17b85584e8 ;
+    asb:hatBauteilDefinition :5971867_BauteilDefinition ;
+    asb:hatPruefDokumentation :NJ0NT9H5_Schaden,
+        :NY0LZYSF_Schaden .
+
+:4159845_BauteilDefinition a asb:ASBING13_BauteilDefinition ;
+    asb:ASBING13_Bauteil asbkey13:130011121000000_Ueberbau ;
+    asb:ASBING13_Bauteilgruppe asbkey13:390022170000000_BauteilgruppeAbdichtung ;
+    asb:ASBING13_Konstruktionsteil asbkey13:130021761000000_Tropftuelle ;
+    asb:Schaden_Ortsangabe [ asb:Ortsangabe_GroesseOrtsangabe [ asb:AbstandAnzahl_Anzahl 1 ] ;
+            asb:Ortsangabe_Ortsangabe asbkey13:130102210000000_xxxTesBauteilVonLinks ] ;
+    asb:associatedWith :7936662_0_Teilbauwerk .
+
+:4525177_SchadenObjekt a asb:SchadenObjekt ;
+    asb:Schaden_ID-Nummer-Schaden 21 ;
+    asb:Schaden_Status asbkey:StatusSchaden_erfasstUndBewertet ;
+    asb:associatedWith :7936662_0_Teilbauwerk ;
+    asb:hasModelRepresentation instPoint:buildingelement_a2be943c-0383-11ed-9a43-bc17b85584e8 ;
+    asb:hatBauteilDefinition :8754886_BauteilDefinition ;
+    asb:hatPruefDokumentation :NJ0JTSH5_Schaden,
+        :NY0LZ32M_Schaden,
+        :VC0YD96V_Schaden .
+
+:4756257_SchadenObjekt a asb:SchadenObjekt ;
+    asb:Schaden_ID-Nummer-Schaden 15 ;
+    asb:Schaden_Status asbkey:StatusSchaden_erfasstUndBewertet ;
+    asb:associatedWith :7936662_0_Teilbauwerk ;
+    asb:hasModelRepresentation instArea:buildingelement_9360518c-0383-11ed-9bab-bc17b85584e8,
+        instPoint:buildingelement_a32baac6-0383-11ed-b17d-bc17b85584e8 ;
+    asb:hatBauteilDefinition :8592323_BauteilDefinition ;
+    asb:hatPruefDokumentation :NJ0IBHTY_Schaden,
+        :NY0LO2H9_Schaden,
+        :VC0OU4D9_Schaden .
+
+:5069996_SchadenObjekt a asb:SchadenObjekt ;
+    asb:Schaden_ID-Nummer-Schaden 19 ;
+    asb:Schaden_Status asbkey:StatusSchaden_erfasstUndBewertet ;
+    asb:associatedWith :7936662_0_Teilbauwerk ;
+    asb:hatBauteilDefinition :1868842_BauteilDefinition ;
+    asb:hatPruefDokumentation :NY0LUVDD_Schaden,
+        :VC0Y03SA_Schaden .
+
+:5587413_SchadenObjekt a asb:SchadenObjekt ;
+    asb:Schaden_ID-Nummer-Schaden 42 ;
+    asb:Schaden_Status asbkey:StatusSchaden_erfasstUndBewertet ;
+    asb:associatedWith :7936662_0_Teilbauwerk ;
+    asb:hasModelRepresentation instPoint:buildingelement_a3adfabf-0383-11ed-920e-bc17b85584e8 ;
+    asb:hatBauteilDefinition :5319446_BauteilDefinition ;
+    asb:hatPruefDokumentation :RE0WLOQS_Schaden .
+
+:5590723_SchadenObjekt a asb:SchadenObjekt ;
+    asb:Schaden_ID-Nummer-Schaden 29 ;
+    asb:Schaden_Status asbkey:StatusSchaden_erfasstUndBewertet ;
+    asb:associatedWith :7936662_0_Teilbauwerk ;
+    asb:hasModelRepresentation instPoint:buildingelement_a1d578f4-0383-11ed-8313-bc17b85584e8,
+        instPoint:buildingelement_a45282e9-0383-11ed-a4a5-bc17b85584e8 ;
+    asb:hatBauteilDefinition :5319446_BauteilDefinition ;
+    asb:hatPruefDokumentation :NJ0OV159_Schaden,
+        :RE0VIMC3_Schaden .
+
+:5621890_BauteilDefinition a asb:ASBING13_BauteilDefinition ;
+    asb:ASBING13_Bauteil asbkey13:130011910000000_Widerlager ;
+    asb:ASBING13_Bauteilgruppe asbkey13:390021200000000_BauteilgruppeUnterbau ;
+    asb:BauteilTypInIfc "Widerlager_Wand_Hinten" ;
+    asb:Schaden_Ortsangabe [ asb:Ortsangabe_Ortsangabe asbkey:OrtsangabeBauteilSchaden_Widerlager_WiderlagerHinten ] ;
+    asb:associatedWith :7936662_0_Teilbauwerk ;
+    asb:beschreibtBauteil :N_9744768_Unterbau .
+
+:5733186_AOI a aoi:AreaOfInterest,
+        asbkey13:130091300000000_Hinten ;
+    aoi:locatesDamage :7623909_SchadenObjekt ;
+    asb:hasModelRepresentation instArea:buildingelement_98ff6116-0383-11ed-9161-bc17b85584e8 .
+
+:5833323_AOI a aoi:AreaOfInterest,
+        asbkey13:130101100000000_Links,
+        asbkey13:130115000000000_Unten ;
+    aoi:locatesDamage :4525177_SchadenObjekt ;
+    asb:hasModelRepresentation instArea:buildingelement_931f5be5-0383-11ed-84ec-bc17b85584e8 .
+
+:5872311_SchadenObjekt a asb:SchadenObjekt ;
+    asb:Schaden_ID-Nummer-Schaden 33 ;
+    asb:Schaden_Status asbkey:StatusSchaden_erfasstUndBewertet ;
+    asb:associatedWith :7936662_0_Teilbauwerk ;
+    asb:hasModelRepresentation instArea:buildingelement_94b9759a-0383-11ed-99e4-bc17b85584e8,
+        instPoint:buildingelement_a257362e-0383-11ed-9fd3-bc17b85584e8 ;
+    asb:hatBauteilDefinition :6910009_BauteilDefinition ;
+    asb:hatPruefDokumentation :NY0M62B9_Schaden .
+
+:5971867_BauteilDefinition a asb:ASBING13_BauteilDefinition ;
+    asb:ASBING13_Bauteil asbkey13:130011914000000_Fluegel ;
+    asb:ASBING13_Bauteilgruppe asbkey13:390021200000000_BauteilgruppeUnterbau ;
+    asb:Schaden_Ortsangabe [ asb:Ortsangabe_Ortsangabe asbkey:OrtsangabeBauteilSchaden_Fluegel_FluegelwandHinten ] ;
+    asb:associatedWith :7936662_0_Teilbauwerk ;
+    asb:beschreibtBauteil :N_9744768_Unterbau .
+
+:6037167_SchadenObjekt a asb:SchadenObjekt ;
+    asb:Schaden_ID-Nummer-Schaden 28 ;
+    asb:Schaden_Status asbkey:StatusSchaden_erfasstUndBewertet ;
+    asb:associatedWith :7936662_0_Teilbauwerk ;
+    asb:hasModelRepresentation instPoint:buildingelement_a2f4b98a-0383-11ed-ad73-bc17b85584e8 ;
+    asb:hatBauteilDefinition :4805526_BauteilDefinition ;
+    asb:hatPruefDokumentation :NJ0OHUTB_Schaden,
+        :RE0VG6C9_Schaden .
+
+:6097282_SchadenObjekt a asb:SchadenObjekt ;
+    asb:Schaden_ID-Nummer-Schaden 17 ;
+    asb:Schaden_Status asbkey:StatusSchaden_erfasstUndBewertet ;
+    asb:associatedWith :7936662_0_Teilbauwerk ;
+    asb:hatBauteilDefinition :1868842_BauteilDefinition ;
+    asb:hatPruefDokumentation :NY0LREJE_Schaden,
+        :VC0T8CXU_Schaden .
+
+:6283305_AOI a aoi:AreaOfInterest,
+        asbkey:OrtsangabeBauteilSchaden_Widerlager_beideWiderlager ;
+    aoi:locatesDamage :9383952_SchadenObjekt ;
+    asb:hasModelRepresentation instArea:buildingelement_9b294cdd-0383-11ed-9c01-bc17b85584e8,
+        instArea:buildingelement_9b875929-0383-11ed-bf83-bc17b85584e8 .
+
+:6362360_AOI a aoi:AreaOfInterest,
+        asbkey:OrtsangabeBauteilSchaden_Bereiche_1Stuetzenbereich ;
+    aoi:locatesDamage :7614202_SchadenObjekt ;
+    asb:hasModelRepresentation instArea:buildingelement_989f92c2-0383-11ed-b5dc-bc17b85584e8 .
+
+:6376904_AOI a aoi:AreaOfInterest,
+        asbkey:OrtsangabeBauteilSchaden_Allgemein_Oberseite,
+        asbkey:OrtsangabeBauteilSchaden_Fluegel_FluegelwandVorn ;
+    aoi:locatesDamage :6037167_SchadenObjekt ;
+    asb:hasModelRepresentation instArea:buildingelement_95256c5f-0383-11ed-bab4-bc17b85584e8 .
+
+:6392356_SchadenObjekt a asb:SchadenObjekt ;
+    asb:Schaden_ID-Nummer-Schaden 31 ;
+    asb:Schaden_Status asbkey:StatusSchaden_erfasstUndBewertet ;
+    asb:associatedWith :7936662_0_Teilbauwerk ;
+    asb:hasModelRepresentation instPoint:buildingelement_a39aa6ff-0383-11ed-a48b-bc17b85584e8 ;
+    asb:hatBauteilDefinition :3892539_BauteilDefinition ;
+    asb:hatPruefDokumentation :NJ0OZ4UP_Schaden,
+        :RE0VABGI_Schaden .
+
+:6412458_AOI a aoi:AreaOfInterest,
+        asbkey13:130101210000000_Seitenflaeche ;
+    aoi:locatesDamage :4156921_SchadenObjekt ;
+    asb:hasModelRepresentation instArea:buildingelement_92330f30-0383-11ed-98b2-bc17b85584e8,
+        instArea:buildingelement_9270b49b-0383-11ed-a1f7-bc17b85584e8 .
+
+:6414734_AOI a aoi:AreaOfInterest,
+        asbkey13:130111430000000_Fahrbahnplatte_Quertraeger ;
+    aoi:locatesDamage :9623265_SchadenObjekt .
+
+:6439423_BauteilDefinition a asb:ASBING13_BauteilDefinition ;
+    asb:ASBING13_Bauteilgruppe asbkey13:390022230000000_BauteilgruppeLeitungen_zustandsnotenBauteilgruppeSonstige_ ;
+    asb:ASBING13_Konstruktionsteil asbkey13:130022312100000_Rohr ;
+    asb:associatedWith :7936662_0_Teilbauwerk .
+
+:6454999_BauteilDefinition a asb:ASBING13_BauteilDefinition ;
+    asb:ASBING13_Bauteil asbkey13:130011000000000_Bruecke ;
+    asb:ASBING13_Bauteilgruppe asbkey13:390022160000000_BauteilgruppeFahrbahnuebergang ;
+    asb:ASBING13_Konstruktionsteil asbkey13:130021631000000_KonstruktionMit1Dichtprofil ;
+    asb:Schaden_Ortsangabe [ asb:Ortsangabe_Ortsangabe asbkey:OrtsangabeBauteilSchaden_Allgemein_vorneUndHinten ],
+        [ asb:Ortsangabe_Ortsangabe asbkey:OrtsangabeBauteilSchaden_Widerlager_beideWiderlager ] ;
+    asb:associatedWith :7936662_0_Teilbauwerk ;
+    asb:beschreibtBauteil :N_1429755_Bauteil,
+        :N_6891512_Bauteil .
+
+:6750073_SchadenObjekt a asb:SchadenObjekt ;
+    asb:Schaden_ID-Nummer-Schaden 12 ;
+    asb:Schaden_Status asbkey:StatusSchaden_erfasstUndBewertet ;
+    asb:associatedWith :7936662_0_Teilbauwerk ;
+    asb:hasModelRepresentation instPoint:buildingelement_a1c46d8c-0383-11ed-8760-bc17b85584e8,
+        instPoint:buildingelement_a43f6c53-0383-11ed-b596-bc17b85584e8 ;
+    asb:hatBauteilDefinition :6454999_BauteilDefinition ;
+    asb:hatPruefDokumentation :NJ0KK4RI_Schaden,
+        :RE0UU0J5_Schaden,
+        :VC0NZFYZ_Schaden .
+
+:6782285_SchadenObjekt a asb:SchadenObjekt ;
+    asb:Schaden_ID-Nummer-Schaden 36 ;
+    asb:Schaden_Status asbkey:StatusSchaden_erfasstUndBewertet ;
+    asb:associatedWith :7936662_0_Teilbauwerk ;
+    asb:hasModelRepresentation instArea:buildingelement_96c8e1e9-0383-11ed-8d38-bc17b85584e8,
+        instPoint:buildingelement_a245dced-0383-11ed-bb30-bc17b85584e8 ;
+    asb:hatBauteilDefinition :1201320_BauteilDefinition ;
+    asb:hatPruefDokumentation :RE0VWAL2_Schaden .
+
+:6817255_BauteilDefinition a asb:ASBING13_BauteilDefinition ;
+    asb:ASBING13_Bauteil asbkey13:130011000000000_Bruecke ;
+    asb:ASBING13_Bauteilgruppe asbkey13:390022310000000_BauteilgruppeGelaende ;
+    asb:ASBING13_Konstruktionsteil asbkey13:130023330000000_Boeschungspflaster ;
+    asb:BauteilTypInIfc "SUPERSTRUCTURE" ;
+    asb:associatedWith :7936662_0_Teilbauwerk ;
+    asb:hasModelRepresentation inst:buildingelement_3a4cc8ed-6a18-4e8e-b359-3f81d5b7774e .
+
+:6910009_BauteilDefinition a asb:ASBING13_BauteilDefinition ;
+    asb:ASBING13_Bauteil asbkey13:130011121000000_Ueberbau ;
+    asb:ASBING13_Bauteilgruppe asbkey13:390021100000000_BauteilgruppeUeberbau ;
+    asb:Schaden_Ortsangabe [ asb:Ortsangabe_Ortsangabe asbkey:OrtsangabeBauteilSchaden_Allgemein_gesamterUeberbau ] ;
+    asb:associatedWith :7936662_0_Teilbauwerk ;
+    asb:beschreibtBauteil :N_5236862_Ueberbau .
+
+:6971433_AOI a aoi:AreaOfInterest,
+        asbkey:OrtsangabeBauteilSchaden_Allgemein_amAnfangDesBauwerks,
+        asbkey:OrtsangabeBauteilSchaden_Allgemein_amEndeDesBauwerks,
+        asbkey13:130101110000000_Seitenflaeche ;
+    aoi:locatesDamage :7497924_SchadenObjekt ;
+    asb:hasModelRepresentation instArea:buildingelement_9790044c-0383-11ed-84d2-bc17b85584e8,
+        instArea:buildingelement_97ecc2be-0383-11ed-b1ee-bc17b85584e8 .
+
+:7221687_SchadenObjekt a asb:SchadenObjekt ;
+    asb:Schaden_ID-Nummer-Schaden 30 ;
+    asb:Schaden_Status asbkey:StatusSchaden_beseitigt ;
+    asb:associatedWith :7936662_0_Teilbauwerk ;
+    asb:hasModelRepresentation instPoint:buildingelement_a279e621-0383-11ed-8438-bc17b85584e8 ;
+    asb:hatBauteilDefinition :1208786_BauteilDefinition ;
+    asb:hatPruefDokumentation :NJ0OXZBA_Schaden .
+
+:7359316_BauteilDefinition a asb:ASBING13_BauteilDefinition ;
+    asb:ASBING13_Bauteil asbkey13:130011121000000_Ueberbau ;
+    asb:ASBING13_Bauteilgruppe asbkey13:390022220000000_BauteilgruppeAusstattungen_zustandsnotenBauteilgruppeSonstige_ ;
+    asb:ASBING13_Konstruktionsteil asbkey13:130022211442000_Schmutzfang ;
+    asb:BauteilTypInIfc "SUPERSTRUCTURE" ;
+    asb:associatedWith :7936662_0_Teilbauwerk ;
+    asb:hasModelRepresentation inst:buildingelement_3a4cc8ed-6a18-4e8e-b359-3f81d5b7774e .
+
+:7367741_BauteilDefinition a asb:ASBING13_BauteilDefinition ;
+    asb:ASBING13_Bauteilgruppe asbkey13:390022180000000_BauteilgruppeKappe ;
+    asb:ASBING13_Konstruktionsteil asbkey13:130021800000000_Kappe ;
+    asb:Schaden_Ortsangabe [ asb:Ortsangabe_Ortsangabe asbkey:OrtsangabeBauteilSchaden_Allgemein_gesamterUeberbau ] ;
+    asb:associatedWith :7936662_0_Teilbauwerk ;
+    asb:beschreibtBauteil :N_3441743_Bauteil,
+        :N_7961525_Bauteil .
+
+:7443423_BauteilDefinition a asb:ASBING13_BauteilDefinition ;
     asb:ASBING13_Bauteil asbkey13:130011910000000_Widerlager ;
     asb:ASBING13_Bauteilgruppe asbkey13:390022220000000_BauteilgruppeAusstattungen_zustandsnotenBauteilgruppeSonstige_ ;
     asb:ASBING13_Konstruktionsteil asbkey13:130022253100000_Stufe ;
@@ -1220,27 +1242,44 @@ mit Stützen- bzw. Wl.-Querträgern.***""" ;
     asb:beschreibtBauteil :DP18FTP0_Bauteil,
         :DP18FTP1_Bauteil .
 
-:7383554_AOI a aoi:AreaOfInterest,
-        asbkey:OrtsangabeBauteilSchaden_Allgemein_amAnfangDesBauwerks,
-        asbkey:OrtsangabeBauteilSchaden_Widerlager_WiderlagerVorn,
-        asbkey13:130113500000000_AufDemBauwerk ;
-    aoi:locatesDamage :3576526_SchadenObjekt .
+:7497924_SchadenObjekt a asb:SchadenObjekt ;
+    asb:Schaden_ID-Nummer-Schaden 9 ;
+    asb:Schaden_Status asbkey:StatusSchaden_erfasstUndBewertet ;
+    asb:associatedWith :7936662_0_Teilbauwerk ;
+    asb:hasModelRepresentation instPoint:buildingelement_a34ff4f4-0383-11ed-aef2-bc17b85584e8,
+        instPoint:buildingelement_a3fd0307-0383-11ed-bbe5-bc17b85584e8 ;
+    asb:hatBauteilDefinition :4805526_BauteilDefinition ;
+    asb:hatPruefDokumentation :1Y0ZUGRJ_Schaden,
+        :280M4N2R_Schaden,
+        :NY0M77CF_Schaden,
+        :VC0OBUAG_Schaden .
 
-:7390626_SchadenObjekt a asb:SchadenObjekt ;
+:7614202_SchadenObjekt a asb:SchadenObjekt ;
+    asb:Schaden_ID-Nummer-Schaden 8 ;
+    asb:Schaden_Status asbkey:StatusSchaden_beseitigt ;
+    asb:associatedWith :7936662_0_Teilbauwerk ;
+    asb:hasModelRepresentation instPoint:buildingelement_a1b53596-0383-11ed-bf7d-bc17b85584e8 ;
+    asb:hatBauteilDefinition :1365156_BauteilDefinition ;
+    asb:hatPruefDokumentation :1Y0ZMKFB_Schaden,
+        :280M4N2Q_Schaden .
+
+:7623909_SchadenObjekt a asb:SchadenObjekt ;
     asb:Schaden_ID-Nummer-Schaden 34 ;
     asb:Schaden_Status asbkey:StatusSchaden_erfasstUndBewertet ;
     asb:associatedWith :7936662_0_Teilbauwerk ;
-    asb:hatBauteilDefinition :9331550_BauteilDefinition ;
+    asb:hasModelRepresentation instPoint:buildingelement_a1e4d78b-0383-11ed-8586-bc17b85584e8 ;
+    asb:hatBauteilDefinition :3145015_BauteilDefinition ;
     asb:hatPruefDokumentation :NY0MCCII_Schaden .
 
-:7439353_AOI a aoi:AreaOfInterest,
-        asbkey13:130111430000000_Fahrbahnplatte_Quertraeger ;
-    aoi:locatesDamage :6980321_SchadenObjekt .
-
-:7917275_BauteilDefinition a asb:ASBING13_BauteilDefinition ;
-    asb:ASBING13_Bauteilgruppe asbkey13:390022230000000_BauteilgruppeLeitungen_zustandsnotenBauteilgruppeSonstige_ ;
-    asb:ASBING13_Konstruktionsteil asbkey13:130022312100000_Rohr ;
-    asb:associatedWith :7936662_0_Teilbauwerk .
+:7688927_BauteilDefinition a asb:ASBING13_BauteilDefinition ;
+    asb:ASBING13_Bauteil asbkey13:130011121000000_Ueberbau ;
+    asb:ASBING13_Bauteilgruppe asbkey13:390022210000000_BauteilgruppeSchutzeinrichtungen ;
+    asb:ASBING13_Konstruktionsteil asbkey13:130022121143510_Unterstopfung ;
+    asb:Schaden_Ortsangabe [ asb:Ortsangabe_Ortsangabe asbkey:OrtsangabeBauteilSchaden_Allgemein_links,
+                asbkey:OrtsangabeBauteilSchaden_Allgemein_rechts ] ;
+    asb:associatedWith :7936662_0_Teilbauwerk ;
+    asb:beschreibtBauteil :N_4331420_Bauteil,
+        :N_9234501_Bauteil .
 
 :7936662_Bauwerk a asb:Bauwerk ;
     asb:ASBObjekt_Bearbeiter "Rietdorf, Ellen" ;
@@ -1248,105 +1287,133 @@ mit Stützen- bzw. Wl.-Querträgern.***""" ;
     asb:ASBObjekt_Systemdatum "2015-03-06"^^xsd:date ;
     asb:Bauwerk_Bauwerksnummer "7936662" ;
     asb:Bauwerk_NaechstgelegenerOrt "Putzbrunn" ;
-    asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "7936662" ;
+    asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "BW 45/2" ;
+            asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_InterneNummer ],
+        [ asb:ObjektID_ID "7936662" ;
             asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ],
         [ asb:ObjektID_ID "MA 99Okm 45,750" ;
-            asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_InternerSortierschluessel ],
-        [ asb:ObjektID_ID "BW 45/2" ;
-            asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_InterneNummer ] .
+            asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_InternerSortierschluessel ] .
 
-:8197707_AOI a aoi:AreaOfInterest,
-        asbkey:OrtsangabeBauteilSchaden_Allgemein_Mitte ;
-    aoi:locatesDamage :2079894_SchadenObjekt .
-
-:8451262_AOI a aoi:AreaOfInterest,
-        asbkey:OrtsangabeBauteilSchaden_Bereiche_1Stuetzenbereich ;
-    aoi:locatesDamage :2436363_SchadenObjekt .
-
-:8460600_BauteilDefinition a asb:ASBING13_BauteilDefinition ;
-    asb:ASBING13_Bauteil asbkey13:130011000000000_Bruecke ;
-    asb:ASBING13_Bauteilgruppe asbkey13:390022180000000_BauteilgruppeKappe ;
-    asb:ASBING13_Konstruktionsteil asbkey13:130021850000000_Oberflaeche ;
-    asb:Schaden_Ortsangabe [ asb:Ortsangabe_Ortsangabe asbkey:OrtsangabeBauteilSchaden_Allgemein_links,
-                asbkey:OrtsangabeBauteilSchaden_Allgemein_rechts ] ;
-    asb:associatedWith :7936662_0_Teilbauwerk ;
-    asb:beschreibtBauteil :N_2123730_Bauteil,
-        :N_8004257_Bauteil .
-
-:8493492_SchadenObjekt a asb:SchadenObjekt ;
-    asb:Schaden_ID-Nummer-Schaden 9 ;
-    asb:Schaden_Status asbkey:StatusSchaden_erfasstUndBewertet ;
-    asb:associatedWith :7936662_0_Teilbauwerk ;
-    asb:hatBauteilDefinition :5744881_BauteilDefinition ;
-    asb:hatPruefDokumentation :1Y0ZUGRJ_Schaden,
-        :280M4N2R_Schaden,
-        :NY0M77CF_Schaden,
-        :VC0OBUAG_Schaden .
-
-:8545823_SchadenObjekt a asb:SchadenObjekt ;
-    asb:Schaden_ID-Nummer-Schaden 28 ;
-    asb:Schaden_Status asbkey:StatusSchaden_erfasstUndBewertet ;
-    asb:associatedWith :7936662_0_Teilbauwerk ;
-    asb:hatBauteilDefinition :5744881_BauteilDefinition ;
-    asb:hatPruefDokumentation :NJ0OHUTB_Schaden,
-        :RE0VG6C9_Schaden .
-
-:8945665_SchadenObjekt a asb:SchadenObjekt ;
+:7993913_SchadenObjekt a asb:SchadenObjekt ;
     asb:Schaden_ID-Nummer-Schaden 20 ;
     asb:Schaden_Status asbkey:StatusSchaden_erfasstUndBewertet ;
     asb:associatedWith :7936662_0_Teilbauwerk ;
-    asb:hatBauteilDefinition :9482054_BauteilDefinition ;
+    asb:hasModelRepresentation instArea:buildingelement_993e8107-0383-11ed-b0d3-bc17b85584e8,
+        instPoint:buildingelement_a268417f-0383-11ed-af33-bc17b85584e8 ;
+    asb:hatBauteilDefinition :5621890_BauteilDefinition ;
     asb:hatPruefDokumentation :NJ0IM4M7_Schaden,
         :NY0LWS6G_Schaden,
         :VC0Y8HGI_Schaden .
 
-:9055365_BauteilDefinition a asb:ASBING13_BauteilDefinition ;
-    asb:ASBING13_Bauteil asbkey13:130011000000000_Bruecke ;
-    asb:ASBING13_Bauteilgruppe asbkey13:390022210000000_BauteilgruppeSchutzeinrichtungen ;
-    asb:ASBING13_Konstruktionsteil asbkey13:130022112234000_Fussplatte ;
-    asb:BauteilTypInIfc "RAILING" ;
-    asb:Schaden_Ortsangabe [ asb:Ortsangabe_Ortsangabe asbkey:OrtsangabeBauteilSchaden_Allgemein_links,
-                asbkey:OrtsangabeBauteilSchaden_Allgemein_rechts ] ;
-    asb:associatedWith :7936662_0_Teilbauwerk ;
-    asb:beschreibtBauteil :N_7146946_Bauteil,
-        :N_7590749_Bauteil .
+:8054455_AOI a aoi:AreaOfInterest,
+        asbkey:OrtsangabeBauteilSchaden_Allgemein_Oberseite,
+        asbkey:OrtsangabeBauteilSchaden_Allgemein_amAnfangDesBauwerks,
+        asbkey:OrtsangabeBauteilSchaden_Widerlager_WiderlagerVorn,
+        asbkey13:130113500000000_AufDemBauwerk ;
+    aoi:locatesDamage :5590723_SchadenObjekt ;
+    asb:hasModelRepresentation instArea:buildingelement_940edcd5-0383-11ed-a846-bc17b85584e8,
+        instArea:buildingelement_944c3107-0383-11ed-a8c9-bc17b85584e8 .
 
-:9331550_BauteilDefinition a asb:ASBING13_BauteilDefinition ;
-    asb:ASBING13_Bauteilgruppe asbkey13:390022180000000_BauteilgruppeKappe ;
-    asb:ASBING13_Konstruktionsteil asbkey13:130021832000000_SenkrechteFlaeche ;
-    asb:Schaden_Ortsangabe [ asb:Ortsangabe_Ortsangabe asbkey13:130101100000000_Links ] ;
+:8241648_SchadenObjekt a asb:SchadenObjekt ;
+    asb:Schaden_ID-Nummer-Schaden 26 ;
+    asb:Schaden_Status asbkey:StatusSchaden_erfasstUndBewertet ;
     asb:associatedWith :7936662_0_Teilbauwerk ;
-    asb:beschreibtBauteil :N_8004257_Bauteil .
+    asb:hasModelRepresentation instPoint:buildingelement_a33dde0c-0383-11ed-b865-bc17b85584e8,
+        instPoint:buildingelement_a3e84bd6-0383-11ed-9837-bc17b85584e8 ;
+    asb:hatBauteilDefinition :4162610_BauteilDefinition ;
+    asb:hatPruefDokumentation :NJ0NWW9R_Schaden,
+        :NY0MEIYU_Schaden .
 
-:9476775_BauteilDefinition a asb:ASBING13_BauteilDefinition ;
-    asb:ASBING13_Bauteil asbkey13:130011121000000_Ueberbau ;
+:8267364_AOI a aoi:AreaOfInterest,
+        asbkey:OrtsangabeBauteilSchaden_Allgemein_Mitte ;
+    aoi:locatesDamage :5069996_SchadenObjekt .
+
+:8319089_AOI a aoi:AreaOfInterest,
+        asbkey:OrtsangabeBauteilSchaden_Bereiche_1Endbereich ;
+    aoi:locatesDamage :9375066_SchadenObjekt ;
+    asb:hasModelRepresentation instArea:buildingelement_9ac18bef-0383-11ed-ae9d-bc17b85584e8 .
+
+:8592323_BauteilDefinition a asb:ASBING13_BauteilDefinition ;
+    asb:ASBING13_Bauteil asbkey13:130011121200000_Balken_Laengstraeger ;
     asb:ASBING13_Bauteilgruppe asbkey13:390021100000000_BauteilgruppeUeberbau ;
+    asb:BauteilTypInIfc "GIRDER_SEGMENT" ;
+    asb:Schaden_Ortsangabe [ asb:Ortsangabe_GroesseOrtsangabe [ asb:AbstandAnzahl_Anzahl 1 ] ;
+            asb:Ortsangabe_Ortsangabe asbkey13:130082100000000_xxxTesFeld ],
+        [ asb:Ortsangabe_GroesseOrtsangabe [ asb:AbstandAnzahl_Anzahl 4 ] ;
+            asb:Ortsangabe_Ortsangabe asbkey13:130102212000000_xxxTesBauteilVonLinks_RechteSeitenflaeche ] ;
+    asb:associatedWith :7936662_0_Teilbauwerk ;
+    asb:beschreibtBauteil :N_7527139_Bauteil .
+
+:8744586_BauteilDefinition a asb:ASBING13_BauteilDefinition ;
+    asb:ASBING13_Bauteil asbkey13:130011121000000_Ueberbau ;
+    asb:ASBING13_Bauteilgruppe asbkey13:390022250000000_BauteilgruppeBelaege ;
+    asb:ASBING13_Konstruktionsteil asbkey13:130022510000000_Fahrbahn ;
+    asb:BauteilTypInIfc "SLAB" ;
     asb:Schaden_Ortsangabe [ asb:Ortsangabe_Ortsangabe asbkey:OrtsangabeBauteilSchaden_Allgemein_gesamterUeberbau ] ;
     asb:associatedWith :7936662_0_Teilbauwerk ;
-    asb:beschreibtBauteil :N_1418836_Ueberbau .
+    asb:beschreibtBauteil :N_7635266_Bauteil .
 
-:9482054_BauteilDefinition a asb:ASBING13_BauteilDefinition ;
-    asb:ASBING13_Bauteil asbkey13:130011910000000_Widerlager ;
+:8754886_BauteilDefinition a asb:ASBING13_BauteilDefinition ;
+    asb:ASBING13_Bauteil asbkey13:130011911000000_Wand ;
     asb:ASBING13_Bauteilgruppe asbkey13:390021200000000_BauteilgruppeUnterbau ;
-    asb:Schaden_Ortsangabe [ asb:Ortsangabe_Ortsangabe asbkey:OrtsangabeBauteilSchaden_Widerlager_WiderlagerHinten ] ;
+    asb:Schaden_Ortsangabe [ asb:Ortsangabe_Ortsangabe asbkey:OrtsangabeBauteilSchaden_Widerlager_WiderlagerVorn ] ;
     asb:associatedWith :7936662_0_Teilbauwerk ;
-    asb:beschreibtBauteil :N_9353339_Unterbau .
+    asb:beschreibtBauteil :N_2054140_Unterbau .
 
-:9482646_AOI a aoi:AreaOfInterest,
-        asbkey13:130101210000000_Seitenflaeche ;
-    aoi:locatesDamage :6983123_SchadenObjekt .
+:9375066_SchadenObjekt a asb:SchadenObjekt ;
+    asb:Schaden_ID-Nummer-Schaden 5 ;
+    asb:Schaden_Status asbkey:StatusSchaden_beseitigt ;
+    asb:associatedWith :7936662_0_Teilbauwerk ;
+    asb:hasModelRepresentation instPoint:buildingelement_a156b5f1-0383-11ed-9f9b-bc17b85584e8 ;
+    asb:hatBauteilDefinition :4106104_BauteilDefinition ;
+    asb:hatPruefDokumentation :1Y0Z319E_Schaden,
+        :280M4N2N_Schaden .
 
-:9676502_BauteilDefinition a asb:ASBING13_BauteilDefinition ;
-    asb:ASBING13_Bauteil asbkey13:130011121000000_Ueberbau ;
-    asb:ASBING13_Bauteilgruppe asbkey13:390022210000000_BauteilgruppeSchutzeinrichtungen ;
-    asb:ASBING13_Konstruktionsteil asbkey13:130022116000000_Parkbuegel_Poller_Sperrpfosten ;
-    asb:Schaden_Ortsangabe [ asb:Ortsangabe_Ortsangabe asbkey13:130101200000000_Rechts ] ;
-    asb:associatedWith :7936662_0_Teilbauwerk .
+:9383952_SchadenObjekt a asb:SchadenObjekt ;
+    asb:Schaden_ID-Nummer-Schaden 13 ;
+    asb:Schaden_Status asbkey:StatusSchaden_erfasstUndBewertet ;
+    asb:associatedWith :7936662_0_Teilbauwerk ;
+    asb:hasModelRepresentation instPoint:buildingelement_a185b477-0383-11ed-ae31-bc17b85584e8,
+        instPoint:buildingelement_a2140416-0383-11ed-bbb9-bc17b85584e8 ;
+    asb:hatBauteilDefinition :1201320_BauteilDefinition ;
+    asb:hatPruefDokumentation :NJ0MQUYL_Schaden,
+        :RE0VOHJV_Schaden,
+        :VC0O4REQ_Schaden .
 
-:9863446_AOI a aoi:AreaOfInterest,
-        asbkey:OrtsangabeBauteilSchaden_Allgemein_Oberseite,
-        asbkey:OrtsangabeBauteilSchaden_Fluegel_FluegelwandVorn ;
-    aoi:locatesDamage :8545823_SchadenObjekt .
+:9623265_SchadenObjekt a asb:SchadenObjekt ;
+    asb:Schaden_ID-Nummer-Schaden 2 ;
+    asb:Schaden_Status asbkey:StatusSchaden_beseitigt ;
+    asb:associatedWith :7936662_0_Teilbauwerk ;
+    asb:hatBauteilDefinition :1868842_BauteilDefinition ;
+    asb:hatPruefDokumentation :DP19VYW0_Schaden .
+
+:9653659_SchadenObjekt a asb:SchadenObjekt ;
+    asb:Schaden_ID-Nummer-Schaden 25 ;
+    asb:Schaden_Status asbkey:StatusSchaden_erfasstUndBewertet ;
+    asb:associatedWith :7936662_0_Teilbauwerk ;
+    asb:hasModelRepresentation instPoint:buildingelement_a2adc972-0383-11ed-8e65-bc17b85584e8 ;
+    asb:hatBauteilDefinition :6817255_BauteilDefinition ;
+    asb:hatPruefDokumentation :NJ0NV9I8_Schaden,
+        :NY0MISFJ_Schaden .
+
+:9689241_AOI a aoi:AreaOfInterest,
+        asbkey:OrtsangabeBauteilSchaden_Allgemein_Mitte,
+        asbkey:OrtsangabeBauteilSchaden_Allgemein_Oberseite ;
+    aoi:locatesDamage :5587413_SchadenObjekt ;
+    asb:hasModelRepresentation instArea:buildingelement_93bf6e84-0383-11ed-98b0-bc17b85584e8 .
+
+:9789338_SchadenObjekt a asb:SchadenObjekt ;
+    asb:Schaden_ID-Nummer-Schaden 14 ;
+    asb:Schaden_Status asbkey:StatusSchaden_erfasstUndBewertet ;
+    asb:associatedWith :7936662_0_Teilbauwerk ;
+    asb:hasModelRepresentation instPoint:buildingelement_a176ca92-0383-11ed-8d4e-bc17b85584e8,
+        instPoint:buildingelement_a2047e5e-0383-11ed-88ca-bc17b85584e8,
+        instPoint:buildingelement_a3642e55-0383-11ed-b4af-bc17b85584e8,
+        instPoint:buildingelement_a3d40449-0383-11ed-a9cb-bc17b85584e8 ;
+    asb:hatBauteilDefinition :4069030_BauteilDefinition ;
+    asb:hatPruefDokumentation :NJ0MEETK_Schaden,
+        :RE0VHE1G_Schaden,
+        :VC0O70JU_Schaden .
 
 :DP18FTP0_Bauteil a asb:Bauteil ;
     asb:ASBING13_Bauteil asbkey13:130011910000000_Widerlager ;
@@ -1355,7 +1422,7 @@ mit Stützen- bzw. Wl.-Querträgern.***""" ;
             asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ] ;
     asb:associatedWith :DP19TTB0_EinfacheBauteilart ;
     asb:isPartOf :7936662_0_Teilbauwerk ;
-    dot:hasDamage :2307875_SchadenObjekt .
+    dot:hasDamage :7429367_SchadenObjekt .
 
 :DP18FTP1_Bauteil a asb:Bauteil ;
     asb:ASBING13_Bauteil asbkey13:130011910000000_Widerlager ;
@@ -1364,7 +1431,7 @@ mit Stützen- bzw. Wl.-Querträgern.***""" ;
             asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ] ;
     asb:associatedWith :DP19TTB1_EinfacheBauteilart ;
     asb:isPartOf :7936662_0_Teilbauwerk ;
-    dot:hasDamage :2307875_SchadenObjekt .
+    dot:hasDamage :7429367_SchadenObjekt .
 
 :DP18FYXD_Gruendung a asb:Gruendung ;
     asb:ASBObjekt_Bearbeiter "ADMINISTRATOR" ;
@@ -1395,9 +1462,9 @@ mit Stützen- bzw. Wl.-Querträgern.***""" ;
     asb:ASBObjekt_Systemdatum "2006-12-19"^^xsd:date ;
     asb:ASBObjekt_Textfeld "DM" ;
     asb:KostenFuerBauErhaltungBetrieb_Art asbkey13:450011000000000_Neubau_m%C2%B2Bauwerksflaeche_ ;
-    asb:KostenFuerBauErhaltungBetrieb_Haushaltsbezug [ asb:Haushaltsbezug_Betrag [ asb:hasdecimal 1748719.28 ] ],
-        [ asb:Haushaltsbezug_Betrag [ asb:hasdecimal 1700000.0 ] ],
-        [ asb:Haushaltsbezug_Hauhaltsjahr 2002 ] ;
+    asb:KostenFuerBauErhaltungBetrieb_Haushaltsbezug [ asb:Haushaltsbezug_Betrag [ asb:hasdecimal 1700000.0 ] ],
+        [ asb:Haushaltsbezug_Hauhaltsjahr 2002 ],
+        [ asb:Haushaltsbezug_Betrag [ asb:hasdecimal 1748719.28 ] ] ;
     asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "DP18H4ZM" ;
             asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ] ;
     asb:associatedWith :7936662_0_Teilbauwerk .
@@ -1543,8 +1610,8 @@ aus Drahtgitter 30/30/3mm feuerverzinkt.***""" ;
     asb:AbstrakteBauteilart_AusfuehrendeFirma "Fa. Josef Baumgartner" ;
     asb:AbstrakteBauteilart_Einbaudatum [ asb:EinfachesDatum_Jahr 2002 ] ;
     asb:Oberflaechenschutzsystem_Verfahren [ asb:VerfahrenOberflaechenschutzsystem_Hersteller asbkey13:290031242000000_MCBauchemieMuellerGmbh%26Co ],
-        [ ],
-        [ asb:VerfahrenOberflaechenschutzsystem_Systembezeichnung [ ] ] ;
+        [ asb:VerfahrenOberflaechenschutzsystem_Systembezeichnung [ ] ],
+        [ ] ;
     asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "DP19UPTC" ;
             asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ] .
 
@@ -1554,9 +1621,9 @@ aus Drahtgitter 30/30/3mm feuerverzinkt.***""" ;
     asb:AbstrakteBauteilart_AusfuehrendeFirma "Fa. Isotech, München" ;
     asb:AbstrakteBauteilart_Einbaudatum [ asb:EinfachesDatum_Jahr 2002 ] ;
     asb:BauteilartOhneKatalog_Hersteller "MC Bauchemie / Villas Austria" ;
-    asb:BelagAbdichtung_Schicht [ asb:Schicht_Dicke [ asb:hasdecimal 4.0 ] ],
-        [ asb:Schicht_Funktion asbkey:FunktionSchicht_Schutzschicht ],
-        [ asb:Schicht_Funktion asbkey:FunktionSchicht_Dichtung ] ;
+    asb:BelagAbdichtung_Schicht [ asb:Schicht_Funktion asbkey:FunktionSchicht_Schutzschicht ],
+        [ asb:Schicht_Funktion asbkey:FunktionSchicht_Dichtung ],
+        [ asb:Schicht_Dicke [ asb:hasdecimal 4.0 ] ] ;
     asb:BelagAbdichtung_VorbereitungUnterlage asbkey:ArtVorbereitungUnterlage_StrahlenMitFestenStrahlmitteln ;
     asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "DP19URW6" ;
             asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ] .
@@ -1567,9 +1634,9 @@ aus Drahtgitter 30/30/3mm feuerverzinkt.***""" ;
     asb:AbstrakteBauteilart_AusfuehrendeFirma "Fa. Isotech, München" ;
     asb:AbstrakteBauteilart_Einbaudatum [ asb:EinfachesDatum_Jahr 2002 ] ;
     asb:BauteilartOhneKatalog_Hersteller "MC Bauchemie / Villas Austria" ;
-    asb:BelagAbdichtung_Schicht [ asb:Schicht_Funktion asbkey:FunktionSchicht_Schutzschicht ],
-        [ asb:Schicht_Funktion asbkey:FunktionSchicht_Dichtung ],
-        [ asb:Schicht_Dicke [ asb:hasdecimal 0.5 ] ] ;
+    asb:BelagAbdichtung_Schicht [ asb:Schicht_Dicke [ asb:hasdecimal 0.5 ] ],
+        [ asb:Schicht_Funktion asbkey:FunktionSchicht_Schutzschicht ],
+        [ asb:Schicht_Funktion asbkey:FunktionSchicht_Dichtung ] ;
     asb:BelagAbdichtung_VorbereitungUnterlage asbkey:ArtVorbereitungUnterlage_StrahlenMitFestenStrahlmitteln ;
     asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "DP19URW7" ;
             asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ] .
@@ -1712,131 +1779,96 @@ aus Drahtgitter 30/30/3mm feuerverzinkt.***""" ;
             asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ] ;
     asb:associatedWith :DP18G50C_FahrzeugRueckhaltesystem .
 
-:N_2012660_Entwaesserung a asb:Entwaesserung ;
+:N_2220236_Entwaesserung a asb:Entwaesserung ;
     asb:Entwaesserung_Leitungsdurchmesser [ asb:hasdecimal 200.0 ] ;
-    asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "N_2012660" ;
+    asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "N_2220236" ;
             asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ] .
 
-:N_2872823_Bauteil a asb:Bauteil ;
-    aoi:hasAreaOfInterest :6607648_AOI,
-        :7439353_AOI ;
-    asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "2872823" ;
+:N_2457587_Bauteil a asb:Bauteil ;
+    aoi:hasAreaOfInterest :6414734_AOI,
+        :8267364_AOI ;
+    asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "2457587" ;
             asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ] ;
-    asb:associatedWith :N_8488196_TragendesBauteil ;
-    asb:isPartOf :N_1418836_Ueberbau ;
-    dot:hasDamage :1931141_SchadenObjekt .
+    asb:associatedWith :N_6154586_TragendesBauteil ;
+    asb:isPartOf :N_5236862_Ueberbau ;
+    dot:hasDamage :6097282_SchadenObjekt .
 
-:N_3578678_Bauteil a asb:Bauteil ;
-    asb:AbstraktesBauteil_Ortsangabe [ asb:Ortsangabe_GroesseOrtsangabe [ asb:AbstandAnzahl_Anzahl 1 ] ;
-            asb:Ortsangabe_Ortsangabe asbkey13:130082100000000_xxxTesFeld ],
-        [ asb:Ortsangabe_GroesseOrtsangabe [ asb:AbstandAnzahl_Anzahl 4 ] ;
-            asb:Ortsangabe_Ortsangabe asbkey13:130102212000000_xxxTesBauteilVonLinks_RechteSeitenflaeche ] ;
-    asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "3578678" ;
+:N_3782564_Bauteil a asb:Bauteil ;
+    aoi:hasAreaOfInterest :1548727_AOI ;
+    asb:AbstraktesBauteil_Einbauort "Außenkappe West***" ;
+    asb:AbstraktesBauteil_Geometrie [ asb:Geometrie_Laenge [ asb:hasdecimal 55.99 ] ] ;
+    asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "N_3782564" ;
             asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ] ;
-    asb:associatedWith :N_8488196_TragendesBauteil ;
-    asb:hasModelRepresentation inst:beam_3a4cc8ed-6a18-4e8e-b359-3f81d5b77410 ;
-    asb:isPartOf :N_1418836_Ueberbau ;
-    dot:hasDamage :1968081_SchadenObjekt .
+    asb:associatedWith :7936662_0_Teilbauwerk,
+        :DP18G50B_FahrzeugRueckhaltesystem ;
+    asb:hasModelRepresentation inst:buildingelement_cecd3ddb-e630-4edf-bad9-db620023c66a .
 
-:N_3895045_Unterbau a asb:Unterbau ;
+:N_5280301_Bauteil a asb:Bauteil ;
+    aoi:hasAreaOfInterest :1548727_AOI ;
+    asb:AbstraktesBauteil_Einbauort "Außenkappe Ost***" ;
+    asb:AbstraktesBauteil_Geometrie [ asb:Geometrie_Laenge [ asb:hasdecimal 55.99 ] ] ;
+    asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "N_5280301" ;
+            asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ] ;
+    asb:associatedWith :7936662_0_Teilbauwerk,
+        :DP18G50A_FahrzeugRueckhaltesystem ;
+    asb:hasModelRepresentation inst:buildingelement_cecd3ddb-e630-4edf-bad9-db620023c67b .
+
+:N_6393575_Bauvertrag a asb:Bauvertrag ;
+    asb:Bauvertrag_Auftraggeber "Gemeinde Putzbrunn, Rathausstr. 1, 85636 Putzbrunn" ;
+    asb:Bauvertrag_Auftragnehmer "Fa. J. Baumgartner GmbH & Co.KG , 83679 Sachsenkamm" ;
+    asb:Bauvertrag_Bauueberwachung "ABD Südbayern, Bauleitung Maisach" ;
+    asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "N_6393575" ;
+            asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ] ;
+    asb:associatedWith :DP18H4ZM_KostenFuerBauErhaltungBetrieb .
+
+:N_6785803_Fahrstreifen a asb:Fahrstreifen ;
+    asb:ASBING13_AnzahlBauteile "1" ;
+    asb:Fahrstreifen_AbwFahrtrichtung asbkey:Fahrtrichtung_gegenBauwerksrichtung,
+        asbkey:Fahrtrichtung_inBauwerksrichtung ;
+    asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "N_6785803" ;
+            asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ] .
+
+:N_7046988_Unterbau a asb:Unterbau ;
     asb:BauteilTypInIfc "COLUMN" ;
-    asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "N_3895045" ;
+    asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "N_7046988" ;
             asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ] ;
     asb:Unterbau_Art asbkey13:040012100000000_Massiv ;
     asb:hasModelRepresentation inst:column_776d4a04-8e12-498e-a6ba-487d29a95c66,
         inst:column_b2b22d62-5b8e-42af-ba99-9fddd5a722ae ;
     asb:isPartOf :7936662_0_Teilbauwerk .
 
-:N_7146946_Bauteil a asb:Bauteil ;
-    aoi:hasAreaOfInterest :9808362_AOI ;
-    asb:AbstraktesBauteil_Einbauort "Außenkappe West***" ;
-    asb:AbstraktesBauteil_Geometrie [ asb:Geometrie_Laenge [ asb:hasdecimal 55.99 ] ] ;
-    asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "N_7146946" ;
+:N_7527139_Bauteil a asb:Bauteil ;
+    asb:AbstraktesBauteil_Ortsangabe [ asb:Ortsangabe_GroesseOrtsangabe [ asb:AbstandAnzahl_Anzahl 1 ] ;
+            asb:Ortsangabe_Ortsangabe asbkey13:130082100000000_xxxTesFeld ],
+        [ asb:Ortsangabe_GroesseOrtsangabe [ asb:AbstandAnzahl_Anzahl 4 ] ;
+            asb:Ortsangabe_Ortsangabe asbkey13:130102212000000_xxxTesBauteilVonLinks_RechteSeitenflaeche ] ;
+    asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "7527139" ;
             asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ] ;
-    asb:associatedWith :7936662_0_Teilbauwerk,
-        :DP18G50B_FahrzeugRueckhaltesystem ;
-    asb:hasModelRepresentation inst:buildingelement_cecd3ddb-e630-4edf-bad9-db620023c66a .
+    asb:associatedWith :N_6154586_TragendesBauteil ;
+    asb:hasModelRepresentation inst:beam_3a4cc8ed-6a18-4e8e-b359-3f81d5b77410 ;
+    asb:isPartOf :N_5236862_Ueberbau ;
+    dot:hasDamage :4756257_SchadenObjekt .
 
-:N_7590749_Bauteil a asb:Bauteil ;
-    aoi:hasAreaOfInterest :9808362_AOI ;
-    asb:AbstraktesBauteil_Einbauort "Außenkappe Ost***" ;
-    asb:AbstraktesBauteil_Geometrie [ asb:Geometrie_Laenge [ asb:hasdecimal 55.99 ] ] ;
-    asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "N_7590749" ;
-            asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ] ;
-    asb:associatedWith :7936662_0_Teilbauwerk,
-        :DP18G50A_FahrzeugRueckhaltesystem ;
-    asb:hasModelRepresentation inst:buildingelement_cecd3ddb-e630-4edf-bad9-db620023c67b .
-
-:N_7974051_Fahrstreifen a asb:Fahrstreifen ;
-    asb:ASBING13_AnzahlBauteile "1" ;
-    asb:Fahrstreifen_AbwFahrtrichtung asbkey:Fahrtrichtung_gegenBauwerksrichtung,
-        asbkey:Fahrtrichtung_inBauwerksrichtung ;
-    asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "N_7974051" ;
-            asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ] .
-
-:N_9329289_Bauvertrag a asb:Bauvertrag ;
-    asb:Bauvertrag_Auftraggeber "Gemeinde Putzbrunn, Rathausstr. 1, 85636 Putzbrunn" ;
-    asb:Bauvertrag_Auftragnehmer "Fa. J. Baumgartner GmbH & Co.KG , 83679 Sachsenkamm" ;
-    asb:Bauvertrag_Bauueberwachung "ABD Südbayern, Bauleitung Maisach" ;
-    asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "N_9329289" ;
-            asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ] ;
-    asb:associatedWith :DP18H4ZM_KostenFuerBauErhaltungBetrieb .
-
-:N_9355221_Bauteil a asb:Bauteil ;
+:N_8436821_Bauteil a asb:Bauteil ;
     asb:AbstraktesBauteil_Ortsangabe [ asb:Ortsangabe_GroesseOrtsangabe [ asb:AbstandAnzahl_Anzahl 1 ] ;
             asb:Ortsangabe_Ortsangabe asbkey13:130082100000000_xxxTesFeld ],
         [ asb:Ortsangabe_GroesseOrtsangabe [ asb:AbstandAnzahl_Anzahl 3 ] ;
             asb:Ortsangabe_Ortsangabe asbkey13:130102212000000_xxxTesBauteilVonLinks_RechteSeitenflaeche ] ;
-    asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "9355221" ;
+    asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "8436821" ;
             asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ] ;
-    asb:associatedWith :N_8488196_TragendesBauteil ;
+    asb:associatedWith :N_6154586_TragendesBauteil ;
     asb:hasModelRepresentation inst:beam_3a4cc8ed-6a18-4e8e-b359-3f81d5b776e2 ;
-    asb:isPartOf :N_1418836_Ueberbau ;
-    dot:hasDamage :1750156_SchadenObjekt .
+    asb:isPartOf :N_5236862_Ueberbau ;
+    dot:hasDamage :2684252_SchadenObjekt .
 
-:N_9869879_Fahrstreifen a asb:Fahrstreifen ;
+:N_9771534_Fahrstreifen a asb:Fahrstreifen ;
     asb:ASBING13_AnzahlBauteile "3" ;
     asb:Fahrstreifen_AbwFahrtrichtung asbkey:Fahrtrichtung_gegenBauwerksrichtung,
         asbkey:Fahrtrichtung_inBauwerksrichtung ;
-    asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "N_9869879" ;
+    asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "N_9771534" ;
             asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ] .
 
-:1240226_SchadenObjekt a asb:SchadenObjekt ;
-    asb:Schaden_ID-Nummer-Schaden 40 ;
-    asb:Schaden_Status asbkey:StatusSchaden_erfasstUndBewertet ;
-    asb:associatedWith :7936662_0_Teilbauwerk ;
-    asb:hatBauteilDefinition :2731093_BauteilDefinition ;
-    asb:hatPruefDokumentation :RE0WE801_Schaden .
-
-:1696970_AOI a aoi:AreaOfInterest,
-        asbkey13:130113500000000_AufDemBauwerk ;
-    aoi:locatesDamage :5570364_SchadenObjekt .
-
-:2307875_SchadenObjekt a asb:SchadenObjekt ;
-    asb:Schaden_ID-Nummer-Schaden 23 ;
-    asb:Schaden_Status asbkey:StatusSchaden_erfasstUndBewertet ;
-    asb:associatedWith :7936662_0_Teilbauwerk ;
-    asb:hatBauteilDefinition :7345642_BauteilDefinition ;
-    asb:hatPruefDokumentation :NJ0NRCTF_Schaden,
-        :NY0MG56G_Schaden .
-
-:3594060_AOI a aoi:AreaOfInterest,
-        asbkey13:130113500000000_AufDemBauwerk ;
-    aoi:locatesDamage :4693325_SchadenObjekt .
-
-:4144712_AOI a aoi:AreaOfInterest,
-        asbkey:OrtsangabeBauteilSchaden_Allgemein_Oberseite,
-        asbkey:OrtsangabeBauteilSchaden_Allgemein_vorneUndHinten ;
-    aoi:locatesDamage :5882102_SchadenObjekt .
-
-:4168294_SchadenObjekt a asb:SchadenObjekt ;
-    asb:Schaden_ID-Nummer-Schaden 1 ;
-    asb:Schaden_Status asbkey:StatusSchaden_beseitigt ;
-    asb:associatedWith :7936662_0_Teilbauwerk ;
-    asb:hatBauteilDefinition :6203208_BauteilDefinition ;
-    asb:hatPruefDokumentation :DP19VYVY_Schaden .
-
-:4510115_BauteilDefinition a asb:ASBING13_BauteilDefinition ;
+:1108151_BauteilDefinition a asb:ASBING13_BauteilDefinition ;
     asb:ASBING13_Bauteil asbkey13:130011121000000_Ueberbau ;
     asb:ASBING13_Bauteilgruppe asbkey13:390022220000000_BauteilgruppeAusstattungen_zustandsnotenBauteilgruppeSonstige_ ;
     asb:ASBING13_Konstruktionsteil asbkey13:130022211140000_Ablauf ;
@@ -1844,70 +1876,132 @@ aus Drahtgitter 30/30/3mm feuerverzinkt.***""" ;
     asb:associatedWith :7936662_0_Teilbauwerk ;
     asb:hasModelRepresentation inst:buildingelement_3a4cc8ed-6a18-4e8e-b359-3f81d5b7774e .
 
-:5509764_BauteilDefinition a asb:ASBING13_BauteilDefinition ;
+:1158579_AOI a aoi:AreaOfInterest,
+        asbkey:OrtsangabeBauteilSchaden_Allgemein_Unterseite ;
+    aoi:locatesDamage :3947832_SchadenObjekt ;
+    asb:hasModelRepresentation instArea:buildingelement_91dd13cf-0383-11ed-8fc1-bc17b85584e8 .
+
+:1201320_BauteilDefinition a asb:ASBING13_BauteilDefinition ;
     asb:ASBING13_Bauteil asbkey13:130011121000000_Ueberbau ;
     asb:ASBING13_Bauteilgruppe asbkey13:390022250000000_BauteilgruppeBelaege ;
     asb:ASBING13_Konstruktionsteil asbkey13:130022510000000_Fahrbahn ;
     asb:associatedWith :7936662_0_Teilbauwerk ;
-    asb:beschreibtBauteil :N_6289834_Bauteil .
+    asb:beschreibtBauteil :N_7635266_Bauteil .
 
-:5744881_BauteilDefinition a asb:ASBING13_BauteilDefinition ;
+:1259442_SchadenObjekt a asb:SchadenObjekt ;
+    asb:Schaden_ID-Nummer-Schaden 41 ;
+    asb:Schaden_Status asbkey:StatusSchaden_erfasstUndBewertet ;
+    asb:associatedWith :7936662_0_Teilbauwerk ;
+    asb:hasModelRepresentation instArea:buildingelement_9d56f239-0383-11ed-92d8-bc17b85584e8,
+        instArea:buildingelement_9d8393b3-0383-11ed-9e02-bc17b85584e8,
+        instPoint:buildingelement_a29baedf-0383-11ed-9b10-bc17b85584e8,
+        instPoint:buildingelement_a319a901-0383-11ed-978e-bc17b85584e8 ;
+    asb:hatBauteilDefinition :7688927_BauteilDefinition ;
+    asb:hatPruefDokumentation :RE0WGFHR_Schaden .
+
+:1397923_SchadenObjekt a asb:SchadenObjekt ;
+    asb:Schaden_ID-Nummer-Schaden 11 ;
+    asb:Schaden_Status asbkey:StatusSchaden_erfasstUndBewertet ;
+    asb:associatedWith :7936662_0_Teilbauwerk ;
+    asb:hasModelRepresentation instArea:buildingelement_9dcbbdc7-0383-11ed-97bd-bc17b85584e8,
+        instPoint:buildingelement_a3c014b1-0383-11ed-9770-bc17b85584e8 ;
+    asb:hatBauteilDefinition :4162610_BauteilDefinition ;
+    asb:hatPruefDokumentation :NJ0LOAVL_Schaden,
+        :RE0VD9YZ_Schaden,
+        :VC0K8D74_Schaden .
+
+:1548727_AOI a aoi:AreaOfInterest,
+        asbkey:OrtsangabeBauteilSchaden_Allgemein_Unterseite,
+        asbkey13:130113500000000_AufDemBauwerk ;
+    aoi:locatesDamage :9789338_SchadenObjekt ;
+    asb:hasModelRepresentation instArea:buildingelement_9c90fbca-0383-11ed-846a-bc17b85584e8,
+        instArea:buildingelement_9cbd1da7-0383-11ed-a805-bc17b85584e8,
+        instArea:buildingelement_9cf08d93-0383-11ed-90d1-bc17b85584e8,
+        instArea:buildingelement_9d1d1660-0383-11ed-a210-bc17b85584e8 .
+
+:4403321_AOI a aoi:AreaOfInterest,
+        asbkey:OrtsangabeBauteilSchaden_Himmelsrichtung_Norden,
+        asbkey13:130113500000000_AufDemBauwerk ;
+    aoi:locatesDamage :1644144_SchadenObjekt ;
+    asb:hasModelRepresentation instArea:buildingelement_9073faae-0383-11ed-8434-bc17b85584e8 .
+
+:4805526_BauteilDefinition a asb:ASBING13_BauteilDefinition ;
     asb:ASBING13_Bauteil asbkey13:130011000000000_Bruecke ;
     asb:ASBING13_Bauteilgruppe asbkey13:390022180000000_BauteilgruppeKappe ;
     asb:ASBING13_Konstruktionsteil asbkey13:130021850000000_Oberflaeche ;
     asb:Schaden_Ortsangabe [ asb:Ortsangabe_Ortsangabe asbkey13:130101200000000_Rechts ] ;
     asb:associatedWith :7936662_0_Teilbauwerk ;
-    asb:beschreibtBauteil :N_8004257_Bauteil .
+    asb:beschreibtBauteil :N_7961525_Bauteil .
 
-:5905268_AOI a aoi:AreaOfInterest,
-        asbkey:OrtsangabeBauteilSchaden_Allgemein_links,
-        asbkey:OrtsangabeBauteilSchaden_Allgemein_rechts,
-        asbkey13:130113500000000_AufDemBauwerk ;
-    aoi:locatesDamage :1171404_SchadenObjekt .
-
-:6445792_AOI a aoi:AreaOfInterest,
-        asbkey:OrtsangabeBauteilSchaden_Himmelsrichtung_Norden,
-        asbkey13:130113500000000_AufDemBauwerk ;
-    aoi:locatesDamage :5717692_SchadenObjekt .
-
-:8079700_SchadenObjekt a asb:SchadenObjekt ;
-    asb:Schaden_ID-Nummer-Schaden 41 ;
-    asb:Schaden_Status asbkey:StatusSchaden_erfasstUndBewertet ;
+:5173251_SchadenObjekt a asb:SchadenObjekt ;
+    asb:Schaden_ID-Nummer-Schaden 1 ;
+    asb:Schaden_Status asbkey:StatusSchaden_beseitigt ;
     asb:associatedWith :7936662_0_Teilbauwerk ;
-    asb:hatBauteilDefinition :4370563_BauteilDefinition ;
-    asb:hatPruefDokumentation :RE0WGFHR_Schaden .
+    asb:hasModelRepresentation instArea:buildingelement_9e198ac2-0383-11ed-96fc-bc17b85584e8,
+        instPoint:buildingelement_a1674c4c-0383-11ed-a51a-bc17b85584e8 ;
+    asb:hatBauteilDefinition :4162610_BauteilDefinition ;
+    asb:hatPruefDokumentation :DP19VYVY_Schaden .
 
-:8858111_BauteilDefinition a asb:ASBING13_BauteilDefinition ;
+:5319446_BauteilDefinition a asb:ASBING13_BauteilDefinition ;
     asb:ASBING13_Bauteil asbkey13:130011000000000_Bruecke ;
     asb:ASBING13_Bauteilgruppe asbkey13:390022210000000_BauteilgruppeSchutzeinrichtungen ;
     asb:ASBING13_Konstruktionsteil asbkey13:130022121141000_Handlauf ;
     asb:Schaden_Ortsangabe [ asb:Ortsangabe_Ortsangabe asbkey13:130101200000000_Rechts ] ;
     asb:associatedWith :7936662_0_Teilbauwerk ;
-    asb:beschreibtBauteil :N_5758590_Bauteil .
+    asb:beschreibtBauteil :N_4331420_Bauteil .
 
-:8967877_SchadenObjekt a asb:SchadenObjekt ;
+:5955372_AOI a aoi:AreaOfInterest,
+        asbkey13:130113500000000_AufDemBauwerk ;
+    aoi:locatesDamage :6392356_SchadenObjekt ;
+    asb:hasModelRepresentation instArea:buildingelement_95846b13-0383-11ed-8a58-bc17b85584e8 .
+
+:7201623_AOI a aoi:AreaOfInterest,
+        asbkey:OrtsangabeBauteilSchaden_Allgemein_Oberseite,
+        asbkey:OrtsangabeBauteilSchaden_Allgemein_vorneUndHinten ;
+    aoi:locatesDamage :8241648_SchadenObjekt ;
+    asb:hasModelRepresentation instArea:buildingelement_99ac1774-0383-11ed-8fe5-bc17b85584e8,
+        instArea:buildingelement_9a074231-0383-11ed-9655-bc17b85584e8 .
+
+:7225812_SchadenObjekt a asb:SchadenObjekt ;
+    asb:Schaden_ID-Nummer-Schaden 40 ;
+    asb:Schaden_Status asbkey:StatusSchaden_erfasstUndBewertet ;
+    asb:associatedWith :7936662_0_Teilbauwerk ;
+    asb:hasModelRepresentation instArea:buildingelement_9e5231d9-0383-11ed-87de-bc17b85584e8,
+        instArea:buildingelement_9e7f8b65-0383-11ed-a720-bc17b85584e8,
+        instPoint:buildingelement_a1f40eeb-0383-11ed-aa3a-bc17b85584e8,
+        instPoint:buildingelement_a28af17c-0383-11ed-899d-bc17b85584e8 ;
+    asb:hatBauteilDefinition :2852137_BauteilDefinition ;
+    asb:hatPruefDokumentation :RE0WE801_Schaden .
+
+:7429367_SchadenObjekt a asb:SchadenObjekt ;
+    asb:Schaden_ID-Nummer-Schaden 23 ;
+    asb:Schaden_Status asbkey:StatusSchaden_erfasstUndBewertet ;
+    asb:associatedWith :7936662_0_Teilbauwerk ;
+    asb:hatBauteilDefinition :7443423_BauteilDefinition ;
+    asb:hatPruefDokumentation :NJ0NRCTF_Schaden,
+        :NY0MG56G_Schaden .
+
+:7825586_AOI a aoi:AreaOfInterest,
+        asbkey:OrtsangabeBauteilSchaden_Allgemein_links,
+        asbkey:OrtsangabeBauteilSchaden_Allgemein_rechts,
+        asbkey13:130113500000000_AufDemBauwerk ;
+    aoi:locatesDamage :6750073_SchadenObjekt ;
+    asb:hasModelRepresentation instArea:buildingelement_960bfc5a-0383-11ed-923f-bc17b85584e8,
+        instArea:buildingelement_9680dd09-0383-11ed-a06b-bc17b85584e8 .
+
+:8502190_AOI a aoi:AreaOfInterest,
+        asbkey13:130113500000000_AufDemBauwerk ;
+    aoi:locatesDamage :7221687_SchadenObjekt ;
+    asb:hasModelRepresentation instArea:buildingelement_971d8759-0383-11ed-8a41-bc17b85584e8 .
+
+:9018781_SchadenObjekt a asb:SchadenObjekt ;
     asb:Schaden_ID-Nummer-Schaden 35 ;
     asb:Schaden_Status asbkey:StatusSchaden_erfasstUndBewertet ;
     asb:associatedWith :7936662_0_Teilbauwerk ;
-    asb:hatBauteilDefinition :5566359_BauteilDefinition ;
+    asb:hasModelRepresentation instArea:buildingelement_9ed254c1-0383-11ed-a909-bc17b85584e8,
+        instPoint:buildingelement_a307030e-0383-11ed-af88-bc17b85584e8 ;
+    asb:hatBauteilDefinition :7367741_BauteilDefinition ;
     asb:hatPruefDokumentation :NY0ME1AH_Schaden .
-
-:8991777_SchadenObjekt a asb:SchadenObjekt ;
-    asb:Schaden_ID-Nummer-Schaden 11 ;
-    asb:Schaden_Status asbkey:StatusSchaden_erfasstUndBewertet ;
-    asb:associatedWith :7936662_0_Teilbauwerk ;
-    asb:hatBauteilDefinition :6203208_BauteilDefinition ;
-    asb:hatPruefDokumentation :NJ0LOAVL_Schaden,
-        :RE0VD9YZ_Schaden,
-        :VC0K8D74_Schaden .
-
-:9808362_AOI a aoi:AreaOfInterest,
-        asbkey13:130113500000000_AufDemBauwerk ;
-    aoi:locatesDamage :1954754_SchadenObjekt .
-
-:9882429_AOI a aoi:AreaOfInterest,
-        asbkey:OrtsangabeBauteilSchaden_Allgemein_Unterseite ;
-    aoi:locatesDamage :7117307_SchadenObjekt .
 
 :DP18G509_FahrzeugRueckhaltesystem a asb:FahrzeugRueckhaltesystem ;
     asb:ASBING13_Bauteil asbkey13:130011111000000_Ueberbau ;
@@ -1924,8 +2018,8 @@ aus Drahtgitter 30/30/3mm feuerverzinkt.***""" ;
     asb:ASBObjekt_Bearbeiter "ADMINISTRATOR" ;
     asb:ASBObjekt_Systemdatum "2002-07-23"^^xsd:date ;
     asb:AbstrakteBauteilart_Einbaudatum [ asb:EinfachesDatum_Jahr 2002 ] ;
-    asb:FahrzeugRueckhaltesystem_Art [ asb:ArtFahrzeugRueckhaltesystem_Systembezeichnung [ asb:Systembezeichnung_Bezeichnung asbkey13:230011220000000_EinfacheDistanzschutzplanke ] ],
-        [ asb:ArtFahrzeugRueckhaltesystem_Systemhoehe [ asb:hasdecimal 0.6 ] ] ;
+    asb:FahrzeugRueckhaltesystem_Art [ asb:ArtFahrzeugRueckhaltesystem_Systemhoehe [ asb:hasdecimal 0.6 ] ],
+        [ asb:ArtFahrzeugRueckhaltesystem_Systembezeichnung [ asb:Systembezeichnung_Bezeichnung asbkey13:230011220000000_EinfacheDistanzschutzplanke ] ] ;
     asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "DP18G50A" ;
             asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ] .
 
@@ -1934,8 +2028,8 @@ aus Drahtgitter 30/30/3mm feuerverzinkt.***""" ;
     asb:ASBObjekt_Bearbeiter "ADMINISTRATOR" ;
     asb:ASBObjekt_Systemdatum "2002-07-23"^^xsd:date ;
     asb:AbstrakteBauteilart_Einbaudatum [ asb:EinfachesDatum_Jahr 2002 ] ;
-    asb:FahrzeugRueckhaltesystem_Art [ asb:ArtFahrzeugRueckhaltesystem_Systembezeichnung [ asb:Systembezeichnung_Bezeichnung asbkey13:230011220000000_EinfacheDistanzschutzplanke ] ],
-        [ asb:ArtFahrzeugRueckhaltesystem_Systemhoehe [ asb:hasdecimal 0.6 ] ] ;
+    asb:FahrzeugRueckhaltesystem_Art [ asb:ArtFahrzeugRueckhaltesystem_Systemhoehe [ asb:hasdecimal 0.6 ] ],
+        [ asb:ArtFahrzeugRueckhaltesystem_Systembezeichnung [ asb:Systembezeichnung_Bezeichnung asbkey13:230011220000000_EinfacheDistanzschutzplanke ] ] ;
     asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "DP18G50B" ;
             asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ] .
 
@@ -1955,10 +2049,10 @@ aus Drahtgitter 30/30/3mm feuerverzinkt.***""" ;
     asb:ASBObjekt_Systemdatum "2002-07-23"^^xsd:date ;
     asb:ASBObjekt_Textfeld "Hersteller: Fa. Jannasch, Albstraße 15, 73765 Neuhausen***" ;
     asb:AbstrakteBauteilart_Einbaudatum [ asb:EinfachesDatum_Jahr 2002 ] ;
-    asb:Fahrbahnuebergang_Art [ asb:ArtFahrbahnuebergang_Typenbezeichnung "80-1 / AD-Übe 1" ],
-        [ asb:ArtFahrbahnuebergang_RegelgeprueftGemaessTLTP true ],
-        [ asb:ArtFahrbahnuebergang_Hersteller "200052100000000" ],
-        [ asb:ArtFahrbahnuebergang_Bauart asbkey13:200013110000000_MitVerankerungImBeton ] ;
+    asb:Fahrbahnuebergang_Art [ asb:ArtFahrbahnuebergang_Hersteller "200052100000000" ],
+        [ asb:ArtFahrbahnuebergang_Typenbezeichnung "80-1 / AD-Übe 1" ],
+        [ asb:ArtFahrbahnuebergang_Bauart asbkey13:200013110000000_MitVerankerungImBeton ],
+        [ asb:ArtFahrbahnuebergang_RegelgeprueftGemaessTLTP true ] ;
     asb:Fahrbahnuebergang_WartungsgangVorhanden false ;
     asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "DP18G7A5" ;
             asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ] .
@@ -1969,8 +2063,8 @@ aus Drahtgitter 30/30/3mm feuerverzinkt.***""" ;
     asb:ASBObjekt_Systemdatum "2002-07-09"^^xsd:date ;
     asb:ASBObjekt_Textfeld "Hersteller: Fa. Jannasch, Albstraße 15, 73765 Neuhausen***" ;
     asb:AbstrakteBauteilart_Einbaudatum [ asb:EinfachesDatum_Jahr 2001 ] ;
-    asb:Fahrbahnuebergang_Art [ asb:ArtFahrbahnuebergang_Typenbezeichnung "80-1 / AD-Übe 1" ],
-        [ asb:ArtFahrbahnuebergang_Hersteller "200052100000000" ],
+    asb:Fahrbahnuebergang_Art [ asb:ArtFahrbahnuebergang_Hersteller "200052100000000" ],
+        [ asb:ArtFahrbahnuebergang_Typenbezeichnung "80-1 / AD-Übe 1" ],
         [ asb:ArtFahrbahnuebergang_RegelgeprueftGemaessTLTP true ],
         [ asb:ArtFahrbahnuebergang_Bauart asbkey13:200013110000000_MitVerankerungImBeton ] ;
     asb:Fahrbahnuebergang_WartungsgangVorhanden false ;
@@ -1984,9 +2078,9 @@ aus Drahtgitter 30/30/3mm feuerverzinkt.***""" ;
     asb:ASBObjekt_Textfeld "1",
         "Hersteller: ELA-Product, Am Waldrand 1, 81377 München***" ;
     asb:AbstrakteBauteilart_Einbaudatum [ asb:EinfachesDatum_Jahr 2002 ] ;
-    asb:Lager_Art [ asb:ArtLager_Bauart asbkey13:190012720000000_Bewehrt_MitFesthaltung ],
+    asb:Lager_Art [ asb:ArtLager_Hersteller "190031500000000" ],
         [ asb:ArtLager_Typenbezeichnung "El-Lager Typ 1 ; 400/500/69 \"quer-fest\"" ],
-        [ asb:ArtLager_Hersteller "190031500000000" ] ;
+        [ asb:ArtLager_Bauart asbkey13:190012720000000_Bewehrt_MitFesthaltung ] ;
     asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "DP18ITRU" ;
             asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ] .
 
@@ -1997,9 +2091,9 @@ aus Drahtgitter 30/30/3mm feuerverzinkt.***""" ;
     asb:ASBObjekt_Textfeld "1",
         "Hersteller: ELA-Product, Am Waldrand 1, 81377 München***" ;
     asb:AbstrakteBauteilart_Einbaudatum [ asb:EinfachesDatum_Jahr 2002 ] ;
-    asb:Lager_Art [ asb:ArtLager_Bauart asbkey13:190012820000000_Bewehrt_OhneFesthaltung ],
-        [ asb:ArtLager_Hersteller "190031500000000" ],
-        [ asb:ArtLager_Typenbezeichnung "El-Lager Typ 1 ; 400/500/69  \"Alls.-beweglich\"" ] ;
+    asb:Lager_Art [ asb:ArtLager_Typenbezeichnung "El-Lager Typ 1 ; 400/500/69  \"Alls.-beweglich\"" ],
+        [ asb:ArtLager_Bauart asbkey13:190012820000000_Bewehrt_OhneFesthaltung ],
+        [ asb:ArtLager_Hersteller "190031500000000" ] ;
     asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "DP18ITRV" ;
             asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ] .
 
@@ -2022,9 +2116,9 @@ aus Drahtgitter 30/30/3mm feuerverzinkt.***""" ;
     asb:ASBObjekt_Textfeld "1",
         "Hersteller: ELA-Product, Am Waldrand 1, 81377 München***" ;
     asb:AbstrakteBauteilart_Einbaudatum [ asb:EinfachesDatum_Jahr 2002 ] ;
-    asb:Lager_Art [ asb:ArtLager_Bauart asbkey13:190012820000000_Bewehrt_OhneFesthaltung ],
+    asb:Lager_Art [ asb:ArtLager_Hersteller "190031500000000" ],
         [ asb:ArtLager_Typenbezeichnung "El-Lager Typ 1 ; 400/500/69 \"Alls.-beweglich\"" ],
-        [ asb:ArtLager_Hersteller "190031500000000" ] ;
+        [ asb:ArtLager_Bauart asbkey13:190012820000000_Bewehrt_OhneFesthaltung ] ;
     asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "DP18ITRX" ;
             asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ] .
 
@@ -2078,8 +2172,8 @@ aus Drahtgitter 30/30/3mm feuerverzinkt.***""" ;
             asb:MengeMitDimensionErlaeuterung_Menge [ asb:MengeMitDimension_Anzahl 2 ] ] ;
     asb:Schaden_Foto "7936662-A99OST-BW-45-2-EP2016-BILD-14.JPG" ;
     asb:Schaden_ID-Nummer-Schaden 30 ;
-    asb:Schaden_Ortsangabe [ asb:Ortsangabe_Ortsangabe asbkey:OrtsangabeBauteilSchaden_Widerlager_beideWiderlager ],
-        [ asb:Ortsangabe_Ortsangabe asbkey13:130113500000000_AufDemBauwerk ] ;
+    asb:Schaden_Ortsangabe [ asb:Ortsangabe_Ortsangabe asbkey13:130113500000000_AufDemBauwerk ],
+        [ asb:Ortsangabe_Ortsangabe asbkey:OrtsangabeBauteilSchaden_Widerlager_beideWiderlager ] ;
     asb:Schaden_Schaden asbkey:ArtSchaden_Allgemein_Schmutzablagerung ;
     asb:Schaden_Schadensbeispiel asbkey13:226-02_Schadensbeispiel ;
     asb:Schaden_SchadensbewertungDauerhaftigkeit 2 ;
@@ -2121,8 +2215,8 @@ aus Drahtgitter 30/30/3mm feuerverzinkt.***""" ;
     asb:Schaden_AllgemeineMengenangabe asbkey:AllgemeineMengenangabeSchaden_kleineSchadensausbreitung_eineStelle ;
     asb:Schaden_Foto "SCHADEN 34.JPG" ;
     asb:Schaden_ID-Nummer-Schaden 34 ;
-    asb:Schaden_Ortsangabe [ asb:Ortsangabe_Ortsangabe asbkey13:130091300000000_Hinten ],
-        [ asb:Ortsangabe_Ortsangabe asbkey13:130101100000000_Links ] ;
+    asb:Schaden_Ortsangabe [ asb:Ortsangabe_Ortsangabe asbkey13:130101100000000_Links ],
+        [ asb:Ortsangabe_Ortsangabe asbkey13:130091300000000_Hinten ] ;
     asb:Schaden_Schaden asbkey:ArtSchaden_Material_Fehlstelle ;
     asb:Schaden_Schadensbeispiel asbkey13:230-20_Schadensbeispiel ;
     asb:Schaden_SchadensbewertungDauerhaftigkeit 1 ;
@@ -2153,41 +2247,41 @@ aus Drahtgitter 30/30/3mm feuerverzinkt.***""" ;
     asb:associatedWith :7936662_0_Teilbauwerk ;
     dot:coveredInInspection :NY0LL67A_PruefungMitZustandsnote .
 
-:N_2862397_Bauteil a asb:Bauteil ;
-    asb:AbstraktesBauteil_Einbauort "Auf Außenkappe Ost***" ;
-    asb:AbstraktesBauteil_Geometrie [ asb:Geometrie_Laenge [ asb:hasdecimal 55.5 ] ] ;
-    asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "N_2862397" ;
+:N_1695620_SpannstahlDraht a asb:SpannstahlDraht ;
+    asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "N_1695620" ;
             asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ] ;
-    asb:associatedWith :7936662_0_Teilbauwerk,
-        :DP18G509_FahrzeugRueckhaltesystem ;
-    asb:hasModelRepresentation inst:railing_cecd3ddb-e630-4edf-bad9-db620023cab2 ;
-    dot:hasDamage :1240226_SchadenObjekt,
-        :8079700_SchadenObjekt .
+    asb:SpannstahlDraht_Art [ asb:ArtSpannstahl_Streckgrenze [ asb:hasdecimal 1570.0 ] ],
+        [ asb:ArtSpannstahl_Bruchgrenze [ asb:hasdecimal 1770.0 ] ] .
 
-:N_3413252_SonstigerBaustoff a asb:SonstigerBaustoff ;
-    asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "N_3413252" ;
-            asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ] ;
-    asb:SonstigerBaustoff_Art asbkey13:150091000000000_Moertel .
-
-:N_6289834_Bauteil a asb:Bauteil ;
-    aoi:hasAreaOfInterest :6496681_AOI,
-        :6941117_AOI ;
-    asb:AbstrakteBauteilart_Einbaudatum [ asb:EinfachesDatum_Monat asbkey:Monat_Juni ],
-        [ asb:EinfachesDatum_Jahr 2002 ] ;
+:N_7635266_Bauteil a asb:Bauteil ;
+    aoi:hasAreaOfInterest :3401487_AOI,
+        :6283305_AOI ;
+    asb:AbstrakteBauteilart_Einbaudatum [ asb:EinfachesDatum_Jahr 2002 ],
+        [ asb:EinfachesDatum_Monat asbkey:Monat_Juni ] ;
     asb:AbstraktesBauteil_Einbauort "Fahrbahntafel***" ;
     asb:AbstraktesBauteil_Geometrie [ asb:Geometrie_Flaeche [ asb:hasdecimal 462.0 ] ] ;
-    asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "N_6289834" ;
+    asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "N_7635266" ;
             asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ] ;
     asb:associatedWith :7936662_0_Teilbauwerk,
         :DP19UYWR_BelagAbdichtung ;
     asb:hasModelRepresentation inst:slab_4f1c5e37-811c-429e-8ae8-e6037f337660 ;
-    dot:hasDamage :3151604_SchadenObjekt .
+    dot:hasDamage :6782285_SchadenObjekt .
 
-:N_9566727_SpannstahlDraht a asb:SpannstahlDraht ;
-    asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "N_9566727" ;
+:N_9234501_Bauteil a asb:Bauteil ;
+    asb:AbstraktesBauteil_Einbauort "Auf Außenkappe Ost***" ;
+    asb:AbstraktesBauteil_Geometrie [ asb:Geometrie_Laenge [ asb:hasdecimal 55.5 ] ] ;
+    asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "N_9234501" ;
             asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ] ;
-    asb:SpannstahlDraht_Art [ asb:ArtSpannstahl_Streckgrenze [ asb:hasdecimal 1570.0 ] ],
-        [ asb:ArtSpannstahl_Bruchgrenze [ asb:hasdecimal 1770.0 ] ] .
+    asb:associatedWith :7936662_0_Teilbauwerk,
+        :DP18G509_FahrzeugRueckhaltesystem ;
+    asb:hasModelRepresentation inst:railing_cecd3ddb-e630-4edf-bad9-db620023cab2 ;
+    dot:hasDamage :1259442_SchadenObjekt,
+        :7225812_SchadenObjekt .
+
+:N_9645549_SonstigerBaustoff a asb:SonstigerBaustoff ;
+    asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "N_9645549" ;
+            asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ] ;
+    asb:SonstigerBaustoff_Art asbkey13:150091000000000_Moertel .
 
 :RE0VWAL2_Schaden a asb:Schaden ;
     asb:ASBING13_Bauteil asbkey13:130011121000000_Ueberbau ;
@@ -2306,7 +2400,8 @@ aus Drahtgitter 30/30/3mm feuerverzinkt.***""" ;
     asb:Schaden_AllgemeineMengenangabe asbkey:AllgemeineMengenangabeSchaden_kleineSchadensausbreitung_eineStelle ;
     asb:Schaden_Foto "SCHADEN 42.JPG" ;
     asb:Schaden_ID-Nummer-Schaden 42 ;
-    asb:Schaden_Ortsangabe [ asb:Ortsangabe_Ortsangabe asbkey13:130101200000000_Rechts ],
+    asb:Schaden_Ortsangabe [ asb:Ortsangabe_Ortsangabe asbkey:OrtsangabeBauteilSchaden_Allgemein_Oberseite ],
+        [ asb:Ortsangabe_Ortsangabe asbkey13:130101200000000_Rechts ],
         [ asb:Ortsangabe_Ortsangabe asbkey:OrtsangabeBauteilSchaden_Allgemein_Mitte ] ;
     asb:Schaden_Schaden asbkey:ArtSchaden_Allgemein_fehlt ;
     asb:Schaden_SchadensbewertungDauerhaftigkeit 1 ;
@@ -2314,6 +2409,12 @@ aus Drahtgitter 30/30/3mm feuerverzinkt.***""" ;
     asb:Schaden_SchadensbewertungVerkehrssicherheit 0 ;
     asb:associatedWith :7936662_0_Teilbauwerk ;
     dot:coveredInInspection :NY0LL67A_PruefungMitZustandsnote .
+
+:1868842_BauteilDefinition a asb:ASBING13_BauteilDefinition ;
+    asb:ASBING13_Bauteil asbkey13:130011121230000_Quertraeger ;
+    asb:ASBING13_Bauteilgruppe asbkey13:390021100000000_BauteilgruppeUeberbau ;
+    asb:associatedWith :7936662_0_Teilbauwerk ;
+    asb:beschreibtBauteil :N_2457587_Bauteil .
 
 :1Y0Z319E_Schaden a asb:Schaden ;
     asb:ASBING13_Bauteilergaenzung asbkey13:130031133000000_Oberflaechenstruktur ;
@@ -2463,12 +2564,6 @@ aus Drahtgitter 30/30/3mm feuerverzinkt.***""" ;
     asb:hasLaterState :ZD0J0Y23_Schaden ;
     dot:coveredInInspection :1Y0YMRPS_PruefungMitZustandsnote .
 
-:8613385_BauteilDefinition a asb:ASBING13_BauteilDefinition ;
-    asb:ASBING13_Bauteil asbkey13:130011121230000_Quertraeger ;
-    asb:ASBING13_Bauteilgruppe asbkey13:390021100000000_BauteilgruppeUeberbau ;
-    asb:associatedWith :7936662_0_Teilbauwerk ;
-    asb:beschreibtBauteil :N_2872823_Bauteil .
-
 :DP18G13D_Kappe a asb:Kappe ;
     asb:ASBING13_Bauteil asbkey13:130011111000000_Ueberbau ;
     asb:ASBObjekt_Bearbeiter "ADMINISTRATOR" ;
@@ -2602,8 +2697,8 @@ aus Drahtgitter 30/30/3mm feuerverzinkt.***""" ;
     asb:Schaden_DimensionierteMengenangabe [ asb:MengeMitDimensionErlaeuterung_Art asbkey13:130066200000000_xxxStelle_n_ ;
             asb:MengeMitDimensionErlaeuterung_Menge [ asb:MengeMitDimension_Anzahl 4 ] ] ;
     asb:Schaden_ID-Nummer-Schaden 26 ;
-    asb:Schaden_Ortsangabe [ asb:Ortsangabe_Ortsangabe asbkey:OrtsangabeBauteilSchaden_Allgemein_beidseitig ],
-        [ asb:Ortsangabe_Ortsangabe asbkey:OrtsangabeBauteilSchaden_Allgemein_Oberseite ],
+    asb:Schaden_Ortsangabe [ asb:Ortsangabe_Ortsangabe asbkey:OrtsangabeBauteilSchaden_Allgemein_Oberseite ],
+        [ asb:Ortsangabe_Ortsangabe asbkey:OrtsangabeBauteilSchaden_Allgemein_beidseitig ],
         [ asb:Ortsangabe_Ortsangabe asbkey:OrtsangabeBauteilSchaden_Allgemein_vorneUndHinten ] ;
     asb:Schaden_Schaden asbkey:ArtSchaden_Allgemein_bewachsen ;
     asb:Schaden_Schadensbeispiel asbkey13:230-01_Schadensbeispiel ;
@@ -2651,8 +2746,8 @@ aus Drahtgitter 30/30/3mm feuerverzinkt.***""" ;
     asb:Schaden_Foto "7936662-A99OST-BW-45-2-EP2016-BILD-12.JPG" ;
     asb:Schaden_ID-Nummer-Schaden 28 ;
     asb:Schaden_Ortsangabe [ asb:Ortsangabe_Ortsangabe asbkey13:130101200000000_Rechts ],
-        [ asb:Ortsangabe_Ortsangabe asbkey:OrtsangabeBauteilSchaden_Fluegel_FluegelwandVorn ],
-        [ asb:Ortsangabe_Ortsangabe asbkey:OrtsangabeBauteilSchaden_Allgemein_Oberseite ] ;
+        [ asb:Ortsangabe_Ortsangabe asbkey:OrtsangabeBauteilSchaden_Allgemein_Oberseite ],
+        [ asb:Ortsangabe_Ortsangabe asbkey:OrtsangabeBauteilSchaden_Fluegel_FluegelwandVorn ] ;
     asb:Schaden_Schaden asbkey:ArtSchaden_Allgemein_abgeblaettert ;
     asb:Schaden_Schadensbeispiel asbkey13:258-03_Schadensbeispiel ;
     asb:Schaden_SchadensbewertungDauerhaftigkeit 2 ;
@@ -2675,10 +2770,11 @@ aus Drahtgitter 30/30/3mm feuerverzinkt.***""" ;
             asb:MengeMitDimensionErlaeuterung_Menge [ asb:MengeMitDimension_Anzahl "0,500"^^xsd:integer ] ] ;
     asb:Schaden_Foto "7936662-A99OST-BW-45-2-EP2016-BILD-13.JPG" ;
     asb:Schaden_ID-Nummer-Schaden 29 ;
-    asb:Schaden_Ortsangabe [ asb:Ortsangabe_Ortsangabe asbkey:OrtsangabeBauteilSchaden_Allgemein_amAnfangDesBauwerks ],
-        [ asb:Ortsangabe_Ortsangabe asbkey:OrtsangabeBauteilSchaden_Widerlager_WiderlagerVorn ],
+    asb:Schaden_Ortsangabe [ asb:Ortsangabe_Ortsangabe asbkey13:130101200000000_Rechts ],
         [ asb:Ortsangabe_Ortsangabe asbkey13:130113500000000_AufDemBauwerk ],
-        [ asb:Ortsangabe_Ortsangabe asbkey13:130101200000000_Rechts ] ;
+        [ asb:Ortsangabe_Ortsangabe asbkey:OrtsangabeBauteilSchaden_Widerlager_WiderlagerVorn ],
+        [ asb:Ortsangabe_Ortsangabe asbkey:OrtsangabeBauteilSchaden_Allgemein_Oberseite ],
+        [ asb:Ortsangabe_Ortsangabe asbkey:OrtsangabeBauteilSchaden_Allgemein_amAnfangDesBauwerks ] ;
     asb:Schaden_Schaden asbkey:ArtSchaden_Allgemein_beschaedigtDurchFremdeinwirkung ;
     asb:Schaden_Schadensbeispiel asbkey13:234-04_Schadensbeispiel ;
     asb:Schaden_SchadensbewertungDauerhaftigkeit 1 ;
@@ -2722,8 +2818,8 @@ aus Drahtgitter 30/30/3mm feuerverzinkt.***""" ;
     asb:PruefungUeberwachung_Pruefjahr 2016 ;
     asb:Schaden_AllgemeineMengenangabe asbkey:AllgemeineMengenangabeSchaden_kleineSchadensausbreitung_einStueck ;
     asb:Schaden_ID-Nummer-Schaden 32 ;
-    asb:Schaden_Ortsangabe [ asb:Ortsangabe_Ortsangabe asbkey:OrtsangabeBauteilSchaden_Allgemein_gesamterUeberbau ],
-        [ asb:Ortsangabe_Ortsangabe asbkey:OrtsangabeBauteilSchaden_Allgemein_Mitte ] ;
+    asb:Schaden_Ortsangabe [ asb:Ortsangabe_Ortsangabe asbkey:OrtsangabeBauteilSchaden_Allgemein_Mitte ],
+        [ asb:Ortsangabe_Ortsangabe asbkey:OrtsangabeBauteilSchaden_Allgemein_gesamterUeberbau ] ;
     asb:Schaden_Rissart asbkey:Rissart_Laengsriss ;
     asb:Schaden_Schadensbeispiel asbkey13:241-04_Schadensbeispiel ;
     asb:Schaden_SchadensbewertungDauerhaftigkeit 1 ;
@@ -2749,10 +2845,10 @@ aus Drahtgitter 30/30/3mm feuerverzinkt.***""" ;
             asb:MengeMitDimensionErlaeuterung_Menge [ asb:MengeMitDimension_Anzahl 2 ] ] ;
     asb:Schaden_Foto "SCHADEN 15.JPG" ;
     asb:Schaden_ID-Nummer-Schaden 15 ;
-    asb:Schaden_Ortsangabe [ asb:Ortsangabe_GroesseOrtsangabe [ asb:AbstandAnzahl_Anzahl 4 ] ;
-            asb:Ortsangabe_Ortsangabe asbkey13:130102212000000_xxxTesBauteilVonLinks_RechteSeitenflaeche ],
-        [ asb:Ortsangabe_GroesseOrtsangabe [ asb:AbstandAnzahl_Anzahl 1 ] ;
-            asb:Ortsangabe_Ortsangabe asbkey13:130082100000000_xxxTesFeld ] ;
+    asb:Schaden_Ortsangabe [ asb:Ortsangabe_GroesseOrtsangabe [ asb:AbstandAnzahl_Anzahl 1 ] ;
+            asb:Ortsangabe_Ortsangabe asbkey13:130082100000000_xxxTesFeld ],
+        [ asb:Ortsangabe_GroesseOrtsangabe [ asb:AbstandAnzahl_Anzahl 4 ] ;
+            asb:Ortsangabe_Ortsangabe asbkey13:130102212000000_xxxTesBauteilVonLinks_RechteSeitenflaeche ] ;
     asb:Schaden_Schaden asbkey:ArtSchaden_Material_abgeplatzt ;
     asb:Schaden_Schadensbeispiel asbkey13:002-02_Schadensbeispiel ;
     asb:Schaden_SchadensbewertungDauerhaftigkeit 1 ;
@@ -2775,10 +2871,10 @@ aus Drahtgitter 30/30/3mm feuerverzinkt.***""" ;
     asb:Schaden_DimensionierteMengenangabe [ asb:MengeMitDimensionErlaeuterung_Art asbkey13:130061300000000_xxx_xCm ;
             asb:MengeMitDimensionErlaeuterung_Menge [ asb:MengeMitDimension_Anzahl "10,0"^^xsd:integer ] ] ;
     asb:Schaden_ID-Nummer-Schaden 16 ;
-    asb:Schaden_Ortsangabe [ asb:Ortsangabe_GroesseOrtsangabe [ asb:AbstandAnzahl_Anzahl 3 ] ;
-            asb:Ortsangabe_Ortsangabe asbkey13:130102212000000_xxxTesBauteilVonLinks_RechteSeitenflaeche ],
-        [ asb:Ortsangabe_GroesseOrtsangabe [ asb:AbstandAnzahl_Anzahl 1 ] ;
-            asb:Ortsangabe_Ortsangabe asbkey13:130082100000000_xxxTesFeld ] ;
+    asb:Schaden_Ortsangabe [ asb:Ortsangabe_GroesseOrtsangabe [ asb:AbstandAnzahl_Anzahl 1 ] ;
+            asb:Ortsangabe_Ortsangabe asbkey13:130082100000000_xxxTesFeld ],
+        [ asb:Ortsangabe_GroesseOrtsangabe [ asb:AbstandAnzahl_Anzahl 3 ] ;
+            asb:Ortsangabe_Ortsangabe asbkey13:130102212000000_xxxTesBauteilVonLinks_RechteSeitenflaeche ] ;
     asb:Schaden_Schaden asbkey:ArtSchaden_Material_abgeplatzt ;
     asb:Schaden_Schadensbeispiel asbkey13:002-02_Schadensbeispiel ;
     asb:Schaden_SchadensbewertungDauerhaftigkeit 1 ;
@@ -2940,8 +3036,8 @@ aus Drahtgitter 30/30/3mm feuerverzinkt.***""" ;
     asb:Schaden_DimensionierteMengenangabe [ asb:MengeMitDimensionErlaeuterung_Art asbkey13:130066200000000_xxxStelle_n_ ;
             asb:MengeMitDimensionErlaeuterung_Menge [ asb:MengeMitDimension_Anzahl 2 ] ] ;
     asb:Schaden_ID-Nummer-Schaden 9 ;
-    asb:Schaden_Ortsangabe [ asb:Ortsangabe_Ortsangabe asbkey:OrtsangabeBauteilSchaden_Allgemein_amEndeDesBauwerks ],
-        [ asb:Ortsangabe_Ortsangabe asbkey13:130101200000000_Rechts ] ;
+    asb:Schaden_Ortsangabe [ asb:Ortsangabe_Ortsangabe asbkey13:130101200000000_Rechts ],
+        [ asb:Ortsangabe_Ortsangabe asbkey:OrtsangabeBauteilSchaden_Allgemein_amEndeDesBauwerks ] ;
     asb:Schaden_Schaden asbkey:ArtSchaden_Material_abgeplatzt ;
     asb:Schaden_Schadensbeispiel asbkey13:230-08_Schadensbeispiel ;
     asb:Schaden_SchadensbewertungDauerhaftigkeit 1 ;
@@ -2990,9 +3086,9 @@ aus Drahtgitter 30/30/3mm feuerverzinkt.***""" ;
     asb:Schaden_DimensionierteMengenangabe [ asb:MengeMitDimensionErlaeuterung_Art asbkey13:130066200000000_xxxStelle_n_ ;
             asb:MengeMitDimensionErlaeuterung_Menge [ asb:MengeMitDimension_Anzahl 4 ] ] ;
     asb:Schaden_ID-Nummer-Schaden 26 ;
-    asb:Schaden_Ortsangabe [ asb:Ortsangabe_Ortsangabe asbkey:OrtsangabeBauteilSchaden_Allgemein_Oberseite ],
+    asb:Schaden_Ortsangabe [ asb:Ortsangabe_Ortsangabe asbkey:OrtsangabeBauteilSchaden_Allgemein_beidseitig ],
         [ asb:Ortsangabe_Ortsangabe asbkey:OrtsangabeBauteilSchaden_Allgemein_vorneUndHinten ],
-        [ asb:Ortsangabe_Ortsangabe asbkey:OrtsangabeBauteilSchaden_Allgemein_beidseitig ] ;
+        [ asb:Ortsangabe_Ortsangabe asbkey:OrtsangabeBauteilSchaden_Allgemein_Oberseite ] ;
     asb:Schaden_Schaden asbkey:ArtSchaden_Allgemein_bewachsen ;
     asb:Schaden_Schadensbeispiel asbkey13:230-01_Schadensbeispiel ;
     asb:Schaden_SchadensbewertungDauerhaftigkeit 1 ;
@@ -3086,10 +3182,10 @@ aus Drahtgitter 30/30/3mm feuerverzinkt.***""" ;
     asb:PruefungUeberwachung_Pruefjahr 2019 ;
     asb:Schaden_AllgemeineMengenangabe asbkey:AllgemeineMengenangabeSchaden_kleineSchadensausbreitung_einStueck ;
     asb:Schaden_ID-Nummer-Schaden 18 ;
-    asb:Schaden_Ortsangabe [ asb:Ortsangabe_GroesseOrtsangabe [ asb:AbstandAnzahl_Anzahl 2 ] ;
-            asb:Ortsangabe_Ortsangabe asbkey13:130082100000000_xxxTesFeld ],
-        [ asb:Ortsangabe_GroesseOrtsangabe [ asb:AbstandAnzahl_Anzahl 1 ] ;
-            asb:Ortsangabe_Ortsangabe asbkey13:130102210000000_xxxTesBauteilVonLinks ] ;
+    asb:Schaden_Ortsangabe [ asb:Ortsangabe_GroesseOrtsangabe [ asb:AbstandAnzahl_Anzahl 1 ] ;
+            asb:Ortsangabe_Ortsangabe asbkey13:130102210000000_xxxTesBauteilVonLinks ],
+        [ asb:Ortsangabe_GroesseOrtsangabe [ asb:AbstandAnzahl_Anzahl 2 ] ;
+            asb:Ortsangabe_Ortsangabe asbkey13:130082100000000_xxxTesFeld ] ;
     asb:Schaden_Schaden asbkey:ArtSchaden_Ausmass_angerostet ;
     asb:Schaden_Schadensbeispiel asbkey13:257-06_Schadensbeispiel ;
     asb:Schaden_SchadensbewertungDauerhaftigkeit 1 ;
@@ -3099,79 +3195,79 @@ aus Drahtgitter 30/30/3mm feuerverzinkt.***""" ;
     asb:hasPriorState :VC0XUQNK_Schaden ;
     dot:coveredInInspection :NY0LL67A_PruefungMitZustandsnote .
 
-:N_2123730_Bauteil a asb:Bauteil ;
-    aoi:hasAreaOfInterest :4144712_AOI,
-        :6445792_AOI,
-        :9882429_AOI ;
-    asb:AbstraktesBauteil_Einbauort "Linke Aussenkappe" ;
-    asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "2123730" ;
-            asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ] ;
-    asb:associatedWith :DP18G13D_Kappe,
-        :N_8004257_Bauteil ;
-    asb:hasModelRepresentation inst:beam_3a64da00-f073-418e-8d87-0d73841c3059 ;
-    dot:hasDamage :4168294_SchadenObjekt,
-        :8967877_SchadenObjekt,
-        :8991777_SchadenObjekt .
-
-:N_5027230_Bauteil a asb:Bauteil ;
-    aoi:hasAreaOfInterest :1696970_AOI,
-        :3594060_AOI,
-        :5905268_AOI ;
-    asb:ASBING13_AnzahlBauteile "1" ;
-    asb:AbstraktesBauteil_Einbauort "Überbauende Seite Achse 30***" ;
-    asb:AbstraktesBauteil_Geometrie [ asb:Geometrie_Laenge [ asb:hasdecimal 12.05 ] ] ;
-    asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "N_5027230" ;
-            asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ] ;
-    asb:associatedWith :DP18G7A6_Fahrbahnuebergang ;
-    asb:hasModelRepresentation inst:slab_4f1c5e37-811c-429e-8ae8-e6037f337660 ;
-    asb:isPartOf :7936662_0_Teilbauwerk .
-
-:N_5758590_Bauteil a asb:Bauteil ;
-    aoi:hasAreaOfInterest :7383554_AOI,
-        :8197707_AOI ;
-    asb:AbstraktesBauteil_Einbauort "Außenkappe West***" ;
-    asb:AbstraktesBauteil_Geometrie [ asb:Geometrie_Laenge [ asb:hasdecimal 54.74 ] ] ;
-    asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "N_5758590" ;
-            asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ] ;
-    asb:associatedWith :7936662_0_Teilbauwerk,
-        :DP18G50C_FahrzeugRueckhaltesystem ;
-    asb:hasModelRepresentation inst:railing_cecd3ddb-e630-4edf-bad9-db620023ca90 ;
-    dot:hasDamage :1240226_SchadenObjekt,
-        :8079700_SchadenObjekt .
-
-:N_8488196_TragendesBauteil a asb:TragendesBauteil ;
-    asb:TragendesBauteil_Art asbkey:ArtTragendesBauteil_Traeger .
-
-:N_8511388_Bauteil a asb:Bauteil ;
-    aoi:hasAreaOfInterest :1696970_AOI,
-        :3594060_AOI,
-        :5905268_AOI ;
+:N_1429755_Bauteil a asb:Bauteil ;
+    aoi:hasAreaOfInterest :5955372_AOI,
+        :7825586_AOI,
+        :8502190_AOI ;
     asb:ASBING13_AnzahlBauteile "1" ;
     asb:AbstraktesBauteil_Einbauort "Überbauende Seite Achse 10***" ;
     asb:AbstraktesBauteil_Geometrie [ asb:Geometrie_Laenge [ asb:hasdecimal 12.05 ] ] ;
-    asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "N_8511388" ;
+    asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "N_1429755" ;
             asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ] ;
     asb:associatedWith :DP18G7A5_Fahrbahnuebergang ;
     asb:hasModelRepresentation inst:slab_4f1c5e37-811c-429e-8ae8-e6037f337660 ;
     asb:isPartOf :7936662_0_Teilbauwerk .
 
-:N_9353339_Unterbau a asb:Unterbau ;
-    aoi:hasAreaOfInterest :9482646_AOI ;
-    asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "N_9353339" ;
-            asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ] ;
-    asb:Unterbau_Art asbkey13:040011000000000_Widerlager ;
-    asb:hasModelRepresentation inst:wall_b4419de6-2b66-4df1-942e-64ca9c679b37 ;
-    asb:isPartOf :7936662_0_Teilbauwerk ;
-    dot:hasDamage :8945665_SchadenObjekt .
-
-:N_9624446_Unterbau a asb:Unterbau ;
-    aoi:hasAreaOfInterest :6320854_AOI ;
-    asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "N_9624446" ;
+:N_2054140_Unterbau a asb:Unterbau ;
+    aoi:hasAreaOfInterest :5833323_AOI ;
+    asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "N_2054140" ;
             asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ] ;
     asb:Unterbau_Art asbkey13:040011000000000_Widerlager ;
     asb:hasModelRepresentation inst:wall_bd8bbf35-6e86-4148-8868-9d6b8eaa1f5a ;
     asb:isPartOf :7936662_0_Teilbauwerk ;
-    dot:hasDamage :1274729_SchadenObjekt .
+    dot:hasDamage :3460772_SchadenObjekt .
+
+:N_3441743_Bauteil a asb:Bauteil ;
+    aoi:hasAreaOfInterest :1158579_AOI,
+        :4403321_AOI,
+        :7201623_AOI ;
+    asb:AbstraktesBauteil_Einbauort "Linke Aussenkappe" ;
+    asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "3441743" ;
+            asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ] ;
+    asb:associatedWith :DP18G13D_Kappe,
+        :N_7961525_Bauteil ;
+    asb:hasModelRepresentation inst:beam_3a64da00-f073-418e-8d87-0d73841c3059 ;
+    dot:hasDamage :1397923_SchadenObjekt,
+        :5173251_SchadenObjekt,
+        :9018781_SchadenObjekt .
+
+:N_4331420_Bauteil a asb:Bauteil ;
+    aoi:hasAreaOfInterest :8054455_AOI,
+        :9689241_AOI ;
+    asb:AbstraktesBauteil_Einbauort "Außenkappe West***" ;
+    asb:AbstraktesBauteil_Geometrie [ asb:Geometrie_Laenge [ asb:hasdecimal 54.74 ] ] ;
+    asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "N_4331420" ;
+            asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ] ;
+    asb:associatedWith :7936662_0_Teilbauwerk,
+        :DP18G50C_FahrzeugRueckhaltesystem ;
+    asb:hasModelRepresentation inst:railing_cecd3ddb-e630-4edf-bad9-db620023ca90 ;
+    dot:hasDamage :1259442_SchadenObjekt,
+        :7225812_SchadenObjekt .
+
+:N_6154586_TragendesBauteil a asb:TragendesBauteil ;
+    asb:TragendesBauteil_Art asbkey:ArtTragendesBauteil_Traeger .
+
+:N_6891512_Bauteil a asb:Bauteil ;
+    aoi:hasAreaOfInterest :5955372_AOI,
+        :7825586_AOI,
+        :8502190_AOI ;
+    asb:ASBING13_AnzahlBauteile "1" ;
+    asb:AbstraktesBauteil_Einbauort "Überbauende Seite Achse 30***" ;
+    asb:AbstraktesBauteil_Geometrie [ asb:Geometrie_Laenge [ asb:hasdecimal 12.05 ] ] ;
+    asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "N_6891512" ;
+            asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ] ;
+    asb:associatedWith :DP18G7A6_Fahrbahnuebergang ;
+    asb:hasModelRepresentation inst:slab_4f1c5e37-811c-429e-8ae8-e6037f337660 ;
+    asb:isPartOf :7936662_0_Teilbauwerk .
+
+:N_9744768_Unterbau a asb:Unterbau ;
+    aoi:hasAreaOfInterest :6412458_AOI ;
+    asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "N_9744768" ;
+            asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ] ;
+    asb:Unterbau_Art asbkey13:040011000000000_Widerlager ;
+    asb:hasModelRepresentation inst:wall_b4419de6-2b66-4df1-942e-64ca9c679b37 ;
+    asb:isPartOf :7936662_0_Teilbauwerk ;
+    dot:hasDamage :7993913_SchadenObjekt .
 
 :RE0UU0J5_Schaden a asb:Schaden ;
     asb:ASBING13_Bauteil asbkey13:130011000000000_Bruecke ;
@@ -3186,10 +3282,10 @@ aus Drahtgitter 30/30/3mm feuerverzinkt.***""" ;
     asb:Schaden_AllgemeineMengenangabe asbkey:AllgemeineMengenangabeSchaden_mittlereSchadensausbreitung_mehrfach ;
     asb:Schaden_Foto "SCHADEN 12.JPG" ;
     asb:Schaden_ID-Nummer-Schaden 12 ;
-    asb:Schaden_Ortsangabe [ asb:Ortsangabe_Ortsangabe asbkey:OrtsangabeBauteilSchaden_Allgemein_vorneUndHinten ],
+    asb:Schaden_Ortsangabe [ asb:Ortsangabe_Ortsangabe asbkey:OrtsangabeBauteilSchaden_Widerlager_beideWiderlager ],
+        [ asb:Ortsangabe_Ortsangabe asbkey:OrtsangabeBauteilSchaden_Allgemein_vorneUndHinten ],
         [ asb:Ortsangabe_Ortsangabe asbkey13:130113500000000_AufDemBauwerk ],
-        [ asb:Ortsangabe_Ortsangabe asbkey:OrtsangabeBauteilSchaden_Allgemein_beidseitig ],
-        [ asb:Ortsangabe_Ortsangabe asbkey:OrtsangabeBauteilSchaden_Widerlager_beideWiderlager ] ;
+        [ asb:Ortsangabe_Ortsangabe asbkey:OrtsangabeBauteilSchaden_Allgemein_beidseitig ] ;
     asb:Schaden_Schaden asbkey:ArtSchaden_Allgemein_Schmutzablagerung ;
     asb:Schaden_Schadensbeispiel asbkey13:226-01_Schadensbeispiel ;
     asb:Schaden_SchadensbewertungDauerhaftigkeit 1 ;
@@ -3264,8 +3360,8 @@ aus Drahtgitter 30/30/3mm feuerverzinkt.***""" ;
     asb:Schaden_Foto "SCHADEN 28.JPG" ;
     asb:Schaden_ID-Nummer-Schaden 28 ;
     asb:Schaden_Ortsangabe [ asb:Ortsangabe_Ortsangabe asbkey:OrtsangabeBauteilSchaden_Fluegel_FluegelwandVorn ],
-        [ asb:Ortsangabe_Ortsangabe asbkey:OrtsangabeBauteilSchaden_Allgemein_Oberseite ],
-        [ asb:Ortsangabe_Ortsangabe asbkey13:130101200000000_Rechts ] ;
+        [ asb:Ortsangabe_Ortsangabe asbkey13:130101200000000_Rechts ],
+        [ asb:Ortsangabe_Ortsangabe asbkey:OrtsangabeBauteilSchaden_Allgemein_Oberseite ] ;
     asb:Schaden_Schaden asbkey:ArtSchaden_Allgemein_abgeblaettert ;
     asb:Schaden_Schadensbeispiel asbkey13:258-02_Schadensbeispiel ;
     asb:Schaden_SchadensbewertungDauerhaftigkeit 1 ;
@@ -3288,8 +3384,8 @@ aus Drahtgitter 30/30/3mm feuerverzinkt.***""" ;
     asb:PruefungUeberwachung_Pruefjahr 2019 ;
     asb:Schaden_AllgemeineMengenangabe asbkey:AllgemeineMengenangabeSchaden_mittlereSchadensausbreitung_mehrfach ;
     asb:Schaden_ID-Nummer-Schaden 27 ;
-    asb:Schaden_Ortsangabe [ asb:Ortsangabe_Ortsangabe asbkey:OrtsangabeBauteilSchaden_Himmelsrichtung_Norden ],
-        [ asb:Ortsangabe_Ortsangabe asbkey13:130113500000000_AufDemBauwerk ] ;
+    asb:Schaden_Ortsangabe [ asb:Ortsangabe_Ortsangabe asbkey13:130113500000000_AufDemBauwerk ],
+        [ asb:Ortsangabe_Ortsangabe asbkey:OrtsangabeBauteilSchaden_Himmelsrichtung_Norden ] ;
     asb:Schaden_Rissart asbkey:Rissart_allgemein ;
     asb:Schaden_Schaden asbkey:ArtSchaden_Risse_gerissen ;
     asb:Schaden_Schadensbeispiel asbkey13:230-02_Schadensbeispiel ;
@@ -3314,6 +3410,7 @@ aus Drahtgitter 30/30/3mm feuerverzinkt.***""" ;
     asb:Schaden_Foto "SCHADEN 14.JPG" ;
     asb:Schaden_ID-Nummer-Schaden 14 ;
     asb:Schaden_Ortsangabe [ asb:Ortsangabe_Ortsangabe asbkey:OrtsangabeBauteilSchaden_Allgemein_beidseitig ],
+        [ asb:Ortsangabe_Ortsangabe asbkey:OrtsangabeBauteilSchaden_Allgemein_Unterseite ],
         [ asb:Ortsangabe_Ortsangabe asbkey13:130113500000000_AufDemBauwerk ] ;
     asb:Schaden_Schaden asbkey:ArtSchaden_Ausmass_angerostet ;
     asb:Schaden_Schadensbeispiel asbkey13:234-04_Schadensbeispiel ;
@@ -3339,9 +3436,10 @@ aus Drahtgitter 30/30/3mm feuerverzinkt.***""" ;
             asb:MengeMitDimensionErlaeuterung_Menge [ asb:MengeMitDimension_Anzahl "0,500"^^xsd:integer ] ] ;
     asb:Schaden_Foto "SCHADEN 29.JPG" ;
     asb:Schaden_ID-Nummer-Schaden 29 ;
-    asb:Schaden_Ortsangabe [ asb:Ortsangabe_Ortsangabe asbkey13:130113500000000_AufDemBauwerk ],
+    asb:Schaden_Ortsangabe [ asb:Ortsangabe_Ortsangabe asbkey:OrtsangabeBauteilSchaden_Allgemein_amAnfangDesBauwerks ],
         [ asb:Ortsangabe_Ortsangabe asbkey:OrtsangabeBauteilSchaden_Widerlager_WiderlagerVorn ],
-        [ asb:Ortsangabe_Ortsangabe asbkey:OrtsangabeBauteilSchaden_Allgemein_amAnfangDesBauwerks ],
+        [ asb:Ortsangabe_Ortsangabe asbkey:OrtsangabeBauteilSchaden_Allgemein_Oberseite ],
+        [ asb:Ortsangabe_Ortsangabe asbkey13:130113500000000_AufDemBauwerk ],
         [ asb:Ortsangabe_Ortsangabe asbkey13:130101200000000_Rechts ] ;
     asb:Schaden_Schaden asbkey:ArtSchaden_Allgemein_beschaedigtDurchFremdeinwirkung ;
     asb:Schaden_Schadensbeispiel asbkey13:234-04_Schadensbeispiel ;
@@ -3413,8 +3511,8 @@ aus Drahtgitter 30/30/3mm feuerverzinkt.***""" ;
     asb:Schaden_AllgemeineMengenangabe asbkey:AllgemeineMengenangabeSchaden_kleineSchadensausbreitung_einStueck ;
     asb:Schaden_Foto "SCHADEN 32.JPG" ;
     asb:Schaden_ID-Nummer-Schaden 32 ;
-    asb:Schaden_Ortsangabe [ asb:Ortsangabe_Ortsangabe asbkey:OrtsangabeBauteilSchaden_Allgemein_gesamterUeberbau ],
-        [ asb:Ortsangabe_Ortsangabe asbkey:OrtsangabeBauteilSchaden_Allgemein_Mitte ] ;
+    asb:Schaden_Ortsangabe [ asb:Ortsangabe_Ortsangabe asbkey:OrtsangabeBauteilSchaden_Allgemein_Mitte ],
+        [ asb:Ortsangabe_Ortsangabe asbkey:OrtsangabeBauteilSchaden_Allgemein_gesamterUeberbau ] ;
     asb:Schaden_Rissart asbkey:Rissart_Laengsriss ;
     asb:Schaden_Schadensbeispiel asbkey13:241-04_Schadensbeispiel ;
     asb:Schaden_SchadensbewertungDauerhaftigkeit 1 ;
@@ -3499,6 +3597,7 @@ aus Drahtgitter 30/30/3mm feuerverzinkt.***""" ;
     asb:PruefungUeberwachung_Pruefjahr 2013 ;
     asb:Schaden_AllgemeineMengenangabe asbkey:AllgemeineMengenangabeSchaden_mittlereSchadensausbreitung_stellenweise ;
     asb:Schaden_ID-Nummer-Schaden 14 ;
+    asb:Schaden_Ortsangabe [ asb:Ortsangabe_Ortsangabe asbkey:OrtsangabeBauteilSchaden_Allgemein_Unterseite ] ;
     asb:Schaden_Schaden asbkey:ArtSchaden_Ausmass_angerostet ;
     asb:Schaden_Schadensbeispiel asbkey13:234-04_Schadensbeispiel ;
     asb:Schaden_SchadensbewertungDauerhaftigkeit 1 ;
@@ -3520,10 +3619,10 @@ aus Drahtgitter 30/30/3mm feuerverzinkt.***""" ;
     asb:Schaden_DimensionierteMengenangabe [ asb:MengeMitDimensionErlaeuterung_Art asbkey13:130066200000000_xxxStelle_n_ ;
             asb:MengeMitDimensionErlaeuterung_Menge [ asb:MengeMitDimension_Anzahl 2 ] ] ;
     asb:Schaden_ID-Nummer-Schaden 15 ;
-    asb:Schaden_Ortsangabe [ asb:Ortsangabe_GroesseOrtsangabe [ asb:AbstandAnzahl_Anzahl 1 ] ;
-            asb:Ortsangabe_Ortsangabe asbkey13:130082100000000_xxxTesFeld ],
-        [ asb:Ortsangabe_GroesseOrtsangabe [ asb:AbstandAnzahl_Anzahl 4 ] ;
-            asb:Ortsangabe_Ortsangabe asbkey13:130102212000000_xxxTesBauteilVonLinks_RechteSeitenflaeche ] ;
+    asb:Schaden_Ortsangabe [ asb:Ortsangabe_GroesseOrtsangabe [ asb:AbstandAnzahl_Anzahl 4 ] ;
+            asb:Ortsangabe_Ortsangabe asbkey13:130102212000000_xxxTesBauteilVonLinks_RechteSeitenflaeche ],
+        [ asb:Ortsangabe_GroesseOrtsangabe [ asb:AbstandAnzahl_Anzahl 1 ] ;
+            asb:Ortsangabe_Ortsangabe asbkey13:130082100000000_xxxTesFeld ] ;
     asb:Schaden_Schaden asbkey:ArtSchaden_Material_abgeplatzt ;
     asb:Schaden_Schadensbeispiel asbkey13:002-02_Schadensbeispiel ;
     asb:Schaden_SchadensbewertungDauerhaftigkeit 1 ;
@@ -3544,10 +3643,10 @@ aus Drahtgitter 30/30/3mm feuerverzinkt.***""" ;
     asb:Schaden_DimensionierteMengenangabe [ asb:MengeMitDimensionErlaeuterung_Art asbkey13:130061300000000_xxx_xCm ;
             asb:MengeMitDimensionErlaeuterung_Menge [ asb:MengeMitDimension_Anzahl "10,0"^^xsd:integer ] ] ;
     asb:Schaden_ID-Nummer-Schaden 16 ;
-    asb:Schaden_Ortsangabe [ asb:Ortsangabe_GroesseOrtsangabe [ asb:AbstandAnzahl_Anzahl 3 ] ;
-            asb:Ortsangabe_Ortsangabe asbkey13:130102212000000_xxxTesBauteilVonLinks_RechteSeitenflaeche ],
-        [ asb:Ortsangabe_GroesseOrtsangabe [ asb:AbstandAnzahl_Anzahl 1 ] ;
-            asb:Ortsangabe_Ortsangabe asbkey13:130082100000000_xxxTesFeld ] ;
+    asb:Schaden_Ortsangabe [ asb:Ortsangabe_GroesseOrtsangabe [ asb:AbstandAnzahl_Anzahl 1 ] ;
+            asb:Ortsangabe_Ortsangabe asbkey13:130082100000000_xxxTesFeld ],
+        [ asb:Ortsangabe_GroesseOrtsangabe [ asb:AbstandAnzahl_Anzahl 3 ] ;
+            asb:Ortsangabe_Ortsangabe asbkey13:130102212000000_xxxTesBauteilVonLinks_RechteSeitenflaeche ] ;
     asb:Schaden_Schaden asbkey:ArtSchaden_Material_abgeplatzt ;
     asb:Schaden_Schadensbeispiel asbkey13:002-02_Schadensbeispiel ;
     asb:Schaden_SchadensbewertungDauerhaftigkeit 1 ;
@@ -3649,9 +3748,9 @@ aus Drahtgitter 30/30/3mm feuerverzinkt.***""" ;
     asb:Schaden_AllgemeineMengenangabe asbkey:AllgemeineMengenangabeSchaden_kleineSchadensausbreitung_eineStelle ;
     asb:Schaden_Foto "WIDERLAGER VORN - STIRNWAND LINKS UNTEN.JPG" ;
     asb:Schaden_ID-Nummer-Schaden 21 ;
-    asb:Schaden_Ortsangabe [ asb:Ortsangabe_Ortsangabe asbkey:OrtsangabeBauteilSchaden_Widerlager_WiderlagerVorn ],
-        [ asb:Ortsangabe_Ortsangabe asbkey13:130101100000000_Links ],
-        [ asb:Ortsangabe_Ortsangabe asbkey13:130115000000000_Unten ] ;
+    asb:Schaden_Ortsangabe [ asb:Ortsangabe_Ortsangabe asbkey13:130101100000000_Links ],
+        [ asb:Ortsangabe_Ortsangabe asbkey13:130115000000000_Unten ],
+        [ asb:Ortsangabe_Ortsangabe asbkey:OrtsangabeBauteilSchaden_Widerlager_WiderlagerVorn ] ;
     asb:Schaden_Schaden asbkey:ArtSchaden_Wasserschaden_feuchteStelle ;
     asb:Schaden_Schadensbeispiel asbkey13:021-06_Schadensbeispiel ;
     asb:Schaden_SchadensbewertungDauerhaftigkeit 2 ;
@@ -3670,8 +3769,8 @@ aus Drahtgitter 30/30/3mm feuerverzinkt.***""" ;
     asb:PruefungUeberwachung_Pruefjahr 2010 ;
     asb:Schaden_AllgemeineMengenangabe asbkey:AllgemeineMengenangabeSchaden_kleineSchadensausbreitung_einStueck ;
     asb:Schaden_ID-Nummer-Schaden 6 ;
-    asb:Schaden_Ortsangabe [ asb:Ortsangabe_Ortsangabe asbkey:OrtsangabeBauteilSchaden_Allgemein_amAnfangDesBauwerks ],
-        [ asb:Ortsangabe_Ortsangabe asbkey13:130101200000000_Rechts ] ;
+    asb:Schaden_Ortsangabe [ asb:Ortsangabe_Ortsangabe asbkey13:130101200000000_Rechts ],
+        [ asb:Ortsangabe_Ortsangabe asbkey:OrtsangabeBauteilSchaden_Allgemein_amAnfangDesBauwerks ] ;
     asb:Schaden_Schaden asbkey:ArtSchaden_Lage_locker_lose ;
     asb:Schaden_SchadensbewertungDauerhaftigkeit 0 ;
     asb:Schaden_SchadensbewertungStandsicherheit 0 ;
@@ -3724,15 +3823,15 @@ aus Drahtgitter 30/30/3mm feuerverzinkt.***""" ;
     asb:hasPriorState :DP19VYVZ_Schaden ;
     dot:coveredInInspection :1Y0YMRPS_PruefungMitZustandsnote .
 
-:6203208_BauteilDefinition a asb:ASBING13_BauteilDefinition ;
+:4162610_BauteilDefinition a asb:ASBING13_BauteilDefinition ;
     asb:ASBING13_Bauteil asbkey13:130011000000000_Bruecke ;
     asb:ASBING13_Bauteilgruppe asbkey13:390022180000000_BauteilgruppeKappe ;
     asb:ASBING13_Konstruktionsteil asbkey13:130021850000000_Oberflaeche ;
     asb:Schaden_Ortsangabe [ asb:Ortsangabe_Ortsangabe asbkey:OrtsangabeBauteilSchaden_Allgemein_links,
                 asbkey:OrtsangabeBauteilSchaden_Allgemein_rechts ] ;
     asb:associatedWith :7936662_0_Teilbauwerk ;
-    asb:beschreibtBauteil :N_2123730_Bauteil,
-        :N_8004257_Bauteil .
+    asb:beschreibtBauteil :N_3441743_Bauteil,
+        :N_7961525_Bauteil .
 
 :DP18HEAQ_StrasseWeg a asb:StrasseWeg ;
     asb:ASBObjekt_Bearbeiter "Dorn" ;
@@ -3818,8 +3917,8 @@ aus Drahtgitter 30/30/3mm feuerverzinkt.***""" ;
     asb:Schaden_Foto "7936662-A99OST-BW-45-2-EP2016-BILD-01.JPG" ;
     asb:Schaden_ID-Nummer-Schaden 21 ;
     asb:Schaden_Ortsangabe [ asb:Ortsangabe_Ortsangabe asbkey13:130115000000000_Unten ],
-        [ asb:Ortsangabe_Ortsangabe asbkey:OrtsangabeBauteilSchaden_Widerlager_WiderlagerVorn ],
-        [ asb:Ortsangabe_Ortsangabe asbkey13:130101100000000_Links ] ;
+        [ asb:Ortsangabe_Ortsangabe asbkey13:130101100000000_Links ],
+        [ asb:Ortsangabe_Ortsangabe asbkey:OrtsangabeBauteilSchaden_Widerlager_WiderlagerVorn ] ;
     asb:Schaden_Schaden asbkey:ArtSchaden_Wasserschaden_feuchteStelle ;
     asb:Schaden_Schadensbeispiel asbkey13:021-06_Schadensbeispiel ;
     asb:Schaden_SchadensbewertungDauerhaftigkeit 2 ;
@@ -3915,8 +4014,9 @@ aus Drahtgitter 30/30/3mm feuerverzinkt.***""" ;
     asb:Schaden_AllgemeineMengenangabe asbkey:AllgemeineMengenangabeSchaden_mittlereSchadensausbreitung_stellenweise ;
     asb:Schaden_Foto "7936662-A99OST-BW-45-2-EP2016-BILD-05.JPG" ;
     asb:Schaden_ID-Nummer-Schaden 14 ;
-    asb:Schaden_Ortsangabe [ asb:Ortsangabe_Ortsangabe asbkey13:130113500000000_AufDemBauwerk ],
-        [ asb:Ortsangabe_Ortsangabe asbkey:OrtsangabeBauteilSchaden_Allgemein_beidseitig ] ;
+    asb:Schaden_Ortsangabe [ asb:Ortsangabe_Ortsangabe asbkey:OrtsangabeBauteilSchaden_Allgemein_beidseitig ],
+        [ asb:Ortsangabe_Ortsangabe asbkey13:130113500000000_AufDemBauwerk ],
+        [ asb:Ortsangabe_Ortsangabe asbkey:OrtsangabeBauteilSchaden_Allgemein_Unterseite ] ;
     asb:Schaden_Schaden asbkey:ArtSchaden_Ausmass_angerostet ;
     asb:Schaden_Schadensbeispiel asbkey13:234-04_Schadensbeispiel ;
     asb:Schaden_SchadensbewertungDauerhaftigkeit 1 ;
@@ -4069,8 +4169,8 @@ aus Drahtgitter 30/30/3mm feuerverzinkt.***""" ;
     asb:Schaden_DimensionierteMengenangabe [ asb:MengeMitDimensionErlaeuterung_Art asbkey13:130066200000000_xxxStelle_n_ ;
             asb:MengeMitDimensionErlaeuterung_Menge [ asb:MengeMitDimension_Anzahl 2 ] ] ;
     asb:Schaden_ID-Nummer-Schaden 9 ;
-    asb:Schaden_Ortsangabe [ asb:Ortsangabe_Ortsangabe asbkey:OrtsangabeBauteilSchaden_Allgemein_amEndeDesBauwerks ],
-        [ asb:Ortsangabe_Ortsangabe asbkey13:130101200000000_Rechts ] ;
+    asb:Schaden_Ortsangabe [ asb:Ortsangabe_Ortsangabe asbkey13:130101200000000_Rechts ],
+        [ asb:Ortsangabe_Ortsangabe asbkey:OrtsangabeBauteilSchaden_Allgemein_amEndeDesBauwerks ] ;
     asb:Schaden_Schaden asbkey:ArtSchaden_Material_abgeplatzt ;
     asb:Schaden_Schadensbeispiel asbkey13:230-08_Schadensbeispiel ;
     asb:Schaden_SchadensbewertungDauerhaftigkeit 1 ;
@@ -4160,26 +4260,26 @@ aus Drahtgitter 30/30/3mm feuerverzinkt.***""" ;
     asb:hasPriorState :280M4N2S_Schaden ;
     dot:coveredInInspection :ZD0ILASC_PruefungMitZustandsnote .
 
-:N_8004257_Bauteil a asb:Bauteil ;
-    aoi:hasAreaOfInterest :2614675_AOI,
-        :4144712_AOI,
-        :5778483_AOI,
-        :6445792_AOI,
-        :9863446_AOI,
-        :9882429_AOI ;
+:N_7961525_Bauteil a asb:Bauteil ;
+    aoi:hasAreaOfInterest :1158579_AOI,
+        :4403321_AOI,
+        :5733186_AOI,
+        :6376904_AOI,
+        :6971433_AOI,
+        :7201623_AOI ;
     asb:AbstraktesBauteil_Einbauort "Rechte Aussenkappe" ;
     asb:AbstraktesBauteil_Geometrie [ asb:Geometrie_BedeutungFreitext " Groesste Blocklaenge" ;
             asb:Geometrie_Laenge [ asb:hasdecimal 57.75 ] ],
         [ asb:Geometrie_BedeutungSchluessel asbkey:BedeutungSchluessel_Laenge_Breite ;
             asb:Geometrie_Laenge [ asb:hasdecimal 2.0 ] ] ;
-    asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "N_8004257" ;
+    asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "N_7961525" ;
             asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ] ;
     asb:associatedWith :DP18G13D_Kappe ;
-    asb:hasModelRepresentation inst:beam_bae0fd65-aae8-4a94-97d8-46b63b85dd11 ;
+    asb:hasModelRepresentation inst:beam_3a64da00-f073-418e-8d87-0d73841c3059 ;
     asb:isPartOf :7936662_0_Teilbauwerk ;
-    dot:hasDamage :4168294_SchadenObjekt,
-        :8967877_SchadenObjekt,
-        :8991777_SchadenObjekt .
+    dot:hasDamage :1397923_SchadenObjekt,
+        :5173251_SchadenObjekt,
+        :9018781_SchadenObjekt .
 
 :1Y0YMRPS_PruefungMitZustandsnote a asb:PruefungMitZustandsnote ;
     asb:ASBObjekt_Systemdatum "1301-01-01"^^xsd:date ;
@@ -4216,10 +4316,10 @@ Tel.: 089/28633-244""" ;
         :280M4N2S_Schaden,
         :7936662_0_Teilbauwerk .
 
-:N_1418836_Ueberbau a asb:Ueberbau ;
-    aoi:hasAreaOfInterest :1435893_AOI,
-        :8451262_AOI ;
-    asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "N_1418836" ;
+:N_5236862_Ueberbau a asb:Ueberbau ;
+    aoi:hasAreaOfInterest :6362360_AOI,
+        :8319089_AOI ;
+    asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "N_5236862" ;
             asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ] ;
     asb:Ueberbau_AnzahlStege 4 ;
     asb:Ueberbau_BauverfahrenUeberbau asbkey13:030172000000000_MittelsHilfsstuetzenHergestellt ;
@@ -4229,7 +4329,7 @@ Tel.: 089/28633-244""" ;
     asb:Ueberbau_VorkehrungNachtraeglicheVerstaerkung false ;
     asb:hasModelRepresentation inst:buildingelement_3a4cc8ed-6a18-4e8e-b359-3f81d5b7774e ;
     asb:isPartOf :7936662_0_Teilbauwerk ;
-    dot:hasDamage :4792839_SchadenObjekt .
+    dot:hasDamage :5872311_SchadenObjekt .
 
 :ZD0ILASC_PruefungMitZustandsnote a asb:PruefungMitZustandsnote ;
     asb:ASBObjekt_Bearbeiter "Bauer E." ;
@@ -4422,10 +4522,10 @@ http://www.lap-consult.com""" ;
     asb:Bruecke_Gesamtbreite [ asb:hasdecimal 12.0 ] ;
     asb:Bruecke_Gesamtlaenge [ asb:hasdecimal 56.75 ] ;
     asb:Bruecke_StatischesSystemInBauwerksachse asbkey13:140011130000000_MehrfeldrigMitDurchlaufwirkung ;
-    asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "nein" ;
-            asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_Denkmalschutz ],
-        [ asb:ObjektID_ID "MA 99Okm 45,750" ;
+    asb:ObjektMitID_hatObjektID [ asb:ObjektID_ID "MA 99Okm 45,750" ;
             asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_InternerSortierschluessel ],
+        [ asb:ObjektID_ID "nein" ;
+            asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_Denkmalschutz ],
         [ asb:ObjektID_ID "7936662 0" ;
             asb:ObjektID_NamensraumVerfahren asbkey:NamensraumVerfahren_ASBObjektId ],
         [ asb:ObjektID_ID "Statik auf Papier, Ausführungsunterlagen auf Papier und Digital vorhanden***" ;
@@ -4438,21 +4538,21 @@ http://www.lap-consult.com""" ;
     asb:Teilbauwerk_Bauwerksrichtung "St 2079; von West nach Ost" ;
     asb:Teilbauwerk_BemerkungenBaugrund "Baugrundgutachten vorhanden***" ;
     asb:Teilbauwerk_Konstruktion "2FDL-SpBFtmOB-PlBa" ;
-    asb:Teilbauwerk_Ortsbezug [ asb:Ortsbezug_Strasse [ asb:Strasse_Strassenklasse asbkey:Strassenklasse_ABundesautobahn ] ],
-        [ asb:Ortsbezug_Koordinaten [ asb:Koordinaten_Koordinatengeometrie [ asb:Multigeometrie_Punktgeometrie 703352.2 ] ] ],
-        [ asb:Ortsbezug_Strasse [ asb:Strasse_Netzzuordnung [ asb:Netzzuordnung_Kilometrierung [ asb:hasdecimal 45.75 ] ] ] ],
-        [ asb:Ortsbezug_Strasse [ asb:Strasse_Netzzuordnung [ asb:Netzzuordnung_Blocknummer "3" ] ] ],
-        [ asb:Ortsbezug_Strasse [ asb:Strasse_Netzzuordnung [ asb:Netzzuordnung_Nach-Nullpunkt "7936042" ] ] ],
-        [ asb:Ortsbezug_Koordinaten [ asb:Koordinaten_Koordinatengeometrie asbkey13:610172130000000_SystemEtrs89_Utm_By_489 ] ],
-        [ asb:Ortsbezug_Koordinaten [ asb:Koordinaten_Koordinatengeometrie [ asb:Multigeometrie_Punktgeometrie 5328302.0 ] ] ],
-        [ asb:Ortsbezug_Strasse [ asb:Strasse_Netzzuordnung [ asb:Netzzuordnung_Von-Nullpunkt "7836026" ] ] ],
+    asb:Teilbauwerk_Ortsbezug [ asb:Ortsbezug_Strasse [ asb:Strasse_Strassennummer "99" ] ],
+        [ asb:Ortsbezug_Strasse [ asb:Strasse_Netzzuordnung [ asb:Netzzuordnung_Von-Nullpunkt "7936039" ] ] ],
         [ asb:Ortsbezug_Strasse [ asb:Strasse_Netzzuordnung [ asb:Netzzuordnung_AbschnittsAstnummer "500" ] ] ],
-        [ asb:Ortsbezug_Strasse [ asb:Strasse_Strassennummer "99" ] ],
-        [ asb:Ortsbezug_Strasse [ asb:Strasse_Netzzuordnung [ asb:Netzzuordnung_AbschnittsAstnummer "200" ] ] ],
-        [ asb:Ortsbezug_Strasse [ asb:Strasse_Netzzuordnung [ asb:Netzzuordnung_Nach-Nullpunkt "7936008" ] ] ],
+        [ asb:Ortsbezug_Strasse [ asb:Strasse_Netzzuordnung [ asb:Netzzuordnung_Von-Nullpunkt "7836026" ] ] ],
         [ asb:Ortsbezug_Strasse [ asb:Strasse_Netzzuordnung [ asb:Netzzuordnung_Station [ asb:hasdecimal 410.0 ] ] ] ],
+        [ asb:Ortsbezug_Strasse [ asb:Strasse_Netzzuordnung [ asb:Netzzuordnung_Nach-Nullpunkt "7936042" ] ] ],
+        [ asb:Ortsbezug_Strasse [ asb:Strasse_Netzzuordnung [ asb:Netzzuordnung_Kilometrierung [ asb:hasdecimal 45.75 ] ] ] ],
+        [ asb:Ortsbezug_Koordinaten [ asb:Koordinaten_Koordinatengeometrie [ asb:Multigeometrie_Punktgeometrie 703352.2 ] ] ],
+        [ asb:Ortsbezug_Strasse [ asb:Strasse_Netzzuordnung [ asb:Netzzuordnung_AbschnittsAstnummer "200" ] ] ],
+        [ asb:Ortsbezug_Koordinaten [ asb:Koordinaten_Koordinatengeometrie asbkey13:610172130000000_SystemEtrs89_Utm_By_489 ] ],
         [ asb:Ortsbezug_Strasse [ asb:Strasse_Netzzuordnung [ asb:Netzzuordnung_Station [ asb:hasdecimal 3464.0 ] ] ] ],
-        [ asb:Ortsbezug_Strasse [ asb:Strasse_Netzzuordnung [ asb:Netzzuordnung_Von-Nullpunkt "7936039" ] ] ] ;
+        [ asb:Ortsbezug_Strasse [ asb:Strasse_Strassenklasse asbkey:Strassenklasse_ABundesautobahn ] ],
+        [ asb:Ortsbezug_Koordinaten [ asb:Koordinaten_Koordinatengeometrie [ asb:Multigeometrie_Punktgeometrie 5328302.0 ] ] ],
+        [ asb:Ortsbezug_Strasse [ asb:Strasse_Netzzuordnung [ asb:Netzzuordnung_Blocknummer "3" ] ] ],
+        [ asb:Ortsbezug_Strasse [ asb:Strasse_Netzzuordnung [ asb:Netzzuordnung_Nach-Nullpunkt "7936008" ] ] ] ;
     asb:Teilbauwerk_Stadium asbkey13:020082000000000_BauwerkUnterVerkehr ;
     asb:Teilbauwerk_Stationierung asbkey13:020181000000000_InStationierungsrichtung ;
     asb:Teilbauwerk_Ziellastniveau asbkey13:140153000000000_KeinZiellastniveau ;

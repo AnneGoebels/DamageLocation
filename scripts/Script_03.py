@@ -49,6 +49,6 @@ def createDamageRepresentationFiles(sibbw_graph, ifc_file, aoi_file, point_file,
                     x_y_F.append([round(point.X(),2),round(point.Y(),2)])
                 vertex_F.Next()
             plea = Geom.sorted_point_list_extrusion_area(sol2, x_y_F)
-        Ifc.place_object(point_ifc, box, plea, height_box, schadenObjekt, point_file, desc)
+        Ifc.place_object(point_ifc, box, plea, height_box, schadenObjekt, point_file, Description=desc)
 
     return "Damage Ifc and BCF created"

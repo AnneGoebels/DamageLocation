@@ -48,7 +48,7 @@ def bauteildefinition_as_aoi(bauteildefinition,data_filename,schadenObjekt,i,bau
                 break
         # vorne und hinten gibt es doch schon in den ortsangaben ??
         if str(bauteilTyp) == "Widerlager_Wand_Vorne":
-                new_aoi_instance(data_filename, schadenObjekt, i, "AONS", "130091300000000_Vorne") #??hinten bei vorne??
+                new_aoi_instance(data_filename, schadenObjekt, i, "AONS", "130091300000000_Vorne")
                 break
         if str(bauteilTyp) == "Widerlager_Wand_Hinten":
                 new_aoi_instance(data_filename, schadenObjekt, i, "AONS", "130091100000000_Hinten")

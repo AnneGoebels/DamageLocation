@@ -67,7 +67,7 @@ def create_ifc(f,new_filename):
     
     f.write(new_filename)
 
-def place_object(file,box,point_list_extrusion_area,h,name,filename,Description,along_model_height=False,zmin=0,):
+def place_object(file,box,point_list_extrusion_area,h,name,filename,Description="",along_model_height=False,zmin=0,):
     """
     Creates a representation of bottom face in a new ifc-file
     """
