@@ -1,5 +1,5 @@
 import os
-from scripts import Script_01, Script_02, Script_03, Script_04
+from scripts import Script_01, Script_02, Script_03
 from func import Control
 from rdflib import Graph, Namespace, URIRef
 import ifcopenshell
@@ -77,7 +77,8 @@ second = Script_02.createAOIIfc(graphWithIfcLinks,ifc_file,ifc_lbd_graph,bt_file
 print(second)
 third = Script_03.createDamageRepresentationFiles(graphWithIfcLinks,ifc_file,aoi_file,point_file,bcf_file)
 print(third)
+
+graphWithIfcLinks.serialize("C:\GitHub\DamageLocation\output\SIBBWGraphWithIfcLinks1_"+date_string+".ttl")
+
 # in between third and last step: convert created point representation and control ifc file into LBB with the IfctoLbd Converter
 
-graphWithAllLinks = Script_04.CreateDamageAreasLinks(graphWithIfcLinks)
-graphWithAllLinks.serialize("C:\GitHub\DamageLocation\output\SIBBWGraphWithIfcLinks_"+date_string+".ttl")

@@ -1,14 +1,18 @@
 from rdflib import Graph, Namespace, URIRef
 from func import q_main
+import datetime
+
+now = datetime.datetime.now()
+date_string = now.strftime('%Y-%m-%d')
 
 def CreateDamageAreasLinks(sibbw_graph):
     ANS = Namespace("https://w3id.org/asbingowl/core#")
 
-    LbdOfDamageAreaIfc = r"C:\GitHub\DamageLocation\temp_files\damage_LBD.ttl"
+    LbdOfDamageAreaIfc = r"C:\GitHub\DamageLocation\input\damage_LBD.ttl"
     damageAreaGraph= Graph()
     damageAreaGraph.parse(LbdOfDamageAreaIfc, format="ttl")
 
-    LbdofDamagePointIfc = r"C:\GitHub\DamageLocation\output\point_representation_LBD.ttl"
+    LbdofDamagePointIfc = r"C:\GitHub\DamageLocation\input\point_representation_LBD.ttl"
     damagePointGraph = Graph()
     damagePointGraph.parse(LbdofDamagePointIfc, format="ttl")
 
@@ -34,5 +38,9 @@ def CreateDamageAreasLinks(sibbw_graph):
 
     return sibbw_graph
 
+graphWithIfcLinks = "C:\GitHub\DamageLocation\output\SIBBWGraphWithIfcLinks1_"+date_string+".ttl"
+sibbw_graph = Graph()
+sibbw_graph.parse(graphWithIfcLinks)
 
-
+graphWithAllLinks = CreateDamageAreasLinks(sibbw_graph)
+graphWithAllLinks.serialize("C:\GitHub\DamageLocation\output\SIBBWGraphWithIfcLinks_"+date_string+".ttl")

@@ -7,9 +7,10 @@ In this project, an approach was created to automatically convert textual damage
 - IFC model of bridge converted into LBD format (.ttl)
 
 ## Procedure:
-1. Run file "01_Building_Component_Location" to associate building components in the data file to their geometrical representation
-2. Run file "02_Damage_Location" to locate damages in the data file in the IFC model
-3. Run file "03_Damage_Representation" to create:
+Run file "main"
 
+ouput:
    - BCF file with damages in form of issues 
    - IFC file with point representation of damages
+   - create links between inspection and ifc files
+     (on element, damage area, and damage representation level)
